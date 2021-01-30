@@ -1,8 +1,6 @@
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import webpack, { Configuration } from 'webpack';
+import { Configuration } from 'webpack';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
-
-const TerserPlugin = require('terser-webpack-plugin');
 
 const webpackConfig = (name: string, entry: string, outputPath: string) => (env: {
   production: string;
@@ -11,45 +9,37 @@ const webpackConfig = (name: string, entry: string, outputPath: string) => (env:
   entry,
   ...(env.production || !env.development ? {} : { devtool: 'eval-source-map' }),
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
-    //@ts-ignore
-    plugins: [new TsconfigPathsPlugin()]
+    plugins: [
+      // @ts-ignore
+      new TsconfigPathsPlugin()
+    ],
+    extensions: ['.ts', '.tsx', '.js']
   },
   output: {
     filename: `${name}.[contenthash].bundle.js`,
-    path: outputPath
+    path: outputPath,
+    publicPath: 'auto'
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
+        test: /bootstrap\.(ts|tsx|js|jsx)$/,
+        loader: 'bundle-loader',
         options: {
-          transpileOnly: true
-        },
-        exclude: /dist/
+          lazy: true
+        }
+      },
+      {
+        test: /\.(ts|tsx|js|jsx)$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        options: {
+          presets: ['@babel/preset-typescript', '@babel/preset-react', '@babel/preset-env']
+        }
       }
     ]
   },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          format: {
-            comments: false
-          }
-        },
-        extractComments: false
-      })
-    ]
-  },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.PRODUCTION': env.production || !env.development,
-      'process.env.NAME': JSON.stringify(require('./package.json').name),
-      'process.env.VERSION': JSON.stringify(require('./package.json').version)
-    }),
     new ForkTsCheckerWebpackPlugin({
       eslint: {
         files: './src/**/*.{ts,tsx,js,jsx}'

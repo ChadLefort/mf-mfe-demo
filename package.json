@@ -7,8 +7,14 @@
       "shared/*"
     ]
   },
-  "scripts": {},
+  "scripts": {
+    "start": "lerna run start --parallel --stream"
+  },
   "devDependencies": {
+    "@babel/core": "7.12.10",
+    "@babel/preset-env": "7.12.11",
+    "@babel/preset-react": "7.12.10",
+    "@babel/preset-typescript": "7.12.7",
     "@types/node": "13.13.40",
     "@types/react": "17.0.0",
     "@types/react-dom": "17.0.0",
@@ -18,6 +24,8 @@
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
     "babel-eslint": "^10.0.0",
+    "babel-loader": "8.2.2",
+    "bundle-loader": "0.5.6",
     "eslint": "^7.5.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
@@ -36,8 +44,8 @@
     "ts-node": "9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
     "typescript": "4.1.3",
-    "webpack": "5.19.0",
-    "webpack-cli": "4.4.0",
+    "webpack": "5.18.0",
+    "webpack-cli": "4.3.1",
     "webpack-dev-server": "3.11.2"
   }
 }

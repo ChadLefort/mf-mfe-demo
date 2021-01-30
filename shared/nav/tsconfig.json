@@ -1,10 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "@pet-tracker/common-ui": ["../../common-ui/src/index.ts"]
-    }
+    "outDir": "./dist",
+    "baseUrl": "./src"
   },
-  "include": ["./src", "./webpack.config.ts", "webpack.config.prod.ts"]
+  "include": ["./src"]
 }

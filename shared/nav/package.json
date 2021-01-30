@@ -1,13 +1,13 @@
 {
-  "name": "@pet-tracker/nav",
+  "name": "shared_nav",
   "version": "1.0.0",
   "main": "src/index.tsx",
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
     "clean": "rimraf dist",
-    "start": "webpack-cli serve --config=webpack.config.dev.ts --mode=development --env development --open --hot",
-    "build": "npm run clean && webpack --config=webpack.config.prod.ts --mode=production --env production --progress"
+    "start": "webpack-cli serve --mode=development --env development --hot",
+    "build": "npm run clean && webpack --mode=production --env production --progress"
   },
   "dependencies": {
     "@material-ui/core": "4.11.2",

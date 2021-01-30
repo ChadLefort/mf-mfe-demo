@@ -3,9 +3,9 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@pet-tracker/common-ui": ["../../../shared/common-ui/src/index.ts"],
-      "@pet-tracker/nav": ["../../../shared/nav/src/index.ts"]
+      "shared_common_ui/*": ["../../../shared/common-ui/src/*"],
+      "shared_nav/*": ["../../../shared/nav/src/*"]
     }
   },
-  "include": ["./src", "webpack.config.ts"]
+  "include": ["./src"]
 }

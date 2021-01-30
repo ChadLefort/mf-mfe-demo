@@ -4,20 +4,23 @@ import path from 'path';
 import { container } from 'webpack';
 
 const webpackConfig = (env: { production: string; development: string }) => {
-  const { name, dependencies } = require(`./package.json`);
-  const config = baseWebpackConfig(name, './src/index.tsx', path.join(__dirname, '/dist'))(env);
+  const { name: moduleName, dependencies } = require(`./package.json`);
+  const entry = env.development ? './src/app.tsx' : './src/index.ts';
+  const out = path.join(__dirname, '/dist');
+  const config = baseWebpackConfig(moduleName, entry, out)(env);
 
   config.devServer = {
     contentBase: path.join(__dirname, 'dist'),
-    port: 3001
+    port: 3002
   };
 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
-      name: 'cats',
-      remotes: {
-        shared_nav: 'shared_nav@http://localhost:3002/remoteEntry.js',
-        shared_common_ui: 'shared_common_ui@http://localhost:3003/remoteEntry.js'
+      name: 'shared_nav',
+      library: { type: 'var', name: 'shared_nav' },
+      filename: 'remoteEntry.js',
+      exposes: {
+        './features/core/components/Nav': './src/features/core/components/Nav.tsx'
       },
       shared: {
         ...dependencies,
