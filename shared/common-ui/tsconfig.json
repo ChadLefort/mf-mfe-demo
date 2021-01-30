@@ -3,5 +3,5 @@
   "compilerOptions": {
     "baseUrl": "./src"
   },
-  "include": ["./src", "webpack.config.dev.ts"]
+  "include": ["./src", "webpack.config.dev.ts", "webpack.config.prod.ts"]
 }
