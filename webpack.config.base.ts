@@ -1,11 +1,14 @@
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
 import webpack, { Configuration } from 'webpack';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 
-const webpackConfig = (env: { production: string; development: string }): Configuration => ({
-  entry: './src/index.tsx',
+const TerserPlugin = require('terser-webpack-plugin');
+
+const webpackConfig = (name: string, entry: string, outputPath: string) => (env: {
+  production: string;
+  development: string;
+}): Configuration => ({
+  entry,
   ...(env.production || !env.development ? {} : { devtool: 'eval-source-map' }),
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -13,8 +16,8 @@ const webpackConfig = (env: { production: string; development: string }): Config
     plugins: [new TsconfigPathsPlugin()]
   },
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'build.js'
+    filename: `${name}.[contenthash].bundle.js`,
+    path: outputPath
   },
   module: {
     rules: [
@@ -28,10 +31,20 @@ const webpackConfig = (env: { production: string; development: string }): Config
       }
     ]
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: false
+          }
+        },
+        extractComments: false
+      })
+    ]
+  },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
-    }),
     new webpack.DefinePlugin({
       'process.env.PRODUCTION': env.production || !env.development,
       'process.env.NAME': JSON.stringify(require('./package.json').name),
