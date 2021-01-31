@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { PetType } from '@pet-tracker/types';
 import { Route, Switch } from 'react-router-dom';
 import { store } from './store';
 
@@ -18,25 +19,19 @@ const ViewPets = React.lazy(() =>
   import('shared_pets/features/core/components/ViewPets').then((module) => ({ default: module.ViewPets }))
 );
 
-const RemoteWrapper = React.lazy(() =>
-  import('shared_pets/features/core/components/RemoteWrapper').then((module) => ({ default: module.RemoteWrapper }))
+const PetsProvider = React.lazy(() =>
+  import('shared_pets/features/core/components/PetsProvider').then((module) => ({ default: module.PetsProvider }))
 );
-
-// // TODO: refactor to shared types
-enum PetType {
-  Cat = 'Cat',
-  Dog = 'Dog'
-}
 
 export const Routes: React.FC = () => (
   <Suspense fallback={null}>
-    <RemoteWrapper store={store}>
+    <PetsProvider store={store}>
       <Switch>
         <Route path="/edit/:id" render={() => <EditPet type={PetType.Cat} />} />
         <Route path="/add" render={() => <AddPets type={PetType.Cat} />} />
         <Route path="/:id" render={() => <ViewPet type={PetType.Cat} />} />
         <Route path="/" render={() => <ViewPets type={PetType.Cat} />} />
       </Switch>
-    </RemoteWrapper>
+    </PetsProvider>
   </Suspense>
 );

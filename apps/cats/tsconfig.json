@@ -5,7 +5,8 @@
     "paths": {
       "shared_common_ui/*": ["../../../shared/common-ui/src/*"],
       "shared_pets/*": ["../../../shared/pets/src/*"],
-      "shared_nav/*": ["../../../shared/nav/src/*"]
+      "shared_nav/*": ["../../../shared/nav/src/*"],
+      "@pet-tracker/types": ["../../../shared/types/src/index.ts"]
     }
   },
   "include": ["./src"]

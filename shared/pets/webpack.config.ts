@@ -28,7 +28,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
         './features/core/components/EditPet': './src/features/core/components/EditPet.tsx',
         './features/core/components/ViewPet': './src/features/core/components/ViewPet.tsx',
         './features/core/components/ViewPets': './src/features/core/components/ViewPets.tsx',
-        './features/core/components/RemoteWrapper': './src/features/core/components/RemoteWrapper.tsx'
+        './features/core/components/PetsProvider': './src/features/core/components/PetsProvider.tsx'
       },
       shared: {
         ...dependencies,

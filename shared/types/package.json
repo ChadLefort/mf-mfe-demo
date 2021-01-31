@@ -1,0 +1,9 @@
+{
+  "name": "@pet-tracker/types",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@reduxjs/toolkit": "1.5.0"
+  }
+}

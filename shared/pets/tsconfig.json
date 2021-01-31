@@ -4,7 +4,8 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "shared_common_ui/*": ["../../common-ui/src/*"]
+      "shared_common_ui/*": ["../../common-ui/src/*"],
+      "@pet-tracker/types": ["../../types/src/index.ts"]
     }
   },
   "include": ["./src"]

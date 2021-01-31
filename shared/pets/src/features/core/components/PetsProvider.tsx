@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { InjectStore } from '@pet-tracker/types';
 import { petsReducer } from '../pets.slice';
 import { Provider } from 'react-redux';
 
 type Props = {
-  store: any;
+  store: InjectStore;
 };
 
-export const RemoteWrapper: React.FC<Props> = ({ store, children }) => {
+export const PetsProvider: React.FC<Props> = ({ store, children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const key = 'pets';
 
   useEffect(() => {
     store.injectReducer(key, petsReducer);
-  }, [store]);
-
-  useEffect(() => {
     setIsLoaded(Object.keys(store.getState()).some((k) => k === key));
   }, [store]);
 
