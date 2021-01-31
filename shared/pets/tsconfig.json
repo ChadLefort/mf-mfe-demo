@@ -2,7 +2,10 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "shared_common_ui/*": ["../../common-ui/src/*"]
+    }
   },
   "include": ["./src"]
 }

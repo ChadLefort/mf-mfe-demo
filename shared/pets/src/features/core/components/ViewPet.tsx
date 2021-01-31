@@ -1,16 +1,24 @@
-import Container from '@material-ui/core/Container';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Paper from '@material-ui/core/Paper';
-import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import React, { Suspense } from 'react';
+import {
+  Container,
+  createStyles,
+  LinearProgress,
+  List,
+  ListItem,
+  ListItemText,
+  makeStyles,
+  Paper,
+  Theme
+  } from '@material-ui/core';
 import { petsSelectors } from '../pets.slice';
 import { PetType } from '../interface';
 import { useFetchPets } from '../hooks/useFetchPets';
 import { useParams } from 'react-router-dom';
 import { useTypedSelector } from '../../../common/reducer';
+
+const ErrorIcon = React.lazy(() =>
+  import('shared_common_ui/components/ErrorIcon').then((module) => ({ default: module.ErrorIcon }))
+);
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,7 +55,9 @@ export const ViewPet: React.FC<Props> = ({ type }) => {
       </List>
     </Paper>
   ) : error ? (
-    <p>Error</p> // <ErrorIcon />
+    <Suspense fallback={null}>
+      <ErrorIcon />
+    </Suspense>
   ) : (
     <Container>
       <LinearProgress />

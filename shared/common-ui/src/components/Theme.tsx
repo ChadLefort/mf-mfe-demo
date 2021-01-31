@@ -2,7 +2,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { blue, grey } from '@material-ui/core/colors';
-import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core';
 
 type Props = {
   primaryColor?: string;

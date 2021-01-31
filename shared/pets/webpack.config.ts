@@ -2,6 +2,7 @@ import baseWebpackConfig from '../../webpack.config.base';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import { container, WebpackOptionsNormalized } from 'webpack';
+import { shared } from '../../mf-shared';
 
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
   const { name, dependencies } = require('./package.json');
@@ -18,8 +19,10 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
       name: 'shared_pets',
-      library: { type: 'var', name: 'shared_pets' },
       filename: 'remoteEntry.js',
+      remotes: {
+        shared_common_ui: 'shared_common_ui@http://localhost:3002/remoteEntry.js'
+      },
       exposes: {
         './features/core/components/AddPets': './src/features/core/components/AddPets.tsx',
         './features/core/components/EditPet': './src/features/core/components/EditPet.tsx',
@@ -29,11 +32,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
       },
       shared: {
         ...dependencies,
-        axios: { singleton: true },
-        react: { singleton: true },
-        'react-dom': { singleton: true },
-        'react-router-dom': { singleton: true },
-        '@material-ui/styles': { singleton: true }
+        ...shared
       }
     }),
     new HtmlWebpackPlugin({

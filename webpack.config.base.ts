@@ -43,6 +43,7 @@ const webpackConfig = (name: string, entry: string, outputPath: string) => (
   },
   devServer: {
     stats: 'errors-warnings',
+    historyApiFallback: true,
     proxy: {
       '/api': {
         target: 'http://localhost:4000',

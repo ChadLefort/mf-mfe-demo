@@ -1,8 +1,12 @@
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import React from 'react';
-import Toolbar from '@material-ui/core/Toolbar';
-import { createStyles, makeStyles, Theme as MuiTheme } from '@material-ui/core/styles';
+import {
+  Box,
+  createStyles,
+  Grid,
+  makeStyles,
+  Theme as MuiTheme,
+  Toolbar
+  } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: MuiTheme) =>
   createStyles({
