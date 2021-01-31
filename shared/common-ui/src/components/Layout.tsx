@@ -1,12 +1,5 @@
+import { Box, Grid, Theme as MuiTheme, Toolbar, createStyles, makeStyles } from '@material-ui/core';
 import React from 'react';
-import {
-  Box,
-  createStyles,
-  Grid,
-  makeStyles,
-  Theme as MuiTheme,
-  Toolbar
-  } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: MuiTheme) =>
   createStyles({

@@ -1,14 +1,8 @@
-import * as Yup from 'yup';
+import { Button, Grid, Theme, createStyles, makeStyles } from '@material-ui/core';
+import { TextField, makeValidate } from 'mui-rff';
 import React from 'react';
-import {
-  Button,
-  createStyles,
-  Grid,
-  makeStyles,
-  Theme
-  } from '@material-ui/core';
 import { Form } from 'react-final-form';
-import { makeValidate, TextField } from 'mui-rff';
+import * as Yup from 'yup';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

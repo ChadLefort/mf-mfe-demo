@@ -1,7 +1,8 @@
-import { fetchPets, petsSelectors } from '../pets.slice';
-import { PetType } from '../interface';
-import { useAppDispatch, useTypedSelector } from '../../../common/reducer';
 import { useEffect } from 'react';
+
+import { useAppDispatch, useTypedSelector } from '../../../common/reducer';
+import { PetType } from '../interface';
+import { fetchPets, petsSelectors } from '../pets.slice';
 
 export function useFetchPets(type: PetType) {
   const dispatch = useAppDispatch();

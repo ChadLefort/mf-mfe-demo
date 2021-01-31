@@ -1,13 +1,9 @@
-import axios from 'axios';
-import {
-  condition,
-  error,
-  isFetching,
-  State as CommonState
-  } from '../../common/common.slice';
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { IPet, PetType } from './interface';
+import axios from 'axios';
+
+import { State as CommonState, condition, error, isFetching } from '../../common/common.slice';
 import { RootState } from '../../common/reducer';
+import { IPet, PetType } from './interface';
 
 const name = 'shared_pets/core';
 

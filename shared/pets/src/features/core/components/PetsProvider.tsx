@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import { InjectStore } from '@pet-tracker/types';
-import { petsReducer } from '../pets.slice';
+import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
+
+import { petsReducer } from '../pets.slice';
 
 type Props = {
   store: InjectStore;

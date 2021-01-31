@@ -1,20 +1,21 @@
-import React, { Suspense } from 'react';
 import {
   Container,
-  createStyles,
   LinearProgress,
   List,
   ListItem,
   ListItemText,
-  makeStyles,
   Paper,
-  Theme
-  } from '@material-ui/core';
-import { petsSelectors } from '../pets.slice';
-import { PetType } from '../interface';
-import { useFetchPets } from '../hooks/useFetchPets';
+  Theme,
+  createStyles,
+  makeStyles
+} from '@material-ui/core';
+import React, { Suspense } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { useTypedSelector } from '../../../common/reducer';
+import { useFetchPets } from '../hooks/useFetchPets';
+import { PetType } from '../interface';
+import { petsSelectors } from '../pets.slice';
 
 const ErrorIcon = React.lazy(() =>
   import('shared_common_ui/components/ErrorIcon').then((module) => ({ default: module.ErrorIcon }))

@@ -1,17 +1,11 @@
+import { Grid, Paper, Theme, Typography, createStyles, makeStyles } from '@material-ui/core';
 import React from 'react';
-import { addPet } from '../pets.slice';
-import {
-  createStyles,
-  Grid,
-  makeStyles,
-  Paper,
-  Theme,
-  Typography
-  } from '@material-ui/core';
-import { IPet, PetType } from '../interface';
+import { useHistory } from 'react-router-dom';
+
 import { PetForm } from '../../../common/Form';
 import { useAppDispatch } from '../../../common/reducer';
-import { useHistory } from 'react-router-dom';
+import { IPet, PetType } from '../interface';
+import { addPet } from '../pets.slice';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

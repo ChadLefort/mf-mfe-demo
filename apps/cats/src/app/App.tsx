@@ -1,6 +1,7 @@
+import { orange } from '@material-ui/core/colors';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { orange } from '@material-ui/core/colors';
+
 import { Providers } from './Providers';
 import { Routes } from './Routes';
 

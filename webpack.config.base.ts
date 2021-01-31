@@ -1,9 +1,10 @@
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import path from 'path';
-import TerserPlugin from 'terser-webpack-plugin';
+
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import { Configuration, WebpackOptionsNormalized } from 'webpack';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+import { Configuration, WebpackOptionsNormalized } from 'webpack';
 
 const webpackConfig = (name: string, entry: string, outputPath: string) => (
   argv: WebpackOptionsNormalized

@@ -1,6 +1,7 @@
-import React, { Suspense } from 'react';
 import { PetType } from '@pet-tracker/types';
+import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import { store } from './store';
 
 const EditPet = React.lazy(() =>

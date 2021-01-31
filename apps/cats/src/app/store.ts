@@ -1,5 +1,5 @@
-import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
 import { InjectStore } from '@pet-tracker/types';
+import { Reducer, combineReducers, configureStore } from '@reduxjs/toolkit';
 
 const createStore = (initialState?: any) => {
   const store = configureStore({ reducer: createReducer(), preloadedState: initialState }) as InjectStore;

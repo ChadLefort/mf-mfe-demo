@@ -1,20 +1,12 @@
+import { Container, Grid, LinearProgress, Paper, Theme, Typography, createStyles, makeStyles } from '@material-ui/core';
 import React, { Suspense } from 'react';
-import {
-  Container,
-  createStyles,
-  Grid,
-  LinearProgress,
-  makeStyles,
-  Paper,
-  Theme,
-  Typography
-  } from '@material-ui/core';
-import { IPet, PetType } from '../interface';
+import { useHistory, useParams } from 'react-router-dom';
+
 import { PetForm } from '../../../common/Form';
-import { petsSelectors, updatePet } from '../pets.slice';
 import { useAppDispatch, useTypedSelector } from '../../../common/reducer';
 import { useFetchPets } from '../hooks/useFetchPets';
-import { useHistory, useParams } from 'react-router-dom';
+import { IPet, PetType } from '../interface';
+import { petsSelectors, updatePet } from '../pets.slice';
 
 const ErrorIcon = React.lazy(() =>
   import('shared_common_ui/components/ErrorIcon').then((module) => ({ default: module.ErrorIcon }))

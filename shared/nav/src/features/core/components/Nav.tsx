@@ -1,18 +1,18 @@
-import PetsIcon from '@material-ui/icons/Pets';
-import React from 'react';
 import {
   AppBar,
   Box,
-  createStyles,
   Drawer,
   List,
   ListItem,
   ListItemText,
-  makeStyles,
   Theme,
   Toolbar,
-  Typography
-  } from '@material-ui/core';
+  Typography,
+  createStyles,
+  makeStyles
+} from '@material-ui/core';
+import PetsIcon from '@material-ui/icons/Pets';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;

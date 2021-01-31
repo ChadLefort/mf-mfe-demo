@@ -1,15 +1,10 @@
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import React, { Suspense } from 'react';
 import {
   Button,
   Container,
-  createStyles,
   Grid,
   IconButton,
   LinearProgress,
   Link as MuiLink,
-  makeStyles,
   Paper,
   Table,
   TableBody,
@@ -18,13 +13,19 @@ import {
   TableHead,
   TableRow,
   Theme,
-  Typography
-  } from '@material-ui/core';
+  Typography,
+  createStyles,
+  makeStyles
+} from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { PetType } from '../interface';
-import { removePet } from '../pets.slice';
+
 import { useAppDispatch } from '../../../common/reducer';
 import { useFetchPets } from '../hooks/useFetchPets';
+import { PetType } from '../interface';
+import { removePet } from '../pets.slice';
 
 const ErrorIcon = React.lazy(() =>
   import('shared_common_ui/components/ErrorIcon').then((module) => ({ default: module.ErrorIcon }))
