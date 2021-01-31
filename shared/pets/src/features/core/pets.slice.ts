@@ -4,12 +4,12 @@ import {
   error,
   isFetching,
   State as CommonState
-  } from 'common/common.slice';
+  } from '../../common/common.slice';
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { IPet, PetType } from './interface';
 import { RootState } from '../../common/reducer';
 
-const name = 'lib/pets/core';
+const name = 'shared_pets/core';
 
 export const fetchPets = createAsyncThunk(
   `${name}/fetchPets`,
@@ -42,7 +42,7 @@ export const petsAdapter = createEntityAdapter<IPet>({
   sortComparer: (a, b) => a.name.localeCompare(b.name)
 });
 
-export const petsSelectors = petsAdapter.getSelectors<RootState>((state) => state.pets.core);
+export const petsSelectors = petsAdapter.getSelectors<RootState>((state) => state.pets);
 
 type State = CommonState;
 

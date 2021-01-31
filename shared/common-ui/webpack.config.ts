@@ -25,10 +25,12 @@ const webpackConfig = (env: { production: string; development: string }) => {
       },
       shared: {
         ...dependencies,
+        axios: { singleton: true },
         react: { singleton: true },
         'react-dom': { singleton: true },
+        'react-router-dom': { singleton: true },
         '@material-ui/styles': { singleton: true },
-        '@material-ui/core': { singleton: true }
+        'styled-components': { singleton: true }
       }
     }),
     new HtmlWebpackPlugin({

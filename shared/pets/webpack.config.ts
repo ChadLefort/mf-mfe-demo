@@ -11,13 +11,7 @@ const webpackConfig = (env: { production: string; development: string }) => {
   config.devServer = {
     contentBase: path.join(__dirname, 'dist'),
     port: 3004,
-    hot: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:4000',
-        secure: false
-      }
-    }
+    hot: true
   };
 
   config.plugins = config.plugins?.concat([
@@ -29,15 +23,17 @@ const webpackConfig = (env: { production: string; development: string }) => {
         './features/core/components/AddPets': './src/features/core/components/AddPets.tsx',
         './features/core/components/EditPet': './src/features/core/components/EditPet.tsx',
         './features/core/components/ViewPet': './src/features/core/components/ViewPet.tsx',
-        './features/core/components/ViewPets': './src/features/core/components/ViewPets.tsx'
+        './features/core/components/ViewPets': './src/features/core/components/ViewPets.tsx',
+        './features/core/components/RemoteWrapper': './src/features/core/components/RemoteWrapper.tsx'
       },
       shared: {
         ...dependencies,
         axios: { singleton: true },
         react: { singleton: true },
         'react-dom': { singleton: true },
+        'react-router-dom': { singleton: true },
         '@material-ui/styles': { singleton: true },
-        '@material-ui/core': { singleton: true }
+        'styled-components': { singleton: true }
       }
     }),
     new HtmlWebpackPlugin({
