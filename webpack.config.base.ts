@@ -1,14 +1,15 @@
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import webpack, { Configuration } from 'webpack';
+import path from 'path';
+import TerserPlugin from 'terser-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { Configuration, WebpackOptionsNormalized } from 'webpack';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-const webpackConfig = (name: string, entry: string, outputPath: string) => (env: {
-  production: string;
-  development: string;
-}): Configuration => ({
+const webpackConfig = (name: string, entry: string, outputPath: string) => (
+  argv: WebpackOptionsNormalized
+): Configuration => ({
   entry,
-  ...(env.production || !env.development ? {} : { devtool: 'eval-source-map' }),
+  ...(argv.mode !== 'development' ? {} : { devtool: 'inline-cheap-module-source-map' }),
   resolve: {
     plugins: [
       // @ts-ignore
@@ -35,15 +36,34 @@ const webpackConfig = (name: string, entry: string, outputPath: string) => (env:
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-typescript', '@babel/preset-react', '@babel/preset-env'],
-          plugins: ['@babel/transform-runtime', 'react-refresh/babel']
+          configFile: path.join(__dirname, '/.babelrc')
         }
       }
     ]
   },
+  devServer: {
+    stats: 'errors-warnings',
+    proxy: {
+      '/api': {
+        target: 'http://localhost:4000',
+        secure: false
+      }
+    }
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: false
+          }
+        },
+        extractComments: false
+      })
+    ]
+  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new ReactRefreshWebpackPlugin(),
+    new CleanWebpackPlugin(),
     new ForkTsCheckerWebpackPlugin({
       eslint: {
         files: './src/**/*.{ts,tsx,js,jsx}'

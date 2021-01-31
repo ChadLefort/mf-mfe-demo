@@ -5,9 +5,8 @@
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
-    "clean": "rimraf dist",
-    "start": "webpack-cli serve --mode=development --env development",
-    "build": "npm run clean && webpack --mode=production --env production --progress"
+    "start": "webpack-cli serve --mode=development",
+    "build": "webpack --mode=production --progress"
   },
   "dependencies": {
     "@material-ui/core": "4.11.3",

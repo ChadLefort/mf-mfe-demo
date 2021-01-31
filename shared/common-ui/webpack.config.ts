@@ -1,16 +1,18 @@
 import baseWebpackConfig from '../../webpack.config.base';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import { container } from 'webpack';
+import { container, WebpackOptionsNormalized } from 'webpack';
 
-const webpackConfig = (env: { production: string; development: string }) => {
-  const { name: moduleName, dependencies } = require(`./package.json`);
+const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
+  const { name, dependencies } = require('./package.json');
+  const entry = './src/index.ts';
   const out = path.join(__dirname, '/dist');
-  const config = baseWebpackConfig(moduleName, './src/index.ts', out)(env);
+  const config = baseWebpackConfig(name, entry, out)(argv);
 
   config.devServer = {
-    contentBase: path.join(__dirname, 'dist'),
-    port: 3003
+    ...config.devServer,
+    contentBase: out,
+    port: 3002
   };
 
   config.plugins = config.plugins?.concat([
@@ -29,8 +31,7 @@ const webpackConfig = (env: { production: string; development: string }) => {
         react: { singleton: true },
         'react-dom': { singleton: true },
         'react-router-dom': { singleton: true },
-        '@material-ui/styles': { singleton: true },
-        'styled-components': { singleton: true }
+        '@material-ui/styles': { singleton: true }
       }
     }),
     new HtmlWebpackPlugin({
