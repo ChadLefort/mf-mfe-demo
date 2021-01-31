@@ -5,11 +5,12 @@ import { container } from 'webpack';
 
 const webpackConfig = (env: { production: string; development: string }) => {
   const { name, dependencies } = require(`./package.json`);
-  const config = baseWebpackConfig(name, './src/index.tsx', path.join(__dirname, '/dist'))(env);
+  const config = baseWebpackConfig(name, './src/index.ts', path.join(__dirname, '/dist'))(env);
 
   config.devServer = {
     contentBase: path.join(__dirname, 'dist'),
-    port: 3001
+    port: 3001,
+    hot: true
   };
 
   config.plugins = config.plugins?.concat([

@@ -5,9 +5,8 @@ import { container } from 'webpack';
 
 const webpackConfig = (env: { production: string; development: string }) => {
   const { name: moduleName, dependencies } = require(`./package.json`);
-  const entry = env.development ? './src/app.tsx' : './src/index.ts';
   const out = path.join(__dirname, '/dist');
-  const config = baseWebpackConfig(moduleName, entry, out)(env);
+  const config = baseWebpackConfig(moduleName, './src/index.ts', out)(env);
 
   config.devServer = {
     contentBase: path.join(__dirname, 'dist'),
@@ -35,7 +34,7 @@ const webpackConfig = (env: { production: string; development: string }) => {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     })
-  ])
+  ]);
 
   return config;
 };

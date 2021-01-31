@@ -4,6 +4,7 @@
     "baseUrl": "./src",
     "paths": {
       "shared_common_ui/*": ["../../../shared/common-ui/src/*"],
+      "shared_pet/*": ["../../../shared/pet/src/*"],
       "shared_nav/*": ["../../../shared/nav/src/*"]
     }
   },

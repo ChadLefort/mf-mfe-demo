@@ -6,14 +6,12 @@
   "private": true,
   "scripts": {
     "clean": "rimraf dist",
-    "start": "webpack-cli serve --mode=development --env development --open --hot",
+    "start": "webpack-cli serve --mode=development --env development --open",
     "build": "npm run clean && webpack --mode=production --env production --progress"
   },
   "dependencies": {
     "@material-ui/core": "4.11.2",
     "@material-ui/icons": "4.11.2",
-    "@pet-tracker/common-ui": "1.0.0",
-    "@pet-tracker/nav": "1.0.0",
     "@reduxjs/toolkit": "1.5.0",
     "axios": "0.21.1",
     "core-js": "^3.6.5",

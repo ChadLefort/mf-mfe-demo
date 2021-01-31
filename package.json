@@ -8,19 +8,25 @@
     ]
   },
   "scripts": {
-    "start": "lerna run start --parallel --stream"
+    "start": "lerna run start --parallel --stream",
+    "json-server": "json-server ./tools/json-server/index.js --watch --routes ./tools/json-server/routes.json --port 4000 --delay 1000"
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "7.12.11",
     "@babel/preset-react": "7.12.10",
     "@babel/preset-typescript": "7.12.7",
+    "@babel/runtime": "^7.12.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@types/node": "13.13.40",
     "@types/react": "17.0.0",
     "@types/react-dom": "17.0.0",
+    "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "5.1.6",
     "@types/webpack": "4.41.26",
     "@types/webpack-dev-server": "3.11.1",
+    "@types/yup": "^0.29.11",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
     "babel-eslint": "^10.0.0",
@@ -37,8 +43,10 @@
     "eslint-plugin-testing-library": "^3.9.0",
     "fork-ts-checker-webpack-plugin": "6.1.0",
     "html-webpack-plugin": "4.5.1",
+    "json-server": "^0.16.3",
     "lerna": "^3.22.1",
     "prettier": "^2.2.1",
+    "react-refresh": "^0.9.0",
     "rimraf": "^3.0.2",
     "ts-loader": "8.0.14",
     "ts-node": "9.1.1",

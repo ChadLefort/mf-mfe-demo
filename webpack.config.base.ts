@@ -1,6 +1,7 @@
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { Configuration } from 'webpack';
+import webpack, { Configuration } from 'webpack';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const webpackConfig = (name: string, entry: string, outputPath: string) => (env: {
   production: string;
@@ -34,12 +35,15 @@ const webpackConfig = (name: string, entry: string, outputPath: string) => (env:
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-typescript', '@babel/preset-react', '@babel/preset-env']
+          presets: ['@babel/preset-typescript', '@babel/preset-react', '@babel/preset-env'],
+          plugins: ['@babel/transform-runtime', 'react-refresh/babel']
         }
       }
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin(),
     new ForkTsCheckerWebpackPlugin({
       eslint: {
         files: './src/**/*.{ts,tsx,js,jsx}'
