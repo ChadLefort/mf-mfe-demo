@@ -19,17 +19,14 @@ import {
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import React, { Suspense } from 'react';
+import { ErrorIcon } from '@pet-tracker/common-ui';
+import { PetType } from '@pet-tracker/types';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAppDispatch } from '../../../common/reducer';
 import { useFetchPets } from '../hooks/useFetchPets';
-import { PetType } from '../interface';
 import { removePet } from '../pets.slice';
-
-const ErrorIcon = React.lazy(() =>
-  import('shared_common_ui/components/ErrorIcon').then((module) => ({ default: module.ErrorIcon }))
-);
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -102,9 +99,7 @@ export const ViewPets: React.FC<Props> = ({ type }) => {
       </Grid>
     </Paper>
   ) : error ? (
-    <Suspense fallback={null}>
-      <ErrorIcon />
-    </Suspense>
+    <ErrorIcon />
   ) : (
     <Container>
       <LinearProgress />

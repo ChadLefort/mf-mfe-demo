@@ -1,7 +1,7 @@
+import { PetType } from '@pet-tracker/types';
 import { useEffect } from 'react';
 
 import { useAppDispatch, useTypedSelector } from '../../../common/reducer';
-import { PetType } from '../interface';
 import { fetchPets, petsSelectors } from '../pets.slice';
 
 export function useFetchPets(type: PetType) {

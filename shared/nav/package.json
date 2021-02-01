@@ -1,7 +1,7 @@
 {
   "name": "shared_nav",
   "version": "1.0.0",
-  "main": "src/index.tsx",
+  "main": "src/index.ts",
   "license": "UNLICENSED",
   "private": false,
   "scripts": {

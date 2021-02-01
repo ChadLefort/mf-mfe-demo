@@ -1,10 +1,10 @@
 import { Grid, Paper, Theme, Typography, createStyles, makeStyles } from '@material-ui/core';
+import { IPet, PetType } from '@pet-tracker/types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { PetForm } from '../../../common/Form';
 import { useAppDispatch } from '../../../common/reducer';
-import { IPet, PetType } from '../interface';
 import { addPet } from '../pets.slice';
 
 const useStyles = makeStyles((theme: Theme) =>

@@ -1,4 +1,5 @@
 import { orange } from '@material-ui/core/colors';
+import { Layout, Theme } from '@pet-tracker/common-ui';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -7,14 +8,6 @@ import { Routes } from './Routes';
 
 const Nav = React.lazy(() =>
   import('shared_nav/features/core/components/Nav').then((module) => ({ default: module.Nav }))
-);
-
-const Theme = React.lazy(() =>
-  import('shared_common_ui/components/Theme').then((module) => ({ default: module.Theme }))
-);
-
-const Layout = React.lazy(() =>
-  import('shared_common_ui/components/Layout').then((module) => ({ default: module.Layout }))
 );
 
 export const App: React.FC = () => (

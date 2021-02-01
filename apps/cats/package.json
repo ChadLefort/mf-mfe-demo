@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@material-ui/core": "4.11.3",
+    "@pet-tracker/common-ui": "1.0.0",
     "@pet-tracker/types": "1.0.0",
     "@reduxjs/toolkit": "1.5.0",
     "react": "16.14.0",

@@ -9,17 +9,14 @@ import {
   createStyles,
   makeStyles
 } from '@material-ui/core';
-import React, { Suspense } from 'react';
+import { ErrorIcon } from '@pet-tracker/common-ui';
+import { PetType } from '@pet-tracker/types';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useTypedSelector } from '../../../common/reducer';
 import { useFetchPets } from '../hooks/useFetchPets';
-import { PetType } from '../interface';
 import { petsSelectors } from '../pets.slice';
-
-const ErrorIcon = React.lazy(() =>
-  import('shared_common_ui/components/ErrorIcon').then((module) => ({ default: module.ErrorIcon }))
-);
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,9 +53,7 @@ export const ViewPet: React.FC<Props> = ({ type }) => {
       </List>
     </Paper>
   ) : error ? (
-    <Suspense fallback={null}>
-      <ErrorIcon />
-    </Suspense>
+    <ErrorIcon />
   ) : (
     <Container>
       <LinearProgress />

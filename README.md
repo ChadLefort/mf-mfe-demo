@@ -1,6 +1,6 @@
 # Micro Frontend with Webpack 5 Module Federation
 
-This is the same pets demo application that I have in other repos, but this one demonstrates [Webpack 5 Module Federation](https://webpack.js.org/concepts/module-federation/). Everything in the `shared` directory is a federated module with the exception of `types` being a package. The host application that serves these modules is in `apps/cats`. The application also features the concept of injectable redux reducers.
+This is the same pets demo application that I have in other repos, but this one demonstrates [Webpack 5 Module Federation](https://webpack.js.org/concepts/module-federation/). Everything in the `shared` directory is a federated module with the exception of `types` and `common-ui` being a package. The host application that serves these modules is in `apps/cats`. The application also features the concept of injectable redux reducers.
 
 I put this all together in a monorepo using lerna. I find this to be a better workflow than splitting modules into separate repos. Having both applications and modules living together in the same repo while using some monorepo tooling (Lerna/NX/Rush) to manage it all is a great developer experience in my opinion. Instead of fighting with `npm link` just running one command to get started with development is very nice.
 
@@ -44,6 +44,7 @@ cd shared/nav && yarn start
 ## Todo
 
 - Add Storybook and Jest
+- Probably more optimizations to the webpack configs
 - Think about how versioning should work with federated modules
 - Look into [redux-dynamic-modules](https://github.com/Microsoft/redux-dynamic-modules)
 - Look into [single-spa](https://single-spa.js.org/) if even needed

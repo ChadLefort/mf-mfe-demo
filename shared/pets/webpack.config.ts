@@ -15,16 +15,13 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   config.devServer = {
     ...config.devServer,
     contentBase: out,
-    port: 3003
+    port: 3002
   };
 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
       name: 'shared_pets',
       filename: 'remoteEntry.js',
-      remotes: {
-        shared_common_ui: 'shared_common_ui@http://localhost:3002/remoteEntry.js'
-      },
       exposes: {
         './features/core/components/AddPets': './src/features/core/components/AddPets.tsx',
         './features/core/components/EditPet': './src/features/core/components/EditPet.tsx',
