@@ -1,6 +1,6 @@
 # Micro Frontend with Webpack 5 Module Federation
 
-This is the same pets demo application that I have in other repos, but this one demonstrates [Webpack 5 Module Federation](https://webpack.js.org/concepts/module-federation/). Everything in the `shared` directory is a federated module with the exception of `types` and `common-ui` being a package. The host application that serves these modules is in `apps/cats`. The application also features the concept of injectable redux reducers.
+This is the same pets demo application that I have in other repos, but this one demonstrates [Webpack 5 Module Federation](https://webpack.js.org/concepts/module-federation/). Both `shared/nav` and `shared/pets` are federated modules with the rest being shared libaries. The idea being that the federated modules are features that build up app functionality and require frequent updates. While the rest are libraries that can help build up a federated module (utilities and shared components). The host application that serves these modules is in `apps/cats`. The application also features the concept of injectable redux reducers.
 
 I put this all together in a monorepo using lerna. I find this to be a better workflow than splitting modules into separate repos. Having both applications and modules living together in the same repo while using some monorepo tooling (Lerna/NX/Rush) to manage it all is a great developer experience in my opinion. Instead of fighting with `npm link` just running one command to get started with development is very nice.
 

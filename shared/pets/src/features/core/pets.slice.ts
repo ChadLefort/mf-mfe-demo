@@ -1,8 +1,8 @@
 import { IPet, PetType } from '@pet-tracker/types';
+import { State as CommonState, condition, error, isFetching } from '@pet-tracker/utils';
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { State as CommonState, condition, error, isFetching } from '../../common/common.slice';
 import { RootState } from '../../common/reducer';
 
 const name = 'shared_pets/core';

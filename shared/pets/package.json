@@ -13,6 +13,7 @@
     "@material-ui/icons": "4.11.2",
     "@pet-tracker/common-ui": "1.0.0",
     "@pet-tracker/types": "1.0.0",
+    "@pet-tracker/utils": "1.0.0",
     "@reduxjs/toolkit": "1.5.0",
     "axios": "0.21.1",
     "final-form": "4.20.1",
