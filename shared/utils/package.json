@@ -4,7 +4,6 @@
   "main": "dist/utils.bundle.js",
   "types": "dist/index.d.ts",
   "license": "UNLICENSED",
-  "private": false,
   "scripts": {
     "start": "webpack-cli serve --mode=development",
     "build": "webpack --mode=production --progress && tsc"

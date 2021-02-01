@@ -6,6 +6,13 @@ import TerserPlugin from 'terser-webpack-plugin';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import { Configuration, WebpackOptionsNormalized } from 'webpack';
 
+export const moduleFederationShared = {
+  axios: { singleton: true },
+  react: { singleton: true },
+  'react-dom': { singleton: true },
+  '@material-ui/styles': { singleton: true }
+};
+
 const webpackConfig = (name: string, entry: string, outputPath: string) => (
   argv: WebpackOptionsNormalized
 ): Configuration => ({

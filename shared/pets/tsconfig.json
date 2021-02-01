@@ -1,13 +1,4 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "baseUrl": "./src",
-    "paths": {
-      "@pet-tracker/common-ui": ["../../common-ui/src/index.ts"],
-      "@pet-tracker/types": ["../../types/src/index.ts"],
-      "@pet-tracker/utils": ["../../utils/src/index.ts"]
-    }
-  },
   "include": ["./src"]
 }

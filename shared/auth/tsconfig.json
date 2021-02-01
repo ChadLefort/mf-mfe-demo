@@ -1,15 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./src",
     "noEmit": false,
     "emitDeclarationOnly": true,
     "outDir": "./dist",
-    "skipLibCheck": true,
-    "paths": {
-      "@pet-tracker/common-ui": ["../../common-ui/src/index.ts"],
-      "@pet-tracker/utils": ["../../utils/src/index.ts"]
-    }
+    "skipLibCheck": true
   },
   "include": ["./src"]
 }

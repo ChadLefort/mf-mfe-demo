@@ -13,6 +13,15 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "downlevelIteration": true,
-    "declaration": true
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "shared_pets/*": ["shared/pets/src/*"],
+      "shared_nav/*": ["shared/nav/src/*"],
+      "@pet-tracker/auth": ["shared/auth/src/index.ts"],
+      "@pet-tracker/common-ui": ["shared/common-ui/src/index.ts"],
+      "@pet-tracker/types": ["shared/types/src/index.ts"],
+      "@pet-tracker/utils": ["shared/utils/src/index.ts"]
+    }
   }
 }

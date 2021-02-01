@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "license": "UNLICENSED",
-  "private": false,
+  "private": true,
   "scripts": {
     "start": "webpack-cli serve --mode=development",
     "build": "webpack --mode=production --progress"
@@ -14,8 +14,5 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-router-dom": "5.2.0"
-  },
-  "devDependencies": {
-    "@types/terser-webpack-plugin": "^5.0.2"
   }
 }
