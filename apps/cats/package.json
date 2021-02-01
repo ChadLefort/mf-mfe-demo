@@ -1,5 +1,5 @@
 {
-  "name": "cats",
+  "name": "host_cats",
   "version": "1.0.0",
   "main": "src/index.tsx",
   "license": "UNLICENSED",

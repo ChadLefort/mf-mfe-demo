@@ -20,12 +20,12 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   config.devServer = {
     ...config.devServer,
     contentBase: out,
-    port: 3000
+    port: 1337
   };
 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
-      name: 'cats',
+      name: 'host_cats',
       remotes: {
         shared_nav: 'shared_nav@http://localhost:3001/remoteEntry.js',
         shared_common_ui: 'shared_common_ui@http://localhost:3002/remoteEntry.js',
