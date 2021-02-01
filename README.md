@@ -29,7 +29,7 @@ lerna run start  --stream --scope=shared_nav
 cd shared/nav && yarn start
 ```
 
-## Depencency Graph
+## Depencency Graph Betwen Federated Modules
 
 <div align="center" style="padding: 20px">
     <img alt="dep-graph" src="./assets/dep-graph.png">
