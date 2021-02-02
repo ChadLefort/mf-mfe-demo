@@ -26,7 +26,7 @@ const webpackConfig = (name: string, entry: string, outputPath: string) => (
     extensions: ['.ts', '.tsx', '.js']
   },
   output: {
-    filename: `${name}.[contenthash].bundle.js`,
+    filename: `${name}.bundle.js`,
     path: outputPath,
     publicPath: 'auto'
   },
@@ -50,6 +50,7 @@ const webpackConfig = (name: string, entry: string, outputPath: string) => (
     ]
   },
   devServer: {
+    compress: true,
     stats: 'errors-warnings',
     historyApiFallback: true,
     proxy: {

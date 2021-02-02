@@ -2,7 +2,7 @@
   "name": "@pet-tracker/auth",
   "version": "1.0.0",
   "main": "dist/auth.bundle.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/auth/src/index.d.ts",
   "license": "UNLICENSED",
   "scripts": {
     "start": "webpack-cli serve --mode=development",
