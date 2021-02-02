@@ -5,6 +5,7 @@ import { WebpackOptionsNormalized, container } from 'webpack';
 
 import baseWebpackConfig, { moduleFederationShared } from '../../webpack.config.base';
 
+const DashboardPlugin = require('@module-federation/dashboard-plugin');
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
   const { name, dependencies } = require('./package.json');
   const entry = './src/index.ts';
@@ -35,6 +36,13 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html'
+    }),
+    new DashboardPlugin({
+      filename: 'dashboard.json',
+      dashboardURL: 'http://localhost:3000/api/update',
+      metadata: {
+        remote: 'http://localhost:3002/remoteEntry.js'
+      }
     })
   ]);
 
