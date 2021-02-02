@@ -1,0 +1,50 @@
+{
+  "npmScope": "pet-tracker-mfe",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "package"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "host_cats": {
+      "implicitDependencies": []
+    },
+    "@pet-tracker/auth": {
+      "implicitDependencies": []
+    },
+    "@pet-tracker/common-ui": {
+      "implicitDependencies": []
+    },
+    "shared_nav": {
+      "implicitDependencies": []
+    },
+    "shared_pets": {
+      "implicitDependencies": []
+    },
+    "@pet-tracker/types": {
+      "implicitDependencies": []
+    },
+    "@pet-tracker/utils": {
+      "implicitDependencies": []
+    }
+  },
+  "affected": {
+    "defaultBase": "master"
+  }
+}

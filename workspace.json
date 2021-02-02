@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "projects": {
+    "host_cats": {
+      "root": "apps/cats",
+      "type": "library"
+    },
+    "@pet-tracker/auth": {
+      "root": "shared/auth",
+      "type": "library"
+    },
+    "@pet-tracker/common-ui": {
+      "root": "shared/common-ui",
+      "type": "library"
+    },
+    "shared_nav": {
+      "root": "shared/nav",
+      "type": "library"
+    },
+    "shared_pets": {
+      "root": "shared/pets",
+      "type": "library"
+    },
+    "@pet-tracker/types": {
+      "root": "shared/types",
+      "type": "library"
+    },
+    "@pet-tracker/utils": {
+      "root": "shared/utils",
+      "type": "library"
+    }
+  }
+}
