@@ -5,11 +5,12 @@
     [
       "@babel/preset-env",
       {
+        "modules": false,
         "useBuiltIns": "usage",
         "debug": false,
         "corejs": 3
       }
     ]
   ],
-  "plugins": [["@babel/transform-runtime"]]
+  "plugins": ["@babel/transform-runtime"]
 }

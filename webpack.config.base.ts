@@ -10,6 +10,8 @@ export const moduleFederationShared = {
   axios: { singleton: true },
   react: { singleton: true },
   'react-dom': { singleton: true },
+  'react-router-dom': { singleton: true },
+  '@material-ui/core': { singleton: true },
   '@material-ui/styles': { singleton: true }
 };
 
@@ -18,6 +20,7 @@ const webpackConfig = (name: string, entry: string, outputPath: string) => (
 ): Configuration => ({
   entry,
   ...(argv.mode !== 'development' ? {} : { devtool: 'inline-cheap-module-source-map' }),
+  target: argv.mode !== 'development' ? 'browserslist' : 'web',
   resolve: {
     plugins: [
       // @ts-ignore
