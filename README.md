@@ -8,16 +8,16 @@ It also cuts down on having to create multiple PRs. This way you don’t have to
 
 ## Getting started
 
-This monorepo is using NX and yarn workspaces. So make sure you install yarn first and having NX won't hurt:
+This monorepo is using NX and pnpm workspaces. So make sure you install pnpm first and having NX won't hurt:
 
 ```
-npm i yarn nx -g
+npm i pnpm nx -g
 ```
 
 Then in the root directory just run the following commands to start the app and json-server:
 
 ```
-yarn && yarn start
+pnpm install && pnpm run start
 ```
 
 Then navigate to `http://localhost:1337`
@@ -26,7 +26,7 @@ If you want to just run a shared module you can do either of these if you have N
 
 ```
 nx run shared_nav:start
-cd shared/nav && yarn start
+cd shared/nav && pnpm run start
 ```
 
 ## Architecture Diagram
