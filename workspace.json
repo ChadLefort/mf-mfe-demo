@@ -5,6 +5,10 @@
       "root": "apps/cats",
       "type": "library"
     },
+    "host_cats-e2e": {
+      "root": "apps/cats-e2e",
+      "type": "library"
+    },
     "@pet-tracker/auth": {
       "root": "shared/auth",
       "type": "library"

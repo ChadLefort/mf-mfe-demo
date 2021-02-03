@@ -1,0 +1,9 @@
+{
+  "name": "host_cats-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "e2e": "cypress open"
+  }
+}

@@ -12,18 +12,17 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint",
-          "package"
-        ]
+        "cacheableOperations": ["build", "test", "lint", "package"]
       }
     }
   },
   "projects": {
     "host_cats": {
       "implicitDependencies": []
+    },
+    "host_cats-e2e": {
+      "tags": [],
+      "implicitDependencies": ["host_cats"]
     },
     "@pet-tracker/auth": {
       "implicitDependencies": []

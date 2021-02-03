@@ -40,6 +40,8 @@ cd shared/nav && pnpm run start
 - https://module-federation.github.io/
 - https://webpack.js.org/concepts/module-federation/
 - https://redux.js.org/recipes/code-splitting#reducer-injection-approaches
+- https://nx.dev/react/
+- https://pnpm.js.org/
 
 ## Todo
 
