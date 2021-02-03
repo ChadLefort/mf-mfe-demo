@@ -6,7 +6,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "webpack serve --mode=development",
-    "build": "webpack --mode=production && tsc --emitDeclarationOnly"
+    "build": "webpack --mode=production && tsc --emitDeclarationOnly",
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "peerDependencies": {
     "@material-ui/core": "4.11.3",
