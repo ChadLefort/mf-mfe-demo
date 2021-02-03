@@ -4,6 +4,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "e2e": "cypress open"
+    "cy-run": "cypress run",
+    "cy-open": "cypress open"
   }
 }

@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "webpack-cli serve --mode=development",
+    "start": "webpack serve --mode=development",
     "build": "webpack --mode=production && tsc --emitDeclarationOnly"
   },
   "peerDependencies": {

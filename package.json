@@ -3,7 +3,10 @@
   "private": true,
   "scripts": {
     "start": "concurrently -p \"none\" \"nx run-many --target=start --all --parallel\" \"pnpm run json-server\"",
-    "e2e": "concurrently -p \"none\" \"nx run-many --target=start --all --parallel\" \"nx run-many --target=e2e --all --parallel\"",
+    "e2e": "start-server-and-test start http-get://localhost:1337 cy-open",
+    "e2e-ci": "start-server-and-test start http-get://localhost:1337 cy-run",
+    "cy-open": "nx run-many --target=cy-open --all --parallel",
+    "cy-run": "nx run-many --target=cy-run --all --parallel",
     "build": "nx run-many --target=build --all --parallel",
     "json-server": "json-server ./tools/json-server/index.js --watch --routes ./tools/json-server/routes.json --port 4000 --delay 1000"
   },
@@ -58,6 +61,7 @@
     "lint-staged": "10.5.3",
     "prettier": "^2.2.1",
     "prettier-plugin-import-sort": "^0.0.6",
+    "start-server-and-test": "^1.12.0",
     "ts-node": "9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
     "typescript": "4.1.3",
