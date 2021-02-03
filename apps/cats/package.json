@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-cli serve --mode=development",
-    "build": "webpack --mode=production --progress"
+    "build": "webpack --mode=production"
   },
   "dependencies": {
     "@material-ui/core": "4.11.3",

@@ -7,7 +7,7 @@ import { useTypedSelector } from '../../../common/reducer';
 import { fetchAuthToken } from '../auth.slice';
 
 export const Auth: React.FC = ({ children }) => {
-  const { isFetching, ssoToken, error } = useTypedSelector((state) => state.auth);
+  const { isFetching, ssoToken, error } = useTypedSelector((state) => state.auth.core);
   const dispatch = useDispatch();
 
   useEffect(() => {

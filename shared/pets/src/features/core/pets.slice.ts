@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { RootState } from '../../common/reducer';
 
-const name = 'shared_pets/core';
+const name = 'remote/shared_pets/core';
 
 export const fetchPets = createAsyncThunk(
   `${name}/fetchPets`,
@@ -38,7 +38,7 @@ export const petsAdapter = createEntityAdapter<IPet>({
   sortComparer: (a, b) => a.name.localeCompare(b.name)
 });
 
-export const petsSelectors = petsAdapter.getSelectors<RootState>((state) => state.pets);
+export const petsSelectors = petsAdapter.getSelectors<RootState>((state) => state.pets.core);
 
 type State = CommonState;
 

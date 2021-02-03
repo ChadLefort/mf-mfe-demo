@@ -1,10 +1,12 @@
-import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
+import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createSelectorHook, useDispatch } from 'react-redux';
 
 import { petsReducer } from '../features/core/pets.slice';
 
+export const injectableReducer = combineReducers({ core: petsReducer });
+
 export const petsRootReducer = {
-  pets: petsReducer
+  pets: injectableReducer
 };
 
 // just for types and test

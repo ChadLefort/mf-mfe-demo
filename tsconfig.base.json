@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "downlevelIteration": true,
-    "declaration": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "shared_pets/*": ["shared/pets/src/*"],

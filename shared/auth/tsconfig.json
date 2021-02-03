@@ -1,9 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "emitDeclarationOnly": true,
-    "outDir": "./dist",
-    "skipLibCheck": true
+    "outDir": "./dist"
   },
   "include": ["./src"]
 }

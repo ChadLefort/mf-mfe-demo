@@ -70,6 +70,11 @@ const webpackConfig = (name: string, entry: string, outputPath: string) => (
       }
     }
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new ForkTsCheckerWebpackPlugin({
