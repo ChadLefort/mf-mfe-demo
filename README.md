@@ -45,7 +45,6 @@ cd shared/nav && pnpm run start
 
 ## Todo
 
-- Add Storybook and Jest
 - Probably more optimizations to the webpack configs
 - Think about how versioning should work with federated modules
 - Look into [redux-dynamic-modules](https://github.com/Microsoft/redux-dynamic-modules)

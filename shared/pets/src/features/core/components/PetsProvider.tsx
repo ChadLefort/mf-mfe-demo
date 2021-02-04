@@ -13,8 +13,6 @@ export const PetsProvider: React.FC<Props> = ({ store, children }) => {
   const key = 'pets';
 
   useEffect(() => {
-    console.log(store.getState());
-
     store.injectReducer(key, injectableReducer);
     setIsLoaded(Object.keys(store.getState()).some((k) => k === key));
   }, [store]);

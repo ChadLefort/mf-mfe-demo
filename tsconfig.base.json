@@ -13,8 +13,9 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "downlevelIteration": true,
+    "experimentalDecorators": true,
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": ["node", "jest"],
     "baseUrl": ".",
     "paths": {
       "shared_pets/*": ["shared/pets/src/*"],
