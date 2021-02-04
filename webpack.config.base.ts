@@ -5,7 +5,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import { Configuration, WebpackOptionsNormalized } from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-
+import TerserPlugin from 'terser-webpack-plugin';
 declare module 'webpack' {
   interface Configuration {
     devServer?: WebpackDevServer.Configuration;
@@ -70,8 +70,20 @@ const webpackConfig = (name: string, entry: string, outputPath: string) => (
       }
     }
   },
+  optimization: {
+    minimizer: [
+      // @ts-ignore
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: false
+          }
+        },
+        extractComments: false
+      })
+    ]
+  },
   performance: {
-    hints: false,
     maxEntrypointSize: 512000,
     maxAssetSize: 512000
   },

@@ -23,7 +23,6 @@ export const error = <T>(
   state.error = action.error;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const condition = (state: string) => (_: never, { getState }: any) => {
   const selectState = getState()[state];
 

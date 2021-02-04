@@ -6,7 +6,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "webpack serve --mode=development",
-    "build": "webpack --mode=production && tsc --declaration --emitDeclarationOnly"
+    "build": "webpack --mode=production && tsc --declaration --emitDeclarationOnly",
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "peerDependencies": {
     "@material-ui/core": "4.11.3",
@@ -16,18 +18,19 @@
     "@reduxjs/toolkit": "1.5.0",
     "axios": "0.21.1",
     "react": "16.14.0",
-    "react-dom": "16.14.0",
     "react-redux": "7.2.2"
   },
   "devDependencies": {
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
     "@pet-tracker/common-ui": "1.0.0",
+    "@pet-tracker/types": "1.0.0",
     "@pet-tracker/utils": "1.0.0",
     "@reduxjs/toolkit": "1.5.0",
+    "@types/react": "16.14.3",
+    "@types/react-redux": "7.1.16",
     "axios": "0.21.1",
     "react": "16.14.0",
-    "react-dom": "16.14.0",
     "react-redux": "7.2.2"
   }
 }
