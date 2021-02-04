@@ -13,7 +13,7 @@ declare module 'webpack' {
 }
 
 export const moduleFederationShared = {
-  axios: { singleton: true },
+  axios: { singleton: true, requiredVersion: '>=0.21.1' },
   react: { singleton: true },
   'react-dom': { singleton: true },
   'react-router-dom': { singleton: true },
