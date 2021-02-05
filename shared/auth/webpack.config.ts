@@ -17,12 +17,6 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
     library: 'auth'
   };
 
-  config.devServer = {
-    ...config.devServer,
-    contentBase: out,
-    port: 3003
-  };
-
   config.externals = Object.keys(peerDependencies);
 
   return config;
