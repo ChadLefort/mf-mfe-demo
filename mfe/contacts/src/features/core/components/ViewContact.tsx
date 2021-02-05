@@ -39,16 +39,16 @@ export const ViewContact: React.FC<Props> = ({ type }) => {
   const classes = useStyles();
   const { isFetching, error } = useFetchContacts(type);
   const { id } = useParams<{ id: string }>();
-  const pet = useTypedSelector((state) => contactsSelectors.selectById(state, id));
+  const contact = useTypedSelector((state) => contactsSelectors.selectById(state, id));
 
-  return pet && !isFetching && !error ? (
+  return contact && !isFetching && !error ? (
     <Paper className={classes.paper}>
       <List className={classes.list}>
         <ListItem>
-          <ListItemText primary="Name" secondary={pet.name} />
+          <ListItemText primary="Name" secondary={contact.name} />
         </ListItem>
         <ListItem>
-          <ListItemText primary="Age" secondary={pet.age} />
+          <ListItemText primary="Rating" secondary={contact.rating} />
         </ListItem>
       </List>
     </Paper>

@@ -1,40 +1,40 @@
-import { PetType } from '@fake-company/types';
+import { ContactType } from '@fake-company/types';
 import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { store } from './store';
 
-const EditPet = React.lazy(() =>
-  import('mfe_contacts/features/core/components/EditPet').then((module) => ({ default: module.EditPet }))
+const EditContact = React.lazy(() =>
+  import('mfe_contacts/features/core/components/EditContact').then((module) => ({ default: module.EditContact }))
 );
 
-const AddPets = React.lazy(() =>
-  import('mfe_contacts/features/core/components/AddPets').then((module) => ({ default: module.AddPets }))
+const AddContacts = React.lazy(() =>
+  import('mfe_contacts/features/core/components/AddContacts').then((module) => ({ default: module.AddContacts }))
 );
 
-const ViewPet = React.lazy(() =>
-  import('mfe_contacts/features/core/components/ViewPet').then((module) => ({ default: module.ViewPet }))
+const ViewContact = React.lazy(() =>
+  import('mfe_contacts/features/core/components/ViewContact').then((module) => ({ default: module.ViewContact }))
 );
 
-const ViewPets = React.lazy(() =>
-  import('mfe_contacts/features/core/components/ViewPets').then((module) => ({ default: module.ViewPets }))
+const ViewContacts = React.lazy(() =>
+  import('mfe_contacts/features/core/components/ViewContacts').then((module) => ({ default: module.ViewContacts }))
 );
 
-const PetsProvider = React.lazy(() =>
-  import('mfe_contacts/features/core/components/PetsProvider').then((module) => ({
-    default: module.PetsProvider
+const ContactsProvider = React.lazy(() =>
+  import('mfe_contacts/features/core/components/ContactsProvider').then((module) => ({
+    default: module.ContactsProvider
   }))
 );
 
 export const Routes: React.FC = () => (
   <Suspense fallback={null}>
-    <PetsProvider store={store}>
+    <ContactsProvider store={store}>
       <Switch>
-        <Route path="/edit/:id" render={() => <EditPet type={PetType.Cat} />} />
-        <Route path="/add" render={() => <AddPets type={PetType.Cat} />} />
-        <Route path="/:id" render={() => <ViewPet type={PetType.Cat} />} />
-        <Route path="/" render={() => <ViewPets type={PetType.Cat} />} />
+        <Route path="/edit/:id" render={() => <EditContact type={ContactType.Customer} />} />
+        <Route path="/add" render={() => <AddContacts type={ContactType.Customer} />} />
+        <Route path="/:id" render={() => <ViewContact type={ContactType.Customer} />} />
+        <Route path="/" render={() => <ViewContacts type={ContactType.Customer} />} />
       </Switch>
-    </PetsProvider>
+    </ContactsProvider>
   </Suspense>
 );

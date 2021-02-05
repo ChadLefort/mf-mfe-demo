@@ -18,21 +18,21 @@ describe('add contacts', () => {
     const newContact: IContact = {
       id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
       name: 'Pat',
-      age: '7',
-      type: ContactType.Cat
+      rating: '7',
+      type: ContactType.Customer
     };
 
     axiosMock.onPost('/api/contacts').reply(200, newContact);
 
     const store = await actWithReturn(async () => {
-      const { store } = renderWithProviders(<AddContacts type={ContactType.Cat} />, {
+      const { store } = renderWithProviders(<AddContacts type={ContactType.Customer} />, {
         initialState: { contacts: { core: initialState } }
       });
 
       fireEvent.change(screen.getByTestId('name'), {
         target: { value: 'Pat' }
       });
-      fireEvent.change(screen.getByTestId('age'), { target: { value: '7' } });
+      fireEvent.change(screen.getByTestId('rating'), { target: { value: '7' } });
       fireEvent.click(screen.getByText('Submit'));
 
       return store;

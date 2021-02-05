@@ -15,7 +15,7 @@ describe('useFetchContacts hook', () => {
   it('calls dispatch and retrieves contacts', async () => {
     axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
 
-    const { result, waitForNextUpdate } = renderHook(() => useFetchContacts(ContactType.Cat), {
+    const { result, waitForNextUpdate } = renderHook(() => useFetchContacts(ContactType.Customer), {
       wrapper: HooksWrapper
     });
 

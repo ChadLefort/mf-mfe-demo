@@ -30,7 +30,7 @@ export const EditContact: React.FC<Props> = ({ type }) => {
   const history = useHistory();
   const { isFetching, error } = useFetchContacts(type);
   const { id } = useParams<{ id: string }>();
-  const pet = useTypedSelector((state) => contactsSelectors.selectById(state, id));
+  const contact = useTypedSelector((state) => contactsSelectors.selectById(state, id));
 
   const onSubmit = (values: IContact) =>
     new Promise<void>((resolve, reject) => {
@@ -44,7 +44,7 @@ export const EditContact: React.FC<Props> = ({ type }) => {
       }
     });
 
-  return pet && !isFetching && !error ? (
+  return contact && !isFetching && !error ? (
     <Paper className={classes.paper}>
       <Grid container justify="center" spacing={4}>
         <Grid item xs={12}>
@@ -53,7 +53,7 @@ export const EditContact: React.FC<Props> = ({ type }) => {
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
-          <ContactForm initialValues={pet} onSubmit={onSubmit} />
+          <ContactForm initialValues={contact} onSubmit={onSubmit} />
         </Grid>
       </Grid>
     </Paper>

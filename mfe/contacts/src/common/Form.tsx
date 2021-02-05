@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const schema = Yup.object().shape({
   name: Yup.string().required('Name is a required field.'),
-  age: Yup.string().required('Age is a required field.')
+  rating: Yup.string().required('Rating is a required field.')
 });
 
 type Props<T> = {
@@ -25,7 +25,7 @@ type Props<T> = {
   onSubmit: (values: T) => Promise<void>;
 };
 
-export function PetForm<T extends { name: string; age: string }>({
+export function ContactForm<T extends { name: string; rating: string }>({
   onSubmit,
   initialValues
 }: React.PropsWithChildren<Props<T>>) {
@@ -49,11 +49,11 @@ export function PetForm<T extends { name: string; age: string }>({
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                label="Age"
-                name="age"
+                label="Rating"
+                name="rating"
                 type="number"
                 required
-                inputProps={{ 'data-testid': 'age' }}
+                inputProps={{ 'data-testid': 'rating' }}
               />
             </Grid>
           </Grid>

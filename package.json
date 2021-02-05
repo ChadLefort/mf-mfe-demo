@@ -1,5 +1,5 @@
 {
-  "name": "pet-tracker-mfe",
+  "name": "fake-company-mfe",
   "private": true,
   "scripts": {
     "start": "concurrently -p \"none\" \"nx run-many --target=start --all --parallel --maxParallel=10\" \"pnpm run json-server\"",

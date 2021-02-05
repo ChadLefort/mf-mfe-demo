@@ -19,4 +19,4 @@ const story = {
 
 export default story;
 
-export const primary = () => <Route path="/" render={() => <ViewContacts type={ContactType.Cat} />} />;
+export const primary = () => <Route path="/" render={() => <ViewContacts type={ContactType.Client} />} />;

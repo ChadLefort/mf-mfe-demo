@@ -24,4 +24,4 @@ const story = {
 
 export default story;
 
-export const primary = () => <Route path="/:id" render={() => <ViewContact type={ContactType.Cat} />} />;
+export const primary = () => <Route path="/:id" render={() => <ViewContact type={ContactType.Client} />} />;

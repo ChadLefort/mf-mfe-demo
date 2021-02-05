@@ -10,18 +10,21 @@ import { waitForElementToBeRemoved } from '@testing-library/react';
 
 const axiosMock = new MockAdapter(axios);
 
-describe('view pet', () => {
+describe('view contact', () => {
   beforeEach(() => {
     axiosMock.reset();
   });
 
-  it('can show a loading bar and then a pet', async () => {
+  it('can show a loading bar and then a contact', async () => {
     axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
 
-    const { store } = renderWithProviders(<Route path="/:id" render={() => <ViewContact type={ContactType.Cat} />} />, {
-      initialState: { contacts: { core: initialState } },
-      initialEntries: ['/89222b2d-8d06-41ff-82cf-c989dd90de24']
-    });
+    const { store } = renderWithProviders(
+      <Route path="/:id" render={() => <ViewContact type={ContactType.Customer} />} />,
+      {
+        initialState: { contacts: { core: initialState } },
+        initialEntries: ['/89222b2d-8d06-41ff-82cf-c989dd90de24']
+      }
+    );
 
     expect(screen.getByRole('progressbar')).toBeDefined();
 
@@ -36,10 +39,13 @@ describe('view pet', () => {
   it('can show a loading bar and then an error', async () => {
     axiosMock.onGet('/api/contacts').reply(500);
 
-    const { store } = renderWithProviders(<Route path="/:id" render={() => <ViewContact type={ContactType.Cat} />} />, {
-      initialState: { contacts: { core: initialState } },
-      initialEntries: ['/89222b2d-8d06-41ff-82cf-c989dd90de24']
-    });
+    const { store } = renderWithProviders(
+      <Route path="/:id" render={() => <ViewContact type={ContactType.Customer} />} />,
+      {
+        initialState: { contacts: { core: initialState } },
+        initialEntries: ['/89222b2d-8d06-41ff-82cf-c989dd90de24']
+      }
+    );
 
     expect(screen.getByRole('progressbar')).toBeDefined();
 

@@ -19,7 +19,7 @@ describe('view contacts', () => {
   it('can show a loading bar and then contacts', async () => {
     axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
 
-    const { store } = renderWithProviders(<ViewContacts type={ContactType.Cat} />, {
+    const { store } = renderWithProviders(<ViewContacts type={ContactType.Customer} />, {
       initialState: { contacts: { core: initialState } }
     });
 
@@ -36,7 +36,7 @@ describe('view contacts', () => {
   it('can show a loading bar and an error icon', async () => {
     axiosMock.onGet('/api/contacts').reply(500);
 
-    const { store } = renderWithProviders(<ViewContacts type={ContactType.Cat} />, {
+    const { store } = renderWithProviders(<ViewContacts type={ContactType.Customer} />, {
       initialState: { contacts: { core: initialState } }
     });
 
@@ -50,11 +50,11 @@ describe('view contacts', () => {
     expect(type).toEqual(fetchContacts.rejected.type);
   });
 
-  it('allows you to delete a pet', async () => {
+  it('allows you to delete a contact', async () => {
     axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
     axiosMock.onDelete(`/api/contacts/${contactsFixture[1].id}`).reply(200);
 
-    const { store } = renderWithProviders(<ViewContacts type={ContactType.Cat} />, {
+    const { store } = renderWithProviders(<ViewContacts type={ContactType.Customer} />, {
       initialState: { contacts: { core: initialState } }
     });
 

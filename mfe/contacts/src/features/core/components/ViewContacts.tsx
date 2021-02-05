@@ -59,24 +59,24 @@ export const ViewContacts: React.FC<Props> = ({ type }) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell align="right">Age</TableCell>
+            <TableCell align="right">Rating</TableCell>
             <TableCell align="right" />
           </TableRow>
         </TableHead>
         <TableBody>
-          {contacts.map((pet) => (
-            <TableRow key={pet.id}>
+          {contacts.map((contact) => (
+            <TableRow key={contact.id}>
               <TableCell component="th" scope="row">
-                <MuiLink component={Link} color="textSecondary" to={`/${pet.id}`}>
-                  {pet.name}
+                <MuiLink component={Link} color="textSecondary" to={`/${contact.id}`}>
+                  {contact.name}
                 </MuiLink>
               </TableCell>
-              <TableCell align="right">{pet.age}</TableCell>
+              <TableCell align="right">{contact.rating}</TableCell>
               <TableCell align="right">
-                <IconButton component={Link} to={`edit/${pet.id}`}>
+                <IconButton component={Link} to={`edit/${contact.id}`}>
                   <EditIcon />
                 </IconButton>
-                <IconButton data-testid={`${pet.name}-delete`} onClick={remove(pet.id)}>
+                <IconButton data-testid={`${contact.name}-delete`} onClick={remove(contact.id)}>
                   <DeleteIcon />
                 </IconButton>
               </TableCell>

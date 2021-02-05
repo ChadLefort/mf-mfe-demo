@@ -1,13 +1,13 @@
 import React from 'react';
-import { PetForm } from './Form';
+import { ContactForm } from './Form';
 import { withTheme } from '@fake-company/common-ui';
 
 const story = {
-  component: PetForm,
-  title: 'PetForm',
+  component: ContactForm,
+  title: 'ContactForm',
   decorators: [withTheme]
 };
 
 export default story;
 
-export const primary = () => <PetForm onSubmit={(values) => Promise.resolve(console.log(values))} />;
+export const primary = () => <ContactForm onSubmit={(values) => Promise.resolve(console.log(values))} />;

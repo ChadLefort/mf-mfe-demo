@@ -19,8 +19,8 @@ const initialState: DeepPartial<RootState> = {
         '89222b2d-8d06-41ff-82cf-c989dd90de24': {
           id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
           name: 'Pat',
-          age: '7',
-          type: ContactType.Cat
+          rating: '7',
+          type: ContactType.Customer
         }
       },
       isFetching: false,
@@ -29,7 +29,7 @@ const initialState: DeepPartial<RootState> = {
   }
 };
 
-describe('edit pet', () => {
+describe('edit contact', () => {
   beforeEach(() => {
     axiosMock.reset();
   });
@@ -38,8 +38,8 @@ describe('edit pet', () => {
     const updatedContact: IContact = {
       id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
       name: 'Pat',
-      age: '8',
-      type: ContactType.Cat
+      rating: '8',
+      type: ContactType.Customer
     };
 
     axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
@@ -47,14 +47,14 @@ describe('edit pet', () => {
 
     const store = await actWithReturn(async () => {
       const { store } = renderWithProviders(
-        <Route path="/edit/:id" render={() => <EditContact type={ContactType.Cat} />} />,
+        <Route path="/edit/:id" render={() => <EditContact type={ContactType.Customer} />} />,
         {
           initialState,
           initialEntries: ['/edit/89222b2d-8d06-41ff-82cf-c989dd90de24']
         }
       );
 
-      fireEvent.change(screen.getByTestId('age'), { target: { value: '8' } });
+      fireEvent.change(screen.getByTestId('rating'), { target: { value: '8' } });
       fireEvent.click(screen.getByText('Submit'));
 
       return store;

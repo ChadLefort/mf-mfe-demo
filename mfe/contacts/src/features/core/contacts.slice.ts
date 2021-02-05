@@ -1,4 +1,4 @@
-import { IPet, PetType } from '@fake-company/types';
+import { IContact, ContactType } from '@fake-company/types';
 import { State as CommonState, condition, error, isFetching } from '@fake-company/utils';
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -7,10 +7,10 @@ import { RootState } from '../../common/reducer';
 
 const name = 'mfe/contacts/core';
 
-export const fetchPets = createAsyncThunk(
-  `${name}/fetchPets`,
-  async (type: PetType) => {
-    const { data } = await axios.get<IPet[]>('/api/contacts', {
+export const fetchContacts = createAsyncThunk(
+  `${name}/fetchContacts`,
+  async (type: ContactType) => {
+    const { data } = await axios.get<IContact[]>('/api/contacts', {
       params: { type }
     });
 
@@ -19,22 +19,22 @@ export const fetchPets = createAsyncThunk(
   { condition: condition('contacts') }
 );
 
-export const addPet = createAsyncThunk(`${name}/addPet`, async (pet: IPet) => {
-  const { data } = await axios.post<IPet>('/api/contacts', pet);
+export const addContact = createAsyncThunk(`${name}/addContact`, async (contact: IContact) => {
+  const { data } = await axios.post<IContact>('/api/contacts', contact);
   return data;
 });
 
-export const updatePet = createAsyncThunk(`${name}/updatePet`, async (pet: IPet) => {
-  const { data } = await axios.put<IPet>(`/api/contacts/${pet.id}`, pet);
+export const updateContact = createAsyncThunk(`${name}/updateContact`, async (contact: IContact) => {
+  const { data } = await axios.put<IContact>(`/api/contacts/${contact.id}`, contact);
   return data;
 });
 
-export const removePet = createAsyncThunk(`${name}/removePets`, async (id: string) => {
+export const removeContact = createAsyncThunk(`${name}/removeContacts`, async (id: string) => {
   await axios.delete(`/api/contacts/${id}`);
   return id;
 });
 
-export const contactsAdapter = createEntityAdapter<IPet>({
+export const contactsAdapter = createEntityAdapter<IContact>({
   sortComparer: (a, b) => a.name.localeCompare(b.name)
 });
 
@@ -53,33 +53,33 @@ const contacts = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPets.pending, isFetching)
-      .addCase(addPet.pending, isFetching)
-      .addCase(updatePet.pending, isFetching)
-      .addCase(removePet.pending, isFetching)
-      .addCase(fetchPets.fulfilled, (state, action) => {
+      .addCase(fetchContacts.pending, isFetching)
+      .addCase(addContact.pending, isFetching)
+      .addCase(updateContact.pending, isFetching)
+      .addCase(removeContact.pending, isFetching)
+      .addCase(fetchContacts.fulfilled, (state, action) => {
         state.isFetching = false;
         contactsAdapter.setAll(state, action.payload);
       })
-      .addCase(addPet.fulfilled, (state, action) => {
+      .addCase(addContact.fulfilled, (state, action) => {
         state.isFetching = false;
         contactsAdapter.addOne(state, action.payload);
       })
-      .addCase(updatePet.fulfilled, (state, action) => {
+      .addCase(updateContact.fulfilled, (state, action) => {
         state.isFetching = false;
         contactsAdapter.updateOne(state, {
           id: action.payload.id,
           changes: action.payload
         });
       })
-      .addCase(removePet.fulfilled, (state, action) => {
+      .addCase(removeContact.fulfilled, (state, action) => {
         state.isFetching = false;
         contactsAdapter.removeOne(state, action.payload);
       })
-      .addCase(fetchPets.rejected, error)
-      .addCase(addPet.rejected, error)
-      .addCase(updatePet.rejected, error)
-      .addCase(removePet.rejected, error);
+      .addCase(fetchContacts.rejected, error)
+      .addCase(addContact.rejected, error)
+      .addCase(updateContact.rejected, error)
+      .addCase(removeContact.rejected, error);
   }
 });
 

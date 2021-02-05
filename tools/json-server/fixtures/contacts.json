@@ -9,7 +9,7 @@
     "id": "56d35640-008b-4022-bb4a-ebba0c78f6b3",
     "name": "Michael",
     "rating": "4",
-    "type": "Customer"
+    "type": "Client"
   },
   {
     "id": "7e92064c-d185-4b47-be77-4e7fc16c2739",
@@ -27,6 +27,6 @@
     "id": "fd546b4e-747d-448f-abaf-b0d119bae119",
     "name": "Chloe",
     "rating": "1",
-    "type": "Client"
+    "type": "Customer"
   }
 ]

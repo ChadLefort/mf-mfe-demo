@@ -3,16 +3,16 @@ import { Provider } from 'react-redux';
 
 import { store } from './store';
 
-const PetsProvider = React.lazy(() =>
-  import('mfe_contacts/features/core/components/PetsProvider').then((module) => ({
-    default: module.PetsProvider
+const ContactsProvider = React.lazy(() =>
+  import('mfe_contacts/features/core/components/ContactsProvider').then((module) => ({
+    default: module.ContactsProvider
   }))
 );
 
 export const Providers: React.FC = ({ children }) => (
   <Provider store={store}>
     <Suspense fallback={null}>
-      <PetsProvider store={store}>{children}</PetsProvider>
+      <ContactsProvider store={store}>{children}</ContactsProvider>
     </Suspense>
   </Provider>
 );
