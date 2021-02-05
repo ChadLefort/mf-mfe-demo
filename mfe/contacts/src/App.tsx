@@ -9,7 +9,7 @@ import { ViewContacts } from './features/core/components/ViewContacts';
 export const App: React.FC = () => (
   <Provider store={store}>
     <Router>
-      <ViewContacts type={ContactType.Customer} />
+      <ViewContacts type={[ContactType.Customer]} />
     </Router>
   </Provider>
 );

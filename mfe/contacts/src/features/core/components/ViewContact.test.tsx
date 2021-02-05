@@ -16,10 +16,10 @@ describe('view contact', () => {
   });
 
   it('can show a loading bar and then a contact', async () => {
-    axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
+    axiosMock.onGet('/api/contacts?type=Customer').reply(200, contactsFixture);
 
     const { store } = renderWithProviders(
-      <Route path="/:id" render={() => <ViewContact type={ContactType.Customer} />} />,
+      <Route path="/:id" render={() => <ViewContact type={[ContactType.Customer]} />} />,
       {
         initialState: { contacts: { core: initialState } },
         initialEntries: ['/89222b2d-8d06-41ff-82cf-c989dd90de24']
@@ -37,10 +37,10 @@ describe('view contact', () => {
   });
 
   it('can show a loading bar and then an error', async () => {
-    axiosMock.onGet('/api/contacts').reply(500);
+    axiosMock.onGet('/api/contacts?type=Customer').reply(500);
 
     const { store } = renderWithProviders(
-      <Route path="/:id" render={() => <ViewContact type={ContactType.Customer} />} />,
+      <Route path="/:id" render={() => <ViewContact type={[ContactType.Customer]} />} />,
       {
         initialState: { contacts: { core: initialState } },
         initialEntries: ['/89222b2d-8d06-41ff-82cf-c989dd90de24']

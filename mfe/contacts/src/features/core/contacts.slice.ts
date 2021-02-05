@@ -2,6 +2,7 @@ import { IContact, ContactType } from '@fake-company/types';
 import { State as CommonState, condition, error, isFetching } from '@fake-company/utils';
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { stringify } from 'qs';
 
 import { RootState } from '../../common/reducer';
 
@@ -9,9 +10,10 @@ const name = 'mfe/contacts/core';
 
 export const fetchContacts = createAsyncThunk(
   `${name}/fetchContacts`,
-  async (type: ContactType) => {
+  async (type: ContactType[]) => {
     const { data } = await axios.get<IContact[]>('/api/contacts', {
-      params: { type }
+      params: { type },
+      paramsSerializer: (params) => stringify(params, { arrayFormat: 'repeat' })
     });
 
     return data;

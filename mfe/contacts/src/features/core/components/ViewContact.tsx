@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type Props = {
-  type: ContactType;
+  type: ContactType[];
 };
 
 export const ViewContact: React.FC<Props> = ({ type }) => {

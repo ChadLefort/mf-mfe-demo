@@ -1,6 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "@fake-company/admin": {
+      "root": "apps/admin",
+      "type": "library"
+    },
     "@fake-company/connect": {
       "root": "apps/connect",
       "type": "library"

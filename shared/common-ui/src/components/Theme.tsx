@@ -1,7 +1,6 @@
 import { ThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core';
 import { blue, grey } from '@material-ui/core/colors';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
 
 type Props = {
@@ -9,9 +8,6 @@ type Props = {
 };
 
 export const Theme: React.FC<Props> = ({ children, primaryColor }) => {
-  const defaultPreference = useMediaQuery('(prefers-color-scheme: light)') ? 'light' : 'dark';
-  const prefersDarkMode = defaultPreference === 'dark';
-
   const muiTheme = responsiveFontSizes(
     createMuiTheme({
       breakpoints: {
@@ -28,16 +24,16 @@ export const Theme: React.FC<Props> = ({ children, primaryColor }) => {
           main: primaryColor || blue[900]
         },
         secondary: {
-          main: prefersDarkMode ? grey[700] : grey[300]
+          main: grey[300]
         },
         background: {
-          default: prefersDarkMode ? grey['A400'] : grey[300],
-          paper: prefersDarkMode ? grey[800] : grey[200]
+          default: grey[300],
+          paper: grey[200]
         },
         text: {
-          secondary: prefersDarkMode ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.6)'
+          secondary: 'rgba(0, 0, 0, 0.6)'
         },
-        type: prefersDarkMode ? 'dark' : 'light'
+        type: 'light'
       },
       props: {
         MuiTypography: {

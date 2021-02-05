@@ -30,10 +30,10 @@ export const Routes: React.FC = () => (
   <Suspense fallback={null}>
     <ContactsProvider store={store}>
       <Switch>
-        <Route path="/edit/:id" render={() => <EditContact type={[ContactType.Customer]} />} />
-        <Route path="/add" render={() => <AddContacts type={[ContactType.Customer]} />} />
-        <Route path="/:id" render={() => <ViewContact type={[ContactType.Customer]} />} />
-        <Route path="/" render={() => <ViewContacts type={[ContactType.Customer]} />} />
+        <Route path="/edit/:id" render={() => <EditContact type={[ContactType.Customer, ContactType.Client]} />} />
+        <Route path="/add" render={() => <AddContacts type={[ContactType.Customer, ContactType.Client]} />} />
+        <Route path="/:id" render={() => <ViewContact type={[ContactType.Customer, ContactType.Client]} />} />
+        <Route path="/" render={() => <ViewContacts type={[ContactType.Customer, ContactType.Client]} />} />
       </Switch>
     </ContactsProvider>
   </Suspense>

@@ -8,7 +8,7 @@ import { withMock, withProvider, withRouter } from '@fake-company/utils';
 import { withTheme } from '@fake-company/common-ui';
 
 const mock = (axiosMock: MockAdapter) => {
-  axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
+  axiosMock.onGet('/api/contacts?type=Customer').reply(200, contactsFixture);
 };
 
 const story = {
@@ -24,4 +24,4 @@ const story = {
 
 export default story;
 
-export const primary = () => <Route path="/:id" render={() => <ViewContact type={ContactType.Client} />} />;
+export const primary = () => <Route path="/:id" render={() => <ViewContact type={[ContactType.Client]} />} />;

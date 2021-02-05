@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type Props = {
-  type: ContactType;
+  type: ContactType[];
 };
 
 export const EditContact: React.FC<Props> = ({ type }) => {
@@ -53,7 +53,7 @@ export const EditContact: React.FC<Props> = ({ type }) => {
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
-          <ContactForm initialValues={contact} onSubmit={onSubmit} />
+          <ContactForm type={type} initialValues={contact} onSubmit={onSubmit} />
         </Grid>
       </Grid>
     </Paper>

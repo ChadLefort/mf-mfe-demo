@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type Props = {
-  type: ContactType;
+  type: ContactType[];
 };
 
 export const AddContacts: React.FC<Props> = ({ type }) => {
@@ -30,7 +30,7 @@ export const AddContacts: React.FC<Props> = ({ type }) => {
   const onSubmit = (values: IContact) =>
     new Promise<void>((resolve, reject) => {
       try {
-        dispatch(addContact({ ...values, type }));
+        dispatch(addContact({ ...values, type: type.length === 1 ? type[0] : values.type }));
         history.push('/');
         resolve();
       } catch (error) {
@@ -48,7 +48,7 @@ export const AddContacts: React.FC<Props> = ({ type }) => {
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
-          <ContactForm onSubmit={onSubmit} />
+          <ContactForm type={type} onSubmit={onSubmit} />
         </Grid>
       </Grid>
     </Paper>

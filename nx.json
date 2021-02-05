@@ -17,6 +17,9 @@
     }
   },
   "projects": {
+    "@fake-company/admin": {
+      "implicitDependencies": []
+    },
     "@fake-company/connect": {
       "implicitDependencies": []
     },

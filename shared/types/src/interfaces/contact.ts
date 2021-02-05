@@ -6,6 +6,6 @@ export enum ContactType {
 export interface IContact {
   id: string;
   name: string;
-  rating: string;
+  rating: number;
   type: ContactType;
 }
