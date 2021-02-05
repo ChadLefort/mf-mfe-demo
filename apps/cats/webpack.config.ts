@@ -1,9 +1,7 @@
-import path from 'path';
-
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { WebpackOptionsNormalized, container } from 'webpack';
-
 import baseWebpackConfig, { moduleFederationShared } from '../../webpack.config.base';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import { container, WebpackOptionsNormalized } from 'webpack';
 
 const DashboardPlugin = require('@module-federation/dashboard-plugin');
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
@@ -11,6 +9,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   const entry = './src/index.ts';
   const out = path.join(__dirname, '/dist');
   const config = baseWebpackConfig(name, entry, out)(argv);
+  const isDevelopment = argv.mode === 'development';
 
   config.output = {
     ...config.output,
@@ -27,8 +26,12 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
     new container.ModuleFederationPlugin({
       name: '@pet-tracker/cats',
       remotes: {
-        remote_nav: 'remote_nav@http://localhost:1338/remoteEntry.js',
-        remote_pets: 'remote_pets@http://localhost:1339/remoteEntry.js'
+        remote_nav: isDevelopment
+          ? 'remote_nav@http://localhost:1338/remoteEntry.js'
+          : 'remote_nav@http://localhost/nav/remoteEntry.js',
+        remote_pets: isDevelopment
+          ? 'remote_pets@http://localhost:1339/remoteEntry.js'
+          : 'remote_pets@http://localhost/pets/remoteEntry.js'
       },
       shared: {
         ...dependencies,

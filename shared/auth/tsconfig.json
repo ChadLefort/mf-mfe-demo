@@ -4,5 +4,5 @@
     "outDir": "./dist"
   },
   "include": ["./src"],
-  "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"]
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx", "src/utils/test-utils.tsx", "src/common/reducer.ts"]
 }
