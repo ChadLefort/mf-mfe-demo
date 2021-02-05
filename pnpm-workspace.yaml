@@ -1,4 +1,4 @@
 packages:
   - 'apps/**'
-  - 'remote/**'
+  - 'mfe/**'
   - 'shared/**'

@@ -1,5 +1,5 @@
 {
-  "name": "@pet-tracker/types",
+  "name": "@fake-company/types",
   "version": "1.0.0",
   "types": "dist/index.d.ts",
   "license": "UNLICENSED",

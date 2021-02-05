@@ -1,0 +1,32 @@
+[
+  {
+    "id": "89222b2d-8d06-41ff-82cf-c989dd90de24",
+    "name": "Chad",
+    "rating": "5",
+    "type": "Customer"
+  },
+  {
+    "id": "56d35640-008b-4022-bb4a-ebba0c78f6b3",
+    "name": "Michael",
+    "rating": "4",
+    "type": "Customer"
+  },
+  {
+    "id": "7e92064c-d185-4b47-be77-4e7fc16c2739",
+    "name": "Scott",
+    "rating": "3",
+    "type": "Client"
+  },
+  {
+    "id": "ac275c75-c603-4c4f-ae89-fc8fe078d635",
+    "name": "Melanie",
+    "rating": "2",
+    "type": "Client"
+  },
+  {
+    "id": "fd546b4e-747d-448f-abaf-b0d119bae119",
+    "name": "Chloe",
+    "rating": "1",
+    "type": "Client"
+  }
+]

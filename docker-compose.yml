@@ -9,38 +9,31 @@ services:
     ports:
       - 80:80
     networks:
-      - pt-network
+      - fake-company-network
   json-server:
     build: ./tools/json-server
     ports:
       - '4000:4000'
     networks:
-      - pt-network
-  mf-dashboard:
-    container_name: mf-dashboard-container
-    image: scriptedalchemy/mf-dashboard:latest
-    ports:
-      - '3000:3000'
-    networks:
-      - pt-network
-  pt-cats:
-    build: ./apps/cats
+      - fake-company-network
+  fake-company-connect:
+    build: ./apps/connect
     ports:
       - '1337:1337'
     networks:
-      - pt-network
-  pt-nav:
-    build: ./remote/nav
+      - fake-company-network
+  fake-company-nav:
+    build: ./mfe/nav
     ports:
       - '1338:1338'
     networks:
-      - pt-network
-  pt-pets:
-    build: ./remote/pets
+      - fake-company-network
+  fake-company-contacts:
+    build: ./mfe/contacts
     ports:
       - '1339:1339'
     networks:
-      - pt-network
+      - fake-company-network
 networks:
-  pt-network:
+  fake-company-network:
     driver: bridge

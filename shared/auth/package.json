@@ -1,11 +1,10 @@
 {
-  "name": "@pet-tracker/auth",
+  "name": "@fake-company/auth",
   "version": "1.0.0",
   "main": "dist/auth.bundle.js",
   "types": "dist/auth/src/index.d.ts",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "webpack serve --mode=development",
     "build": "webpack --mode=production",
     "test": "jest",
     "test-watch": "jest --watch"
@@ -13,8 +12,8 @@
   "peerDependencies": {
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
-    "@pet-tracker/common-ui": "1.0.0",
-    "@pet-tracker/utils": "1.0.0",
+    "@fake-company/common-ui": "1.0.0",
+    "@fake-company/utils": "1.0.0",
     "@reduxjs/toolkit": "1.5.0",
     "axios": "0.21.1",
     "react": "16.14.0",
@@ -23,9 +22,9 @@
   "devDependencies": {
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
-    "@pet-tracker/common-ui": "1.0.0",
-    "@pet-tracker/types": "1.0.0",
-    "@pet-tracker/utils": "1.0.0",
+    "@fake-company/common-ui": "1.0.0",
+    "@fake-company/types": "1.0.0",
+    "@fake-company/utils": "1.0.0",
     "@reduxjs/toolkit": "1.5.0",
     "@types/react": "16.14.3",
     "@types/react-redux": "7.1.16",

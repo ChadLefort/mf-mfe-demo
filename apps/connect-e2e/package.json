@@ -1,0 +1,10 @@
+{
+  "name": "@fake-company/connect-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "cy-run": "cypress run",
+    "cy-open": "cypress open"
+  }
+}

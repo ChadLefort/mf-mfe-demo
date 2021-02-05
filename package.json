@@ -2,7 +2,7 @@
   "name": "pet-tracker-mfe",
   "private": true,
   "scripts": {
-    "start": "concurrently -p \"none\" \"nx run-many --target=start --all --parallel\" \"pnpm run json-server\"",
+    "start": "concurrently -p \"none\" \"nx run-many --target=start --all --parallel --maxParallel=10\" \"pnpm run json-server\"",
     "build": "nx run-many --target=build --all --parallel",
     "test": "nx run-many --target=test --all --parallel",
     "e2e": "start-server-and-test start http-get://localhost:1337 cy-open",

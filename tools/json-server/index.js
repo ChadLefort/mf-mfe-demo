@@ -1,4 +1,4 @@
 const auth = require('./fixtures/auth.json');
-const pets = require('./fixtures/pets.json');
+const contacts = require('./fixtures/contacts.json');
 
-module.exports = () => ({ auth, pets });
+module.exports = () => ({ auth, contacts });

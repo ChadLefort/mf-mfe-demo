@@ -132,14 +132,14 @@ importers:
       webpack: 5.20.0
       webpack-cli: 4.5.0
       webpack-dev-server: 3.11.2
-  apps/cats:
+  apps/connect:
     dependencies:
       '@material-ui/core': 4.11.3_4739bbb15760d634c9ef36534c29a77c
       '@material-ui/icons': 4.11.2_fcdcdb0571247ff084c12308bb720dbf
-      '@pet-tracker/auth': link:../../shared/auth
-      '@pet-tracker/common-ui': link:../../shared/common-ui
-      '@pet-tracker/types': link:../../shared/types
-      '@pet-tracker/utils': link:../../shared/utils
+      '@fake-company/auth': link:../../shared/auth
+      '@fake-company/common-ui': link:../../shared/common-ui
+      '@fake-company/types': link:../../shared/types
+      '@fake-company/utils': link:../../shared/utils
       '@reduxjs/toolkit': 1.5.0
       axios: 0.21.1
       react: 16.14.0
@@ -154,10 +154,10 @@ importers:
     specifiers:
       '@material-ui/core': 4.11.3
       '@material-ui/icons': 4.11.2
-      '@pet-tracker/auth': 1.0.0
-      '@pet-tracker/common-ui': 1.0.0
-      '@pet-tracker/types': 1.0.0
-      '@pet-tracker/utils': 1.0.0
+      '@fake-company/auth': 1.0.0
+      '@fake-company/common-ui': 1.0.0
+      '@fake-company/types': 1.0.0
+      '@fake-company/utils': 1.0.0
       '@reduxjs/toolkit': 1.5.0
       '@types/react': 16.14.3
       '@types/react-dom': 16.9.10
@@ -168,9 +168,9 @@ importers:
       react-dom: 16.14.0
       react-redux: 7.2.2
       react-router-dom: 5.2.0
-  apps/cats-e2e:
+  apps/connect-e2e:
     specifiers: {}
-  remote/nav:
+  mfe/nav:
     dependencies:
       '@material-ui/core': 4.11.3_react-dom@16.14.0+react@16.14.0
       '@material-ui/icons': 4.11.2_1043e52c07cf51f037ca56ce3cba9c7d
@@ -183,13 +183,13 @@ importers:
       react: 16.14.0
       react-dom: 16.14.0
       react-router-dom: 5.2.0
-  remote/pets:
+  mfe/contacts:
     dependencies:
       '@material-ui/core': 4.11.3_4739bbb15760d634c9ef36534c29a77c
       '@material-ui/icons': 4.11.2_fcdcdb0571247ff084c12308bb720dbf
-      '@pet-tracker/common-ui': link:../../shared/common-ui
-      '@pet-tracker/types': link:../../shared/types
-      '@pet-tracker/utils': link:../../shared/utils
+      '@fake-company/common-ui': link:../../shared/common-ui
+      '@fake-company/types': link:../../shared/types
+      '@fake-company/utils': link:../../shared/utils
       '@reduxjs/toolkit': 1.5.0
       axios: 0.21.1
       final-form: 4.20.1
@@ -209,9 +209,9 @@ importers:
     specifiers:
       '@material-ui/core': 4.11.3
       '@material-ui/icons': 4.11.2
-      '@pet-tracker/common-ui': 1.0.0
-      '@pet-tracker/types': 1.0.0
-      '@pet-tracker/utils': 1.0.0
+      '@fake-company/common-ui': 1.0.0
+      '@fake-company/types': 1.0.0
+      '@fake-company/utils': 1.0.0
       '@reduxjs/toolkit': 1.5.0
       '@types/react': 16.14.3
       '@types/react-dom': 16.9.10
@@ -231,9 +231,9 @@ importers:
     devDependencies:
       '@material-ui/core': 4.11.3_e7c134f52341724a47dbbb812f6a9188
       '@material-ui/icons': 4.11.2_b4d7b581d815d4b1a387c0e935605bb2
-      '@pet-tracker/common-ui': link:../common-ui
-      '@pet-tracker/types': link:../types
-      '@pet-tracker/utils': link:../utils
+      '@fake-company/common-ui': link:../common-ui
+      '@fake-company/types': link:../types
+      '@fake-company/utils': link:../utils
       '@reduxjs/toolkit': 1.5.0
       '@types/react': 16.14.3
       '@types/react-redux': 7.1.16
@@ -243,9 +243,9 @@ importers:
     specifiers:
       '@material-ui/core': 4.11.3
       '@material-ui/icons': 4.11.2
-      '@pet-tracker/common-ui': 1.0.0
-      '@pet-tracker/types': 1.0.0
-      '@pet-tracker/utils': 1.0.0
+      '@fake-company/common-ui': 1.0.0
+      '@fake-company/types': 1.0.0
+      '@fake-company/utils': 1.0.0
       '@reduxjs/toolkit': 1.5.0
       '@types/react': 16.14.3
       '@types/react-redux': 7.1.16
