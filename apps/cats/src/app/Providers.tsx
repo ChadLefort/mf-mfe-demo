@@ -4,7 +4,9 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 
 const PetsProvider = React.lazy(() =>
-  import('shared_pets/features/core/components/PetsProvider').then((module) => ({ default: module.PetsProvider }))
+  import('remote_pets/features/core/components/PetsProvider').then((module) => ({
+    default: module.PetsProvider
+  }))
 );
 
 export const Providers: React.FC = ({ children }) => (

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { RootState } from '../../common/reducer';
 
-const name = 'remote/shared_pets/core';
+const name = 'remote/pets/core';
 
 export const fetchPets = createAsyncThunk(
   `${name}/fetchPets`,

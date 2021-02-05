@@ -1,7 +1,7 @@
 {
   "baseUrl": "http://localhost:1337",
   "fileServerFolder": ".",
-  "fixturesFolder": "../../tools/fixtures",
+  "fixturesFolder": "../../shared/types/src/fixtures",
   "integrationFolder": "./src/integration",
   "modifyObstructiveCode": false,
   "supportFile": "./src/support/index.ts",

@@ -1,6 +1,6 @@
 # Micro Frontend with Webpack 5 Module Federation
 
-This is the same pets demo application that I have in other repos, but this one demonstrates [Webpack 5 Module Federation](https://webpack.js.org/concepts/module-federation/). Both `shared/nav` and `shared/pets` are federated modules with the rest being shared libraries. The idea being that the federated modules are features that build up app functionality and require frequent updates. While the rest are libraries that can help build up a federated module (utilities and shared components). The host application that serves these modules is in `apps/cats`. The application also features the concept of injectable redux reducers.
+This is the same pets demo application that I have in other repos, but this one demonstrates [Webpack 5 Module Federation](https://webpack.js.org/concepts/module-federation/). Both `remote/nav` and `remote/pets` are federated modules. The idea being that the federated modules are features that build up app functionality and require frequent updates. While everything in `shared` directory are libraries that can help build up a federated module (utilities and shared components). The host application that serves these modules is in `apps/cats`. The application also features the concept of injectable redux reducers.
 
 I put this all together in a monorepo using NX. I find this to be a better workflow than splitting modules into separate repos. Having both applications and modules living together in the same repo while using some monorepo tooling (Lerna/NX/Rush) to manage it all is a great developer experience in my opinion. Instead of fighting with `npm link`, managing multiple repos, and running multiple commands, just running one command to get started with development is very nice.
 
@@ -17,15 +17,15 @@ npm i pnpm nx -g
 Then in the root directory just run the following commands to start the app and json-server:
 
 ```
-pnpm install && pnpm run start
+pnpm i && pnpm run start
 ```
 
 Then navigate to `http://localhost:1337`
 
-If you want to just run a shared module you can do either of these if you have NX installed globally. From the root directory run the following and just replace `shared_nav` or the directory with the module you want to run:
+If you want to just run a shared module you can do either of these if you have NX installed globally. From the root directory run the following and just replace `remote_nav` or the directory with the module you want to run:
 
 ```
-nx run shared_nav:start
+nx run remote_nav:start
 cd shared/nav && pnpm run start
 ```
 

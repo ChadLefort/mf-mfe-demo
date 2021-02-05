@@ -8,7 +8,7 @@ import { Providers } from './Providers';
 import { Routes } from './Routes';
 
 const Nav = React.lazy(() =>
-  import('shared_nav/features/core/components/Nav').then((module) => ({ default: module.Nav }))
+  import('remote_nav/features/core/components/Nav').then((module) => ({ default: module.Nav }))
 );
 
 export const App: React.FC = () => (

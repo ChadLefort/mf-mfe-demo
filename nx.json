@@ -17,12 +17,12 @@
     }
   },
   "projects": {
-    "host_cats": {
+    "@pet-tracker/cats": {
       "implicitDependencies": []
     },
-    "host_cats-e2e": {
+    "@pet-tracker/cats-e2e": {
       "tags": [],
-      "implicitDependencies": ["host_cats"]
+      "implicitDependencies": ["@pet-tracker/cats"]
     },
     "@pet-tracker/auth": {
       "implicitDependencies": []
@@ -30,10 +30,10 @@
     "@pet-tracker/common-ui": {
       "implicitDependencies": []
     },
-    "shared_nav": {
+    "remote_nav": {
       "implicitDependencies": []
     },
-    "shared_pets": {
+    "remote_pets": {
       "implicitDependencies": []
     },
     "@pet-tracker/types": {

@@ -1,11 +1,11 @@
 {
   "version": 2,
   "projects": {
-    "host_cats": {
+    "@pet-tracker/cats": {
       "root": "apps/cats",
       "type": "library"
     },
-    "host_cats-e2e": {
+    "@pet-tracker/cats-e2e": {
       "root": "apps/cats-e2e",
       "type": "library"
     },
@@ -17,12 +17,12 @@
       "root": "shared/common-ui",
       "type": "library"
     },
-    "shared_nav": {
-      "root": "shared/nav",
+    "remote_nav": {
+      "root": "remote/nav",
       "type": "library"
     },
-    "shared_pets": {
-      "root": "shared/pets",
+    "remote_pets": {
+      "root": "remote/pets",
       "type": "library"
     },
     "@pet-tracker/types": {

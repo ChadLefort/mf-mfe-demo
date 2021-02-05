@@ -5,23 +5,25 @@ import { Route, Switch } from 'react-router-dom';
 import { store } from './store';
 
 const EditPet = React.lazy(() =>
-  import('shared_pets/features/core/components/EditPet').then((module) => ({ default: module.EditPet }))
+  import('remote_pets/features/core/components/EditPet').then((module) => ({ default: module.EditPet }))
 );
 
 const AddPets = React.lazy(() =>
-  import('shared_pets/features/core/components/AddPets').then((module) => ({ default: module.AddPets }))
+  import('remote_pets/features/core/components/AddPets').then((module) => ({ default: module.AddPets }))
 );
 
 const ViewPet = React.lazy(() =>
-  import('shared_pets/features/core/components/ViewPet').then((module) => ({ default: module.ViewPet }))
+  import('remote_pets/features/core/components/ViewPet').then((module) => ({ default: module.ViewPet }))
 );
 
 const ViewPets = React.lazy(() =>
-  import('shared_pets/features/core/components/ViewPets').then((module) => ({ default: module.ViewPets }))
+  import('remote_pets/features/core/components/ViewPets').then((module) => ({ default: module.ViewPets }))
 );
 
 const PetsProvider = React.lazy(() =>
-  import('shared_pets/features/core/components/PetsProvider').then((module) => ({ default: module.PetsProvider }))
+  import('remote_pets/features/core/components/PetsProvider').then((module) => ({
+    default: module.PetsProvider
+  }))
 );
 
 export const Routes: React.FC = () => (

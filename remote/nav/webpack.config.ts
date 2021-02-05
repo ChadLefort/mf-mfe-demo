@@ -15,19 +15,15 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   config.devServer = {
     ...config.devServer,
     contentBase: out,
-    port: 3002
+    port: 1338
   };
 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
-      name: 'shared_pets',
+      name: 'remote_nav',
       filename: 'remoteEntry.js',
       exposes: {
-        './features/core/components/AddPets': './src/features/core/components/AddPets.tsx',
-        './features/core/components/EditPet': './src/features/core/components/EditPet.tsx',
-        './features/core/components/ViewPet': './src/features/core/components/ViewPet.tsx',
-        './features/core/components/ViewPets': './src/features/core/components/ViewPets.tsx',
-        './features/core/components/PetsProvider': './src/features/core/components/PetsProvider.tsx'
+        './features/core/components/Nav': './src/features/core/components/Nav.tsx'
       },
       shared: {
         ...dependencies,
@@ -41,7 +37,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
       filename: 'dashboard.json',
       dashboardURL: 'http://localhost:3000/api/update',
       metadata: {
-        remote: 'http://localhost:3002/remoteEntry.js'
+        remote: 'http://localhost:1338/remoteEntry.js'
       }
     })
   ]);

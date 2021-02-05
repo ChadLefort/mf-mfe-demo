@@ -1,5 +1,5 @@
 {
-  "name": "host_cats",
+  "name": "@pet-tracker/cats",
   "version": "1.0.0",
   "main": "src/index.tsx",
   "license": "UNLICENSED",

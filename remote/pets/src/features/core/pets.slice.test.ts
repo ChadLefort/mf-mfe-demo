@@ -55,7 +55,7 @@ describe('pets actions', () => {
 });
 
 describe('pets reducer', () => {
-  test('remote/shared_pets/core/fetchPets/pending', () => {
+  test('remote/pets/core/fetchPets/pending', () => {
     const nextState = petsReducer(prevState, fetchPets.pending);
 
     expect(prevState.isFetching).toBeFalsy();
@@ -63,7 +63,7 @@ describe('pets reducer', () => {
     expect(nextState.error).toBeNull();
   });
 
-  test('remote/shared_pets/core/fetchPets/fulfilled', () => {
+  test('remote/pets/core/fetchPets/fulfilled', () => {
     const nextState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, '', PetType.Cat)); // second param requestID?
 
     expect(nextState.isFetching).toBeFalsy();
@@ -71,14 +71,14 @@ describe('pets reducer', () => {
     expect(nextState.error).toBeNull();
   });
 
-  test('remote/shared_pets/core/fetchPets/rejected', () => {
+  test('remote/pets/core/fetchPets/rejected', () => {
     const nextState = petsReducer(prevState, fetchPets.rejected(error, '', PetType.Cat));
 
     expect(nextState.isFetching).toBeFalsy();
     expect(nextState.error?.message).toEqual(error.message);
   });
 
-  test('remote/shared_pets/core/addPet/pending', () => {
+  test('remote/pets/core/addPet/pending', () => {
     const nextState = petsReducer(prevState, addPet.pending);
 
     expect(prevState.isFetching).toBeFalsy();
@@ -86,7 +86,7 @@ describe('pets reducer', () => {
     expect(nextState.error).toBeNull();
   });
 
-  test('remote/shared_pets/core/addPet/fulfilled', () => {
+  test('remote/pets/core/addPet/fulfilled', () => {
     prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, '', PetType.Cat));
 
     const newPet: IPet = {
@@ -103,14 +103,14 @@ describe('pets reducer', () => {
     expect(nextState.error).toBeNull();
   });
 
-  test('remote/shared_pets/core/removePet/rejected', () => {
+  test('remote/pets/core/removePet/rejected', () => {
     const nextState = petsReducer(prevState, fetchPets.rejected(error, '', PetType.Cat));
 
     expect(nextState.isFetching).toBeFalsy();
     expect(nextState.error?.message).toEqual(error.message);
   });
 
-  test('remote/shared_pets/core/removePet/fulfilled', () => {
+  test('remote/pets/core/removePet/fulfilled', () => {
     prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, '', PetType.Cat));
 
     const nextState = petsReducer(

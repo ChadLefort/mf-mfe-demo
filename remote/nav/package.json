@@ -1,5 +1,5 @@
 {
-  "name": "shared_nav",
+  "name": "remote_nav",
   "version": "1.0.0",
   "main": "src/index.ts",
   "license": "UNLICENSED",

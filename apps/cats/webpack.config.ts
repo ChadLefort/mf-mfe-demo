@@ -25,10 +25,10 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
-      name: 'host_cats',
+      name: '@pet-tracker/cats',
       remotes: {
-        shared_nav: 'shared_nav@http://localhost:3001/remoteEntry.js',
-        shared_pets: 'shared_pets@http://localhost:3002/remoteEntry.js'
+        remote_nav: 'remote_nav@http://localhost:1338/remoteEntry.js',
+        remote_pets: 'remote_pets@http://localhost:1339/remoteEntry.js'
       },
       shared: {
         ...dependencies,

@@ -4,6 +4,6 @@ const { compilerOptions } = require('../../tsconfig.base.json');
 module.exports = {
   preset: 'ts-jest',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/../../' }),
-  displayName: 'shared_pets',
+  displayName: 'remote_pets',
   coverageDirectory: '../../coverage/shared/pets'
 };

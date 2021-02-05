@@ -1,5 +1,5 @@
 {
-  "name": "host_cats-e2e",
+  "name": "@pet-tracker/cats-e2e",
   "version": "1.0.0",
   "private": true,
   "license": "UNLICENSED",

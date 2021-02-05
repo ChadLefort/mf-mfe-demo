@@ -2,7 +2,7 @@ import { State as CommonState, error, isFetching } from '@pet-tracker/utils';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 
-const name = 'lib/auth/core';
+const name = 'shared/auth/core';
 
 export const axiosInterceptor = (ssoToken: string, rejectWithValue: (error: AxiosError) => void) => {
   axios.interceptors.request.use(

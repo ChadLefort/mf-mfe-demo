@@ -4,6 +4,6 @@ const { compilerOptions } = require('../../tsconfig.base.json');
 module.exports = {
   preset: 'ts-jest',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/../../' }),
-  displayName: 'shared_nav',
+  displayName: 'remote_nav',
   coverageDirectory: '../../coverage/shared/nav'
 };
