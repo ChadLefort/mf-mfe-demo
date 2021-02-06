@@ -11,6 +11,13 @@ const story = {
 
 export default story;
 
-export const primary = () => (
+export const connect = () => (
   <ContactForm type={[ContactType.Customer]} onSubmit={(values) => Promise.resolve(console.log(values))} />
+);
+
+export const admin = () => (
+  <ContactForm
+    type={[ContactType.Customer, ContactType.Client]}
+    onSubmit={(values) => Promise.resolve(console.log(values))}
+  />
 );

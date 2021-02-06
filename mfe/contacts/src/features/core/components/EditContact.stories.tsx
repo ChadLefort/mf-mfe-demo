@@ -25,4 +25,8 @@ const story = {
 
 export default story;
 
-export const primary = () => <Route path="/edit/:id" render={() => <EditContact type={[ContactType.Client]} />} />;
+export const connect = () => <Route path="/edit/:id" render={() => <EditContact type={[ContactType.Customer]} />} />;
+
+export const admin = () => (
+  <Route path="/edit/:id" render={() => <EditContact type={[ContactType.Client, ContactType.Customer]} />} />
+);

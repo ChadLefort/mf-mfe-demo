@@ -59,6 +59,7 @@ export const ViewContacts: React.FC<Props> = ({ type }) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
+            {type.length > 1 && <TableCell>Type</TableCell>}
             <TableCell align="right">Rating</TableCell>
             <TableCell align="right" />
           </TableRow>
@@ -71,7 +72,9 @@ export const ViewContacts: React.FC<Props> = ({ type }) => {
                   {contact.name}
                 </MuiLink>
               </TableCell>
+              {type.length > 1 && <TableCell>{contact.type}</TableCell>}
               <TableCell align="right">{contact.rating}</TableCell>
+
               <TableCell align="right">
                 <IconButton component={Link} to={`edit/${contact.id}`}>
                   <EditIcon />

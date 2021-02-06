@@ -24,4 +24,8 @@ const story = {
 
 export default story;
 
-export const primary = () => <Route path="/:id" render={() => <ViewContact type={[ContactType.Client]} />} />;
+export const connect = () => <Route path="/:id" render={() => <ViewContact type={[ContactType.Customer]} />} />;
+
+export const admin = () => (
+  <Route path="/:id" render={() => <ViewContact type={[ContactType.Customer, ContactType.Client]} />} />
+);

@@ -47,6 +47,11 @@ export const ViewContact: React.FC<Props> = ({ type }) => {
         <ListItem>
           <ListItemText primary="Name" secondary={contact.name} />
         </ListItem>
+        {type.length > 1 && (
+          <ListItem>
+            <ListItemText primary="Type" secondary={contact.type} />
+          </ListItem>
+        )}
         <ListItem>
           <ListItemText primary="Rating" secondary={contact.rating} />
         </ListItem>

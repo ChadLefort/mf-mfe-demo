@@ -13,4 +13,5 @@ const story = {
 
 export default story;
 
-export const primary = () => <AddContacts type={[ContactType.Client]} />;
+export const connect = () => <AddContacts type={[ContactType.Customer]} />;
+export const admin = () => <AddContacts type={[ContactType.Client, ContactType.Customer]} />;

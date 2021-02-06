@@ -16,6 +16,12 @@ services:
       - '4000:4000'
     networks:
       - fake-company-network
+  fake-company-admin:
+    build: ./apps/admin
+    ports:
+      - '1336:1336'
+    networks:
+      - fake-company-network
   fake-company-connect:
     build: ./apps/connect
     ports:
