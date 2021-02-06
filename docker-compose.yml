@@ -10,7 +10,7 @@ services:
       - 80:80
     networks:
       - fake-company-network
-  json-server:
+  fake-company-api:
     build: ./tools/json-server
     ports:
       - '4000:4000'

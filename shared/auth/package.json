@@ -5,7 +5,6 @@
   "types": "dist/auth/src/index.d.ts",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "webpack --mode=production",
     "test": "jest",
     "test-watch": "jest --watch"
   },

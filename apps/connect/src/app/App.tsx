@@ -12,7 +12,7 @@ const Nav = React.lazy(() =>
 
 export const App: React.FC = () => (
   <Providers>
-    <Router>
+    <Router basename="/connect">
       <Theme>
         <Auth>
           <Layout nav={<Nav title="Connect" />}>

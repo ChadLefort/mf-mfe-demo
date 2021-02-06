@@ -10,11 +10,6 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   const config = baseWebpackConfig(name, entry, out)(argv);
   const isDevelopment = argv.mode === 'development';
 
-  config.output = {
-    ...config.output,
-    publicPath: '/'
-  };
-
   config.devServer = {
     ...config.devServer,
     contentBase: out,
