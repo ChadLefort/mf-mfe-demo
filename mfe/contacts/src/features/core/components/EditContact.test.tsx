@@ -42,7 +42,7 @@ describe('edit contact', () => {
       type: ContactType.Customer
     };
 
-    axiosMock.onGet('/api/contacts?type=Customer').reply(200, contactsFixture);
+    axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
     axiosMock.onPut('/api/contacts/89222b2d-8d06-41ff-82cf-c989dd90de24').reply(200, updatedContact);
 
     const store = await actWithReturn(async () => {

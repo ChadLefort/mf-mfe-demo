@@ -9,8 +9,6 @@ export function useFetchContacts(type: ContactType[]) {
   const { isFetching, error } = useTypedSelector((state) => state.contacts.core);
   const contacts = useTypedSelector(contactsSelectors.selectAll);
 
-  console.log(contacts);
-
   useEffect(() => {
     dispatch(fetchContacts(type));
   }, [dispatch, type]);
