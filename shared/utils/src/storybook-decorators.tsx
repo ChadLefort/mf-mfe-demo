@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React, { useEffect } from 'react';
-import { configureStore, DeepPartial, Reducer } from '@reduxjs/toolkit';
+import { DeepPartial, Reducer, configureStore } from '@reduxjs/toolkit';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 

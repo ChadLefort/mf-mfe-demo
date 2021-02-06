@@ -1,4 +1,4 @@
-const auth = require('../../shared/types/src/fixtures/auth.json');
-const pets = require('../../shared/types/src/fixtures/pets.json');
+const auth = require('./fixtures/auth.json');
+const contacts = require('./fixtures/contacts.json');
 
-module.exports = () => ({ auth, pets });
+module.exports = () => ({ auth, contacts });

@@ -18,12 +18,13 @@
     "types": ["node", "jest"],
     "baseUrl": ".",
     "paths": {
-      "remote_pets/*": ["remote/pets/src/*"],
-      "remote_nav/*": ["remote/nav/src/*"],
-      "@pet-tracker/auth": ["shared/auth/src/index.ts"],
-      "@pet-tracker/common-ui": ["shared/common-ui/src/index.ts"],
-      "@pet-tracker/types": ["shared/types/src/index.ts"],
-      "@pet-tracker/utils": ["shared/utils/src/index.ts"]
+      "mfe_contacts/*": ["mfe/contacts/src/*"],
+      "mfe_nav/*": ["mfe/nav/src/*"],
+      "@fake-company/auth": ["shared/auth/src/index.ts"],
+      "@fake-company/common-ui": ["shared/common-ui/src/index.ts"],
+      "@fake-company/types": ["shared/types/src/index.ts"],
+      "@fake-company/utils": ["shared/utils/src/index.ts"]
     }
-  }
+  },
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx", "**/test-utils.tsx", "**/storybook-decorators.tsx"]
 }

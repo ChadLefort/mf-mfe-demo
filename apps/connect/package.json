@@ -1,0 +1,31 @@
+{
+  "name": "connect",
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "webpack serve --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "dependencies": {
+    "@material-ui/core": "4.11.3",
+    "@material-ui/icons": "4.11.2",
+    "@fake-company/auth": "1.0.0",
+    "@fake-company/common-ui": "1.0.0",
+    "@fake-company/types": "1.0.0",
+    "@fake-company/utils": "1.0.0",
+    "@reduxjs/toolkit": "1.5.0",
+    "axios": "0.21.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-redux": "7.2.2",
+    "react-router-dom": "5.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "16.14.3",
+    "@types/react-dom": "16.9.10",
+    "@types/react-redux": "7.1.16",
+    "@types/react-router-dom": "5.1.6"
+  }
+}

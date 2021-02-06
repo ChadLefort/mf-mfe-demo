@@ -1,10 +1,10 @@
-import { IPet } from './interfaces/pet';
+import { IContact } from './interfaces/contact';
 
-export * from './interfaces/pet';
+export * from './interfaces/contact';
 export * from './types/store';
 
 export const authFixture = require('./fixtures/auth.json') as {
   ssoToken: string;
 };
 
-export const petsFixture = require('./fixtures/pets.json') as IPet[];
+export const contactsFixture = require('./fixtures/contacts.json') as IContact[];

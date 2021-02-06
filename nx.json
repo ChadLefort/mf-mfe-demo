@@ -1,5 +1,5 @@
 {
-  "npmScope": "pet-tracker-mfe",
+  "npmScope": "fake-company",
   "implicitDependencies": {
     "workspace.json": "*",
     "package.json": {
@@ -17,29 +17,36 @@
     }
   },
   "projects": {
-    "@pet-tracker/cats": {
+    "admin": {
       "implicitDependencies": []
     },
-    "@pet-tracker/cats-e2e": {
+    "admin-e2e": {
       "tags": [],
-      "implicitDependencies": ["@pet-tracker/cats"]
+      "implicitDependencies": ["admin"]
     },
-    "@pet-tracker/auth": {
+    "connect": {
       "implicitDependencies": []
     },
-    "@pet-tracker/common-ui": {
+    "connect-e2e": {
+      "tags": [],
+      "implicitDependencies": ["connect"]
+    },
+    "mfe_nav": {
       "implicitDependencies": []
     },
-    "remote_nav": {
+    "mfe_contacts": {
       "implicitDependencies": []
     },
-    "remote_pets": {
+    "@fake-company/auth": {
       "implicitDependencies": []
     },
-    "@pet-tracker/types": {
+    "@fake-company/common-ui": {
       "implicitDependencies": []
     },
-    "@pet-tracker/utils": {
+    "@fake-company/types": {
+      "implicitDependencies": []
+    },
+    "@fake-company/utils": {
       "implicitDependencies": []
     }
   },

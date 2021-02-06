@@ -1,4 +1,4 @@
-import { State as CommonState, error, isFetching } from '@pet-tracker/utils';
+import { State as CommonState, error, isFetching } from '@fake-company/utils';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 

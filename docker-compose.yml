@@ -1,0 +1,45 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: contact-tracker-nginx
+    restart: unless-stopped
+    volumes:
+      - ./tools/nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - 80:80
+    networks:
+      - fake-company-network
+  fake-company-api:
+    build: ./tools/json-server
+    ports:
+      - '4000:4000'
+    networks:
+      - fake-company-network
+  fake-company-admin:
+    build: ./apps/admin
+    ports:
+      - '1336:1336'
+    networks:
+      - fake-company-network
+  fake-company-connect:
+    build: ./apps/connect
+    ports:
+      - '1337:1337'
+    networks:
+      - fake-company-network
+  fake-company-nav:
+    build: ./mfe/nav
+    ports:
+      - '1338:1338'
+    networks:
+      - fake-company-network
+  fake-company-contacts:
+    build: ./mfe/contacts
+    ports:
+      - '1339:1339'
+    networks:
+      - fake-company-network
+networks:
+  fake-company-network:
+    driver: bridge

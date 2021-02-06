@@ -1,13 +1,9 @@
 {
-  "name": "@pet-tracker/utils",
+  "name": "@fake-company/utils",
   "version": "1.0.0",
   "main": "dist/utils.bundle.js",
   "types": "dist/index.d.ts",
   "license": "UNLICENSED",
-  "scripts": {
-    "start": "webpack serve --mode=development",
-    "build": "webpack --mode=production && tsc --declaration --emitDeclarationOnly"
-  },
   "peerDependencies": {
     "@reduxjs/toolkit": "1.5.0",
     "axios": "0.21.1",

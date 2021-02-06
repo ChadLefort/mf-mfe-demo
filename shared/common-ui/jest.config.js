@@ -4,6 +4,6 @@ const { compilerOptions } = require('../../tsconfig.base.json');
 module.exports = {
   preset: 'ts-jest',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/../../' }),
-  displayName: '@pet-tracker/common-ui',
+  displayName: '@fake-company/common-ui',
   coverageDirectory: '../../coverage/shared/common-ui'
 };

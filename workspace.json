@@ -1,35 +1,43 @@
 {
   "version": 2,
   "projects": {
-    "@pet-tracker/cats": {
-      "root": "apps/cats",
+    "admin": {
+      "root": "apps/admin",
       "type": "library"
     },
-    "@pet-tracker/cats-e2e": {
-      "root": "apps/cats-e2e",
+    "admin-e2e": {
+      "root": "apps/connect-e2e",
       "type": "library"
     },
-    "@pet-tracker/auth": {
+    "connect": {
+      "root": "apps/connect",
+      "type": "library"
+    },
+    "connect-e2e": {
+      "root": "apps/connect-e2e",
+      "type": "library"
+    },
+    "mfe_nav": {
+      "root": "mfe/nav",
+      "type": "library"
+    },
+    "mfe_contacts": {
+      "root": "mfe/contacts",
+      "type": "library"
+    },
+    "@fake-company/auth": {
       "root": "shared/auth",
       "type": "library"
     },
-    "@pet-tracker/common-ui": {
+    "@fake-company/common-ui": {
       "root": "shared/common-ui",
       "type": "library"
     },
-    "remote_nav": {
-      "root": "remote/nav",
-      "type": "library"
-    },
-    "remote_pets": {
-      "root": "remote/pets",
-      "type": "library"
-    },
-    "@pet-tracker/types": {
+    "@fake-company/types": {
       "root": "shared/types",
       "type": "library"
     },
-    "@pet-tracker/utils": {
+    "@fake-company/utils": {
       "root": "shared/utils",
       "type": "library"
     }
