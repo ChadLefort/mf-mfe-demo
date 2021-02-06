@@ -15,18 +15,19 @@ describe('useFetchContacts hook', () => {
   it('calls dispatch and retrieves contacts', async () => {
     axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
 
-    const { result, waitForNextUpdate } = renderHook(() => useFetchContacts([ContactType.Customer]), {
+    const params = [ContactType.Customer];
+    const { result, waitForNextUpdate } = renderHook(() => useFetchContacts(params), {
       wrapper: HooksWrapper
     });
 
     expect(result.current.isFetching).toBeTruthy();
     expect(result.current.contacts).toEqual([]);
 
-    // await waitForNextUpdate();
+    await waitForNextUpdate();
 
-    // expect(result.current.isFetching).toBeFalsy();
-    // expect(Object.values(result.current.contacts)).toEqual(
-    //   contactsFixture.sort((a, b) => a.name.localeCompare(b.name))
-    // );
+    expect(result.current.isFetching).toBeFalsy();
+    expect(Object.values(result.current.contacts)).toEqual(
+      contactsFixture.sort((a, b) => a.name.localeCompare(b.name))
+    );
   });
 });
