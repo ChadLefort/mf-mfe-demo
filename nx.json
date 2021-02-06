@@ -17,15 +17,19 @@
     }
   },
   "projects": {
-    "@fake-company/admin": {
+    "admin": {
       "implicitDependencies": []
     },
-    "@fake-company/connect": {
-      "implicitDependencies": []
-    },
-    "@fake-company/connect-e2e": {
+    "admin-e2e": {
       "tags": [],
-      "implicitDependencies": ["@fake-company/connect"]
+      "implicitDependencies": ["admin"]
+    },
+    "connect": {
+      "implicitDependencies": []
+    },
+    "connect-e2e": {
+      "tags": [],
+      "implicitDependencies": ["connect"]
     },
     "mfe_nav": {
       "implicitDependencies": []
@@ -39,7 +43,6 @@
     "@fake-company/common-ui": {
       "implicitDependencies": []
     },
-
     "@fake-company/types": {
       "implicitDependencies": []
     },

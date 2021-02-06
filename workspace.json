@@ -1,15 +1,19 @@
 {
   "version": 2,
   "projects": {
-    "@fake-company/admin": {
+    "admin": {
       "root": "apps/admin",
       "type": "library"
     },
-    "@fake-company/connect": {
+    "admin-e2e": {
+      "root": "apps/connect-e2e",
+      "type": "library"
+    },
+    "connect": {
       "root": "apps/connect",
       "type": "library"
     },
-    "@fake-company/connect-e2e": {
+    "connect-e2e": {
       "root": "apps/connect-e2e",
       "type": "library"
     },
