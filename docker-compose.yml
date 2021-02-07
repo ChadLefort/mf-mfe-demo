@@ -2,7 +2,7 @@ version: '3'
 services:
   nginx:
     image: nginx:latest
-    container_name: contact-tracker-nginx
+    container_name: fake-company-nginx
     restart: unless-stopped
     volumes:
       - ./tools/nginx/conf.d/:/etc/nginx/conf.d/
