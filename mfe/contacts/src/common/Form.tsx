@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const schema = Yup.object().shape({
   name: Yup.string().required('Name is a required field.'),
-  // type: Yup.string().required('Type is a required field.'),
   rating: Yup.number().required('Rating is a required field.')
 });
 

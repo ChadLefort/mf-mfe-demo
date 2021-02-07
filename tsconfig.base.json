@@ -18,8 +18,6 @@
     "types": ["node", "jest"],
     "baseUrl": ".",
     "paths": {
-      "mfe_contacts/*": ["mfe/contacts/src/*"],
-      "mfe_nav/*": ["mfe/nav/src/*"],
       "@fake-company/auth": ["shared/auth/src/index.ts"],
       "@fake-company/common-ui": ["shared/common-ui/src/index.ts"],
       "@fake-company/types": ["shared/types/src/index.ts"],
