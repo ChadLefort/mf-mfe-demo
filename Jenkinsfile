@@ -6,25 +6,24 @@ def getAffectedApps() {
   return projects;
 }
 
-
 pipeline {
   agent any
 
   stages {
+    stage('Install Dependencies') {   
+      steps {
+        nodejs(nodeJSInstallationName: 'Node 14.x') {
+          sh 'pnpm i --no-optional'
+        }
+      }
+    }
+
     stage('Get Affected Apps') {
       steps {
         script {
           nodejs(nodeJSInstallationName: 'Node 14.x') {
             affectedApps = getAffectedApps();
           }
-        }
-      }
-    }
-
-    stage('Install Dependencies') {   
-      steps {
-        nodejs(nodeJSInstallationName: 'Node 14.x') {
-          sh 'pnpm i --no-optional'
         }
       }
     }
@@ -40,7 +39,9 @@ pipeline {
               projects.push(projectName);
             }
 
-            sh "pnpx nx run-many --target=build --projects=${projects.join(',')} --parallel"
+            if (!projects.isEmpty()) {
+              sh "pnpx nx run-many --target=build --projects=${projects.join(',')} --parallel"
+            }
           }
         }
       }

@@ -3,7 +3,7 @@ const execSync = require('child_process').execSync;
 const args = process.argv.slice(2);
 
 try {
-  const results = execSync(`npx nx print-affected ${args.join(' ')}`).toString();
+  const results = execSync(`pnpx nx print-affected ${args.join(' ')}`).toString();
   const affected = JSON.parse(results);
 
   if (affected.projects) {
