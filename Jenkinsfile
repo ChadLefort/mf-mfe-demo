@@ -15,5 +15,14 @@ pipeline {
           }
         }
       }
+      stage('Build and Deploy Docker Containers') {
+        steps {
+          script {
+            sh 'cd tools/json-server'
+            def newApp = docker.build 'chadlefort/fake-company-api:latest'
+            newApp.push()
+          }
+        }
+      }
     }
 }
