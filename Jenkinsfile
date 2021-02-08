@@ -51,6 +51,7 @@ pipeline {
 
     stage('Build & Deploy Docker Containers') {
       when {
+        anyOf { branch 'master'; branch 'dev' }
         expression { !affectedApps.isEmpty() }
       }
 
