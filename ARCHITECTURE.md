@@ -75,5 +75,5 @@ This application also uses [Typescript](https://www.typescriptlang.org/). I've b
 
 <div align="center" style="padding: 20px">
     <img alt="Jenkins Pipeline" src="./assets/pipeline.png">
-    <p>An example of a build where only things that have been change are built and deployed</p>
+    <p>An example of a pipeline job where only things that have changed are built and deployed</p>
 </div>
