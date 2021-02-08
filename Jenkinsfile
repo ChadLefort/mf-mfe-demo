@@ -30,7 +30,7 @@ pipeline {
 
     stage('Build Apps') {
       when {
-        expression { return !affectedApps.isEmpty() }
+        expression { !affectedApps.isEmpty() }
       }
 
       steps {
@@ -51,9 +51,9 @@ pipeline {
 
     stage('Build & Deploy Docker Containers') {
       when {
-        expression { return !affectedApps.isEmpty() }
+        expression { !affectedApps.isEmpty() }
       }
-      
+
       steps {
         script {
           docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {  
