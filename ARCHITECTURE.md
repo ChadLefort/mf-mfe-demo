@@ -1,7 +1,5 @@
 # Architecture
 
-## Diagram
-
 <div align="center" style="padding: 20px">
     <img alt="Architecture Diagram" src="./assets/architecture.png">
 </div>
