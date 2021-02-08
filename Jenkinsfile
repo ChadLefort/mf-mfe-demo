@@ -1,10 +1,21 @@
-def affectedApps = [];
+def affectedApps = []
 
 def getAffectedApps() {
-  def raw = sh(script: 'node ./scripts/affected.js --base=origin/dev', returnStdout: true);
-  def projects = readJSON(text: raw);
+  def projects = []
+  def raw = sh(script: 'pnpx nx print-affected --base=origin/dev', returnStdout: true)
+  def affected = readJSON(text: raw)
 
-  return projects;
+  if (affected.projects) {
+    def workspace = readJSON(file: "${env.WORKSPACE}/workspace.json")
+
+    workspace.projects.each {
+      if (affected.projects.contains(it.key)) {
+        projects.add([name: it.key, directory: it.value.root])
+      }
+    }
+  }
+
+  return projects
 }
 
 def generateBuildStage(String project, String target) {
@@ -18,8 +29,8 @@ def generateBuildStage(String project, String target) {
 def generateDeployStage(String project, String directory) {
   return {
     stage("${project}") {
-      def app = docker.build("chadlefort/${project}:${env.BUILD_TAG}", directory);
-      app.push();
+      def app = docker.build("chadlefort/${project}:${env.BUILD_TAG}", directory)
+      app.push()
     }
   }
 }
@@ -38,9 +49,9 @@ pipeline {
 
     stage('Get Affected Apps') {
       steps {
-        script {
-          nodejs(nodeJSInstallationName: 'Node 14.x') {
-            affectedApps = getAffectedApps();
+        nodejs(nodeJSInstallationName: 'Node 14.x') {
+          script {
+            affectedApps = getAffectedApps()
           }
         }
       }
@@ -51,19 +62,18 @@ pipeline {
         expression { !affectedApps.isEmpty() }
       }
 
-      steps {
-        script {   
-          nodejs(nodeJSInstallationName: 'Node 14.x') {
+      steps {  
+        nodejs(nodeJSInstallationName: 'Node 14.x') {
+          script {
             def projects = []
 
-            for (project in affectedApps) {
-              def projectName = project[0];
-              projects.push([projectName, 'test']);
-              projects.push([projectName, 'build']);
+            affectedApps.each {
+              projects.add([name: it.name, target: 'test'])
+              projects.add([name: it.name, target: 'build'])
             }
 
             parallel projects.collectEntries {
-              ["${it[0]}:${it[1]}", generateBuildStage(it[0], it[1])]
+              ["${it.name}:${it.target}", generateBuildStage(it.name, it.target)]
             }
           }
         }
@@ -77,11 +87,11 @@ pipeline {
       }
 
       steps {
-        script {
-          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {  
+        script{
+          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             parallel affectedApps.collectEntries {
-              [it[0], generateDeployStage(it[0], it[1].root)]
-            }
+              [it.name, generateDeployStage(it.name, it.directory)]
+            }  
           }
         }
       }
