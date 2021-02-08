@@ -1,9 +1,27 @@
 def affectedApps = [];
+
 def getAffectedApps() {
   def raw = sh(script: 'node ./scripts/affected.js --base=origin/dev', returnStdout: true);
   def projects = readJSON(text: raw);
 
   return projects;
+}
+
+def generateBuildStage(String project, String target) {
+  return {
+    stage("${project}:${target}") {
+      sh "pnpx nx run-many --target=${target} --projects=${project}"
+    }
+  }
+}
+
+def generateDeployStage(String project, String directory) {
+  return {
+    stage("${project}") {
+      def app = docker.build("chadlefort/${project}:${env.BUILD_TAG}", directory);
+      app.push();
+    }
+  }
 }
 
 pipeline {
@@ -13,7 +31,7 @@ pipeline {
     stage('Install Dependencies') {   
       steps {
         nodejs(nodeJSInstallationName: 'Node 14.x') {
-          sh 'pnpm i --no-optional'
+          sh 'pnpm i'
         }
       }
     }
@@ -29,18 +47,23 @@ pipeline {
     }
 
     stage('Build Apps') {
+      when {
+        expression { !affectedApps.isEmpty() }
+      }
+
       steps {
         script {   
           nodejs(nodeJSInstallationName: 'Node 14.x') {
-            def projects = [];
+            def projects = []
 
             for (project in affectedApps) {
               def projectName = project[0];
-              projects.push(projectName);
+              projects.push([projectName, 'test']);
+              projects.push([projectName, 'build']);
             }
 
-            if (!projects.isEmpty()) {
-              sh "pnpx nx run-many --target=build --projects=${projects.join(',')} --parallel"
+            parallel projects.collectEntries {
+              ["${it[0]}:${it[1]}", generateBuildStage(it[0], it[1])]
             }
           }
         }
@@ -48,17 +71,16 @@ pipeline {
     }
 
     stage('Build & Deploy Docker Containers') {
+      when {
+        anyOf { branch 'master'; branch 'dev' }
+        expression { !affectedApps.isEmpty() }
+      }
+
       steps {
         script {
           docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {  
-            nodejs(nodeJSInstallationName: 'Node 14.x') {
-              for (project in affectedApps) {
-                def projectName = project[0];
-                def projectDirectory = project[1].root;
-                def app = docker.build("chadlefort/${projectName}:${env.BUILD_TAG}", projectDirectory);
-
-                app.push();
-              }
+            parallel affectedApps.collectEntries {
+              [it[0], generateDeployStage(it[0], it[1].root)]
             }
           }
         }
