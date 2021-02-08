@@ -29,6 +29,10 @@ pipeline {
     }
 
     stage('Build Apps') {
+      when {
+        expression { return !affectedApps.isEmpty() }
+      }
+
       steps {
         script {   
           nodejs(nodeJSInstallationName: 'Node 14.x') {
@@ -39,15 +43,17 @@ pipeline {
               projects.push(projectName);
             }
 
-            if (!projects.isEmpty()) {
-              sh "pnpx nx run-many --target=build --projects=${projects.join(',')} --parallel"
-            }
+            sh "pnpx nx run-many --target=build --projects=${projects.join(',')} --parallel"
           }
         }
       }
     }
 
     stage('Build & Deploy Docker Containers') {
+      when {
+        expression { return !affectedApps.isEmpty() }
+      }
+      
       steps {
         script {
           docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {  
