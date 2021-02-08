@@ -20,7 +20,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
       name: 'mfe_nav',
       filename: 'mfeEntry.js',
       exposes: {
-        './features/core/components/Nav': './src/features/core/components/Nav.tsx'
+        './feature-core/components/Nav': './src/feature-core/components/Nav.tsx'
       },
       shared: {
         ...dependencies,

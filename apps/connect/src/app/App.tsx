@@ -5,9 +5,7 @@ import { Layout, Theme } from '@fake-company/common-ui';
 import { Providers } from './Providers';
 import { Routes } from './Routes';
 
-const Nav = React.lazy(() =>
-  import('mfe_nav/features/core/components/Nav').then((module) => ({ default: module.Nav }))
-);
+const Nav = React.lazy(() => import('mfe_nav/feature-core/components/Nav').then((module) => ({ default: module.Nav })));
 
 export const App: React.FC = () => (
   <Providers>

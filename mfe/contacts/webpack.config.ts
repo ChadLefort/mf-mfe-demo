@@ -20,11 +20,11 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
       name: 'mfe_contacts',
       filename: 'mfeEntry.js',
       exposes: {
-        './features/core/components/AddContacts': './src/features/core/components/AddContacts.tsx',
-        './features/core/components/EditContact': './src/features/core/components/EditContact.tsx',
-        './features/core/components/ViewContact': './src/features/core/components/ViewContact.tsx',
-        './features/core/components/ViewContacts': './src/features/core/components/ViewContacts.tsx',
-        './features/core/components/ContactsProvider': './src/features/core/components/ContactsProvider.tsx'
+        './feature-core/components/AddContacts': './src/feature-core/components/AddContacts.tsx',
+        './feature-core/components/EditContact': './src/feature-core/components/EditContact.tsx',
+        './feature-core/components/ViewContact': './src/feature-core/components/ViewContact.tsx',
+        './feature-core/components/ViewContacts': './src/feature-core/components/ViewContacts.tsx',
+        './feature-core/components/ContactsProvider': './src/feature-core/components/ContactsProvider.tsx'
       },
       shared: {
         ...dependencies,
