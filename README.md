@@ -29,11 +29,9 @@ nx run mfe_nav:start
 cd shared/nav && pnpm run start
 ```
 
-## Architecture Diagram
+## Architecture
 
-<div align="center" style="padding: 20px">
-    <img alt="Architecture Diagram" src="./assets/architecture.png">
-</div>
+Learn more about the application's structure by [reading this doc](./ARCHITECTURE.md).
 
 ## More Info
 

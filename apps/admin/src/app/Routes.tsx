@@ -1,27 +1,26 @@
-import { ContactType } from '@fake-company/types';
 import React, { Suspense } from 'react';
+import { ContactType } from '@fake-company/types';
 import { Route, Switch } from 'react-router-dom';
-
 import { store } from './store';
 
 const EditContact = React.lazy(() =>
-  import('mfe_contacts/features/core/components/EditContact').then((module) => ({ default: module.EditContact }))
+  import('mfe_contacts/feature-core/components/EditContact').then((module) => ({ default: module.EditContact }))
 );
 
 const AddContacts = React.lazy(() =>
-  import('mfe_contacts/features/core/components/AddContacts').then((module) => ({ default: module.AddContacts }))
+  import('mfe_contacts/feature-core/components/AddContacts').then((module) => ({ default: module.AddContacts }))
 );
 
 const ViewContact = React.lazy(() =>
-  import('mfe_contacts/features/core/components/ViewContact').then((module) => ({ default: module.ViewContact }))
+  import('mfe_contacts/feature-core/components/ViewContact').then((module) => ({ default: module.ViewContact }))
 );
 
 const ViewContacts = React.lazy(() =>
-  import('mfe_contacts/features/core/components/ViewContacts').then((module) => ({ default: module.ViewContacts }))
+  import('mfe_contacts/feature-core/components/ViewContacts').then((module) => ({ default: module.ViewContacts }))
 );
 
 const ContactsProvider = React.lazy(() =>
-  import('mfe_contacts/features/core/components/ContactsProvider').then((module) => ({
+  import('mfe_contacts/feature-core/components/ContactsProvider').then((module) => ({
     default: module.ContactsProvider
   }))
 );

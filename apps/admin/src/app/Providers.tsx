@@ -1,10 +1,9 @@
 import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
-
 import { store } from './store';
 
 const ContactsProvider = React.lazy(() =>
-  import('mfe_contacts/features/core/components/ContactsProvider').then((module) => ({
+  import('mfe_contacts/feature-core/components/ContactsProvider').then((module) => ({
     default: module.ContactsProvider
   }))
 );
