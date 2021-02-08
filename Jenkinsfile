@@ -47,7 +47,7 @@ pipeline {
       }
     }
 
-    stage('Get Affected Apps') {
+    stage('Get Affected') {
       steps {
         nodejs(nodeJSInstallationName: 'Node 14.x') {
           script {
@@ -57,7 +57,7 @@ pipeline {
       }
     }
 
-    stage('Build Apps') {
+    stage('Build & Test Affected') {
       when {
         expression { !affectedApps.isEmpty() }
       }
