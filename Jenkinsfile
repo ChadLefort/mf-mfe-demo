@@ -13,7 +13,7 @@ pipeline {
     stage('Install Dependencies') {   
       steps {
         nodejs(nodeJSInstallationName: 'Node 14.x') {
-          sh 'pnpm i --no-optional'
+          sh 'pnpm i'
         }
       }
     }
