@@ -1,22 +1,24 @@
+import React from 'react';
 import {
+  Avatar,
   Container,
+  createStyles,
+  Grid,
   LinearProgress,
   List,
   ListItem,
   ListItemText,
+  makeStyles,
   Paper,
-  Theme,
-  createStyles,
-  makeStyles
+  Theme
 } from '@material-ui/core';
-import { ErrorIcon } from '@fake-company/common-ui';
-import { ContactType } from '@fake-company/types';
-import React from 'react';
-import { useParams } from 'react-router-dom';
-
-import { useTypedSelector } from '../../../common/reducer';
-import { useFetchContacts } from '../hooks/useFetchContacts';
 import { contactsSelectors } from '../contacts.slice';
+import { ContactType } from '@fake-company/types';
+import { ErrorIcon } from '@fake-company/common-ui';
+import { Rating } from './Rating';
+import { useFetchContacts } from '../hooks/useFetchContacts';
+import { useParams } from 'react-router-dom';
+import { useTypedSelector } from '../../../common/reducer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,6 +29,13 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       maxWidth: 360,
       backgroundColor: theme.palette.background.paper
+    },
+    item: {
+      padding: theme.spacing(2)
+    },
+    avatar: {
+      width: theme.spacing(40),
+      height: theme.spacing(40)
     }
   })
 );
@@ -43,19 +52,26 @@ export const ViewContact: React.FC<Props> = ({ type }) => {
 
   return contact && !isFetching && !error ? (
     <Paper className={classes.paper}>
-      <List className={classes.list}>
-        <ListItem>
-          <ListItemText primary="Name" secondary={contact.name} />
-        </ListItem>
-        {type.length > 1 && (
-          <ListItem>
-            <ListItemText primary="Type" secondary={contact.type} />
-          </ListItem>
-        )}
-        <ListItem>
-          <ListItemText primary="Rating" secondary={contact.rating} />
-        </ListItem>
-      </List>
+      <Grid container>
+        <Grid item className={classes.item}>
+          <Avatar src="https://picsum.photos/200" className={classes.avatar} />
+        </Grid>
+        <Grid item className={classes.item}>
+          <List className={classes.list}>
+            <ListItem>
+              <ListItemText primary="Name" secondary={contact.name} />
+            </ListItem>
+            {type.length > 1 && (
+              <ListItem>
+                <ListItemText primary="Type" secondary={contact.type} />
+              </ListItem>
+            )}
+            <ListItem>
+              <Rating rating={contact.rating} />
+            </ListItem>
+          </List>
+        </Grid>
+      </Grid>
     </Paper>
   ) : error ? (
     <ErrorIcon />

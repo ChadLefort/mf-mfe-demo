@@ -1,10 +1,16 @@
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import React from 'react';
 import {
+  Avatar,
   Button,
   Container,
+  createStyles,
   Grid,
   IconButton,
   LinearProgress,
   Link as MuiLink,
+  makeStyles,
   Paper,
   Table,
   TableBody,
@@ -13,20 +19,16 @@ import {
   TableHead,
   TableRow,
   Theme,
-  Typography,
-  createStyles,
-  makeStyles
+  Tooltip,
+  Typography
 } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import { ErrorIcon } from '@fake-company/common-ui';
 import { ContactType } from '@fake-company/types';
-import React from 'react';
+import { ErrorIcon } from '@fake-company/common-ui';
 import { Link } from 'react-router-dom';
-
+import { Rating } from './Rating';
+import { removeContact } from '../contacts.slice';
 import { useAppDispatch } from '../../../common/reducer';
 import { useFetchContacts } from '../hooks/useFetchContacts';
-import { removeContact } from '../contacts.slice';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -58,30 +60,39 @@ export const ViewContacts: React.FC<Props> = ({ type }) => {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell />
             <TableCell>Name</TableCell>
             {type.length > 1 && <TableCell>Type</TableCell>}
-            <TableCell align="right">Rating</TableCell>
+            <TableCell>Rating</TableCell>
             <TableCell align="right" />
           </TableRow>
         </TableHead>
         <TableBody>
-          {contacts.map((contact) => (
+          {contacts.map((contact, i) => (
             <TableRow key={contact.id}>
-              <TableCell component="th" scope="row">
+              <TableCell>
+                <Avatar src={`https://picsum.photos/200?random=${i + 1}`} />
+              </TableCell>
+              <TableCell>
                 <MuiLink component={Link} color="textSecondary" to={`/${contact.id}`}>
                   {contact.name}
                 </MuiLink>
               </TableCell>
               {type.length > 1 && <TableCell>{contact.type}</TableCell>}
-              <TableCell align="right">{contact.rating}</TableCell>
-
+              <TableCell>
+                <Rating rating={contact.rating} />
+              </TableCell>
               <TableCell align="right">
-                <IconButton component={Link} to={`edit/${contact.id}`}>
-                  <EditIcon />
-                </IconButton>
-                <IconButton data-testid={`${contact.name}-delete`} onClick={remove(contact.id)}>
-                  <DeleteIcon />
-                </IconButton>
+                <Tooltip title="Edit" placement="top-start">
+                  <IconButton component={Link} to={`edit/${contact.id}`}>
+                    <EditIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete" placement="top-start">
+                  <IconButton data-testid={`${contact.name}-delete`} onClick={remove(contact.id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
               </TableCell>
             </TableRow>
           ))}
