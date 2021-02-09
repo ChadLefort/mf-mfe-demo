@@ -18,7 +18,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
       name: 'mfe_contacts',
-      filename: 'mfeEntry.js',
+      filename: 'remoteEntry.js',
       exposes: {
         './feature-core/components/AddContacts': './src/feature-core/components/AddContacts.tsx',
         './feature-core/components/EditContact': './src/feature-core/components/EditContact.tsx',

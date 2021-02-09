@@ -18,7 +18,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
       name: 'mfe_nav',
-      filename: 'mfeEntry.js',
+      filename: 'remoteEntry.js',
       exposes: {
         './feature-core/components/Nav': './src/feature-core/components/Nav.tsx'
       },
