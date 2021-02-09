@@ -4,8 +4,9 @@ import path from 'path';
 import { container, WebpackOptionsNormalized } from 'webpack';
 
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
+  const isDevelopment = argv.mode === 'development';
   const { name, dependencies } = require('./package.json');
-  const entry = './src/index.ts';
+  const entry = isDevelopment ? './src/index.ts' : undefined;
   const out = path.join(__dirname, '/dist');
   const config = baseWebpackConfig(name, entry, out)(argv);
 
@@ -15,7 +16,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
     port: 1338
   };
 
-  config.plugins = config.plugins?.concat([
+  config.plugins?.push(
     new container.ModuleFederationPlugin({
       name: 'mfe_nav',
       filename: 'remoteEntry.js',
@@ -26,11 +27,16 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
         ...dependencies,
         ...moduleFederationShared
       }
-    }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
     })
-  ]);
+  );
+
+  if (isDevelopment) {
+    config.plugins?.push(
+      new HtmlWebpackPlugin({
+        template: './public/index.html'
+      })
+    );
+  }
 
   return config;
 };

@@ -21,7 +21,7 @@ export const moduleFederationShared = {
   '@material-ui/styles': { singleton: true }
 };
 
-const webpackConfig = (name: string, entry: string, outputPath: string) => (
+const webpackConfig = (name: string, entry: string | undefined, outputPath: string) => (
   argv: WebpackOptionsNormalized
 ): Configuration => ({
   entry,

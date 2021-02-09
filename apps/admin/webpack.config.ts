@@ -4,11 +4,11 @@ import path from 'path';
 import { container, WebpackOptionsNormalized } from 'webpack';
 
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
+  const isDevelopment = argv.mode === 'development';
   const { name, dependencies } = require('./package.json');
   const entry = './src/index.ts';
   const out = path.join(__dirname, '/dist');
   const config = baseWebpackConfig(name, entry, out)(argv);
-  const isDevelopment = argv.mode === 'development';
 
   config.devServer = {
     ...config.devServer,
