@@ -26,9 +26,7 @@ import { ContactType } from '@fake-company/types';
 import { ErrorIcon } from '@fake-company/common-ui';
 import { Link } from 'react-router-dom';
 import { Rating } from '../../common-ui/Rating';
-import { removeContact } from '../contacts.slice';
-import { useAppDispatch } from '../../app/reducer';
-import { useFetchContacts } from '../hooks/useFetchContacts';
+import { useFetchContactsQuery, useDeleteContactMutation } from '../contacts.api';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -51,11 +49,11 @@ type Props = {
 
 export const ViewContacts: React.FC<Props> = ({ type }) => {
   const classes = useStyles();
-  const dispatch = useAppDispatch();
-  const remove = (id: string) => () => dispatch(removeContact(id));
-  const { contacts, isFetching, error } = useFetchContacts(type);
+  const [removeContact] = useDeleteContactMutation();
+  const remove = (id: string) => () => removeContact(id);
+  const { isFetching, isError, data: contacts } = useFetchContactsQuery();
 
-  return contacts.length && !isFetching && !error ? (
+  return contacts?.length && !isFetching && !isError ? (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -99,7 +97,7 @@ export const ViewContacts: React.FC<Props> = ({ type }) => {
         </TableBody>
       </Table>
     </TableContainer>
-  ) : contacts.length === 0 && !isFetching && !error ? (
+  ) : contacts?.length === 0 && !isFetching && !isError ? (
     <Paper className={classes.paper}>
       <Grid container spacing={4}>
         <Grid item xs={12} classes={{ root: classes.item }}>
@@ -112,7 +110,7 @@ export const ViewContacts: React.FC<Props> = ({ type }) => {
         </Grid>
       </Grid>
     </Paper>
-  ) : error ? (
+  ) : isError ? (
     <ErrorIcon />
   ) : (
     <Container>

@@ -1,12 +1,10 @@
 import React from 'react';
 import { ContactForm } from '../../common-ui/Form';
-import { contactsSelectors, updateContact } from '../contacts.slice';
 import { ContactType, IContact } from '@fake-company/types';
 import { Container, createStyles, Grid, LinearProgress, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
 import { ErrorIcon } from '@fake-company/common-ui';
-import { useAppDispatch, useTypedSelector } from '../../app/reducer';
-import { useFetchContacts } from '../hooks/useFetchContacts';
 import { useHistory, useParams } from 'react-router-dom';
+import { useUpdateContactMutation, useFetchContactQuery } from '../contacts.api';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,16 +23,17 @@ type Props = {
 
 export const EditContact: React.FC<Props> = ({ type }) => {
   const classes = useStyles();
-  const dispatch = useAppDispatch();
   const history = useHistory();
-  const { isFetching, error } = useFetchContacts(type);
   const { id } = useParams<{ id: string }>();
-  const contact = useTypedSelector((state) => contactsSelectors.selectById(state, id));
+  const { isFetching: isFetchingContact, isError: isErrorContactFetch, data: contact } = useFetchContactQuery(id);
+  const [updateContact, { isLoading, isError: isErrorContactUpdate }] = useUpdateContactMutation();
+  const isFetching = isFetchingContact || isLoading;
+  const isError = isErrorContactFetch || isErrorContactUpdate;
 
   const onSubmit = (values: IContact) =>
-    new Promise<void>((resolve, reject) => {
+    new Promise<void>(async (resolve, reject) => {
       try {
-        dispatch(updateContact(values));
+        await updateContact(values).unwrap();
         history.push('/');
         resolve();
       } catch (error) {
@@ -43,7 +42,7 @@ export const EditContact: React.FC<Props> = ({ type }) => {
       }
     });
 
-  return contact && !isFetching && !error ? (
+  return contact && !isFetching && !isError ? (
     <Paper className={classes.paper}>
       <Grid container justify="center" spacing={4}>
         <Grid item xs={12}>
@@ -56,7 +55,7 @@ export const EditContact: React.FC<Props> = ({ type }) => {
         </Grid>
       </Grid>
     </Paper>
-  ) : error ? (
+  ) : isError ? (
     <ErrorIcon />
   ) : (
     <Container>

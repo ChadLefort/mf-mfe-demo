@@ -202,6 +202,7 @@ importers:
       '@material-ui/core': 4.11.3_4739bbb15760d634c9ef36534c29a77c
       '@material-ui/icons': 4.11.2_fcdcdb0571247ff084c12308bb720dbf
       '@reduxjs/toolkit': 1.5.0
+      '@rtk-incubator/rtk-query': 0.2.0_20007d8c98d08f2980a86d55f1d6cc2a
       axios: 0.21.1
       final-form: 4.20.1
       mui-rff: 2.1.15_1364261cc5871a902586c5a846bc553e
@@ -226,6 +227,7 @@ importers:
       '@material-ui/core': 4.11.3
       '@material-ui/icons': 4.11.2
       '@reduxjs/toolkit': 1.5.0
+      '@rtk-incubator/rtk-query': ^0.2.0
       '@types/qs': ^6.9.5
       '@types/react': 16.14.3
       '@types/react-dom': 16.9.10
@@ -309,6 +311,7 @@ importers:
       axios-mock-adapter: 1.19.0_axios@0.21.1
     devDependencies:
       '@reduxjs/toolkit': 1.5.0
+      '@rtk-incubator/rtk-query': 0.2.0_2485ae860f5c0af9226c78114e535df2
       '@types/react': 16.14.3
       '@types/react-router-dom': 5.1.6
       axios: 0.21.1
@@ -316,6 +319,7 @@ importers:
       react-router-dom: 5.2.0_react@16.14.0
     specifiers:
       '@reduxjs/toolkit': 1.5.0
+      '@rtk-incubator/rtk-query': ^0.2.0
       '@types/react': 16.14.3
       '@types/react-router-dom': 5.1.6
       axios: 0.21.1
@@ -2595,6 +2599,54 @@ packages:
       reselect: 4.0.0
     resolution:
       integrity: sha512-E/FUraRx+8guw9Hlg/Ja8jI/hwCrmIKed8Annt9YsZw3BQp+F24t5I5b2OWR6pkEHY4hn1BgP08FrTZFRKsdaQ==
+  /@rtk-incubator/rtk-query/0.2.0_20007d8c98d08f2980a86d55f1d6cc2a:
+    dependencies:
+      '@babel/runtime': 7.12.13
+      '@reduxjs/toolkit': 1.5.0
+      immer: 8.0.1
+      react: 16.14.0
+      react-dom: 16.14.0_react@16.14.0
+      react-redux: 7.2.2_react-dom@16.14.0+react@16.14.0
+    dev: false
+    engines:
+      node: '>=10'
+    peerDependencies:
+      '@reduxjs/toolkit': ^1.5.0
+      react: ^16.14.0 || ^17.0.0
+      react-dom: ^16.14.0 || ^17.0.0
+      react-redux: ^7.2.1
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      react-redux:
+        optional: true
+    resolution:
+      integrity: sha512-XuxYLHk7LS65I0gwXITS8B2MMzL2qOobr6Kj7TGLQcjHktKlL2JZ1Y871D9ikBHvTwKqpROPOXlBcL035XO9sg==
+  /@rtk-incubator/rtk-query/0.2.0_2485ae860f5c0af9226c78114e535df2:
+    dependencies:
+      '@babel/runtime': 7.12.13
+      '@reduxjs/toolkit': 1.5.0
+      immer: 8.0.1
+      react: 16.14.0
+    dev: true
+    engines:
+      node: '>=10'
+    peerDependencies:
+      '@reduxjs/toolkit': ^1.5.0
+      react: ^16.14.0 || ^17.0.0
+      react-dom: ^16.14.0 || ^17.0.0
+      react-redux: ^7.2.1
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      react-redux:
+        optional: true
+    resolution:
+      integrity: sha512-XuxYLHk7LS65I0gwXITS8B2MMzL2qOobr6Kj7TGLQcjHktKlL2JZ1Y871D9ikBHvTwKqpROPOXlBcL035XO9sg==
   /@samverschueren/stream-to-observable/0.3.1_rxjs@6.6.3:
     dependencies:
       any-observable: 0.3.0
