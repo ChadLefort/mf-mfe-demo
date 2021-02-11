@@ -1,8 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import { actWithReturn, getActionResult, renderWithProviders } from '../../utils/test-utils';
-import { addContact, initialState } from '../contacts.slice';
+import { actWithReturn, getQueryActionResult, renderWithProviders } from '../../utils/test-utils';
 import { AddContacts } from './AddContacts';
 import { ContactType, IContact } from '@fake-company/types';
 import { fireEvent, screen } from '@testing-library/react';
@@ -15,7 +14,7 @@ describe('add contacts', () => {
   });
 
   it('should call dispatch contacts/addContact action when form is submitted', async () => {
-    const newContact: IContact = {
+    const newContact = {
       id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
       name: 'Chad',
       rating: 5,
@@ -25,12 +24,10 @@ describe('add contacts', () => {
     axiosMock.onPost('/api/contacts').reply(200, newContact);
 
     const store = await actWithReturn(async () => {
-      const { store } = renderWithProviders(<AddContacts type={[ContactType.Customer]} />, {
-        initialState: { contacts: { core: initialState } }
-      });
+      const { store } = renderWithProviders(<AddContacts type={[ContactType.Customer]} />, {});
 
       fireEvent.change(screen.getByTestId('name'), {
-        target: { value: 'Pat' }
+        target: { value: 'Chad' }
       });
 
       fireEvent.click(screen.getByText('Submit'));
@@ -38,9 +35,8 @@ describe('add contacts', () => {
       return store;
     });
 
-    const { type, payload } = await getActionResult(store.dispatch);
+    const data = await getQueryActionResult<IContact>(store.dispatch);
 
-    expect(type).toEqual(addContact.fulfilled.type);
-    expect(payload).toEqual(newContact);
+    expect(data).toEqual(newContact);
   });
 });

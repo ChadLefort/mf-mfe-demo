@@ -2,6 +2,7 @@ import { authRootReducer } from '@fake-company/auth';
 import { InjectStore } from '@fake-company/types';
 import { Reducer, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { injectedMiddleware, addMiddleware } from '@fake-company/utils';
+import { setupListeners } from '@rtk-incubator/rtk-query';
 
 const staticReducers = {
   ...authRootReducer
@@ -31,3 +32,5 @@ const createStore = (initialState?: any) => {
 const createReducer = (asyncReducers?: Reducer) => combineReducers({ ...staticReducers, ...asyncReducers });
 
 export const store = createStore();
+
+setupListeners(store.dispatch);

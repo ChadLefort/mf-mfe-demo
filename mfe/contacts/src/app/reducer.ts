@@ -1,6 +1,7 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { createSelectorHook, useDispatch } from 'react-redux';
 import { contactsApi } from '../feature-core/contacts.api';
+import { setupListeners } from '@rtk-incubator/rtk-query';
 
 export const contactsRootReducer = {
   [contactsApi.reducerPath]: contactsApi.reducer
@@ -11,6 +12,8 @@ export const store = configureStore({
   reducer: contactsRootReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(contactsApi.middleware)
 });
+
+setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

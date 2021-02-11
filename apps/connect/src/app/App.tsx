@@ -9,7 +9,7 @@ const Nav = React.lazy(() => import('mfe_nav/feature-core/components/Nav').then(
 
 export const App: React.FC = () => (
   <Providers>
-    <Router>
+    <Router basename="/connect">
       <Theme>
         <Auth>
           <Layout nav={<Nav title="Connect" />}>

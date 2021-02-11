@@ -9,7 +9,10 @@ import { withMock, withProvider, withRouter } from '@fake-company/utils';
 import { withTheme } from '@fake-company/common-ui';
 
 const mock = (axiosMock: MockAdapter) => {
-  axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
+  axiosMock.onGet('/api/contacts/89222b2d-8d06-41ff-82cf-c989dd90de24').reply(
+    200,
+    contactsFixture.find(({ id }) => id === '89222b2d-8d06-41ff-82cf-c989dd90de24')
+  );
 };
 
 const story = {

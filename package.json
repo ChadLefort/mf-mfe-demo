@@ -7,8 +7,8 @@
     "test": "nx run-many --target=test --all --parallel",
     "e2e": "start-server-and-test start http-get://localhost:1337 cy-open",
     "e2e-ci": "start-server-and-test start http-get://localhost:1337 cy-run",
-    "cy-open": "nx run-many --target=cy-open --all --parallel",
-    "cy-run": "nx run-many --target=cy-run --all --parallel",
+    "cy-open": "nx run-many --target=cy-open --projects=connect-e2e --parallel",
+    "cy-run": "nx run-many --target=cy-run --projects=connect-e2e --parallel",
     "json-server": "json-server ./tools/json-server/index.js --watch --routes ./tools/json-server/routes.json --port 4000 --delay 1000"
   },
   "devDependencies": {

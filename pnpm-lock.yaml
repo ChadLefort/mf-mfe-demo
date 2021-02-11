@@ -127,6 +127,7 @@ importers:
       '@material-ui/core': 4.11.3_4739bbb15760d634c9ef36534c29a77c
       '@material-ui/icons': 4.11.2_fcdcdb0571247ff084c12308bb720dbf
       '@reduxjs/toolkit': 1.5.0
+      '@rtk-incubator/rtk-query': 0.2.0_20007d8c98d08f2980a86d55f1d6cc2a
       axios: 0.21.1
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
@@ -145,6 +146,7 @@ importers:
       '@material-ui/core': 4.11.3
       '@material-ui/icons': 4.11.2
       '@reduxjs/toolkit': 1.5.0
+      '@rtk-incubator/rtk-query': ^0.2.0
       '@types/react': 16.14.3
       '@types/react-dom': 16.9.10
       '@types/react-redux': 7.1.16
@@ -165,6 +167,7 @@ importers:
       '@material-ui/core': 4.11.3_4739bbb15760d634c9ef36534c29a77c
       '@material-ui/icons': 4.11.2_fcdcdb0571247ff084c12308bb720dbf
       '@reduxjs/toolkit': 1.5.0
+      '@rtk-incubator/rtk-query': 0.2.0_20007d8c98d08f2980a86d55f1d6cc2a
       axios: 0.21.1
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
@@ -183,6 +186,7 @@ importers:
       '@material-ui/core': 4.11.3
       '@material-ui/icons': 4.11.2
       '@reduxjs/toolkit': 1.5.0
+      '@rtk-incubator/rtk-query': ^0.2.0
       '@types/react': 16.14.3
       '@types/react-dom': 16.9.10
       '@types/react-redux': 7.1.16
