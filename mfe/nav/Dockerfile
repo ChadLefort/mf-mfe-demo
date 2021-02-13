@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:fermium-alpine
 RUN npm i serve -g
 
 WORKDIR /usr/src

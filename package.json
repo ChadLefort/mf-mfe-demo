@@ -11,6 +11,10 @@
     "cy-run": "nx run-many --target=cy-run --projects=connect-e2e --parallel",
     "json-server": "json-server ./tools/json-server/index.js --watch --routes ./tools/json-server/routes.json --port 4000 --delay 1000"
   },
+  "engines": {
+    "node": ">=10",
+    "pnpm": ">=5"
+  },
   "devDependencies": {
     "@babel/core": "7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
