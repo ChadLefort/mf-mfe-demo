@@ -1,0 +1,15 @@
+{
+  "baseUrl": "http://localhost:1336",
+  "fileServerFolder": ".",
+  "fixturesFolder": "../../shared/types/src/fixtures",
+  "integrationFolder": "./cypress/integration",
+  "modifyObstructiveCode": false,
+  "supportFile": "./cypress/support/index.ts",
+  "screenshotOnRunFailure": true,
+  "trashAssetsBeforeRuns": true,
+  "video": true,
+  "videosFolder": "./cypress/dist/videos",
+  "screenshotsFolder": "./cypress/dist/screenshots",
+  "chromeWebSecurity": false,
+  "projectId": "3mcgfk"
+}

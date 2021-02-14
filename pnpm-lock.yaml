@@ -13,6 +13,7 @@ importers:
       '@nrwl/workspace': 11.2.8_prettier@2.2.1
       '@storybook/react': 6.1.16_29112847f6fd6dccb76b191d3c3d0390
       '@svgr/webpack': 5.5.0
+      '@testing-library/cypress': 7.0.3_cypress@6.4.0
       '@testing-library/jest-dom': 5.11.9
       '@testing-library/react': 11.2.5
       '@testing-library/react-hooks': 5.0.3
@@ -35,7 +36,7 @@ importers:
       core-js: 3.8.3
       css-loader: 5.0.2_webpack@5.19.0
       css-minimizer-webpack-plugin: 1.2.0_webpack@5.19.0
-      cypress: 5.6.0
+      cypress: 6.4.0
       eslint: 7.19.0
       eslint-config-react-app: 6.0.0_894fa810dc7a6308c605f5903fd5bdc1
       eslint-plugin-cypress: 2.11.2_eslint@7.19.0
@@ -59,12 +60,12 @@ importers:
       redux-mock-store: 1.5.4
       sass: 1.32.7
       sass-loader: 11.0.1_sass@1.32.7+webpack@5.19.0
-      start-server-and-test: 1.12.0
       style-loader: 2.0.0_webpack@5.19.0
       ts-jest: 26.5.0_jest@26.6.3+typescript@4.1.3
       ts-node: 9.1.1_typescript@4.1.3
       tsconfig-paths-webpack-plugin: 3.3.0
       typescript: 4.1.3
+      wait-on: 5.2.1
       webpack: 5.19.0_webpack-cli@4.5.0
       webpack-cli: 4.5.0_4ef02ca915eb3b0bc8b50fd312cc19ae
       webpack-dev-server: 3.11.2_webpack-cli@4.5.0+webpack@5.19.0
@@ -81,6 +82,7 @@ importers:
       '@nrwl/workspace': ^11.2.8
       '@storybook/react': ^6.1.16
       '@svgr/webpack': ^5.5.0
+      '@testing-library/cypress': ^7.0.3
       '@testing-library/jest-dom': 5.11.9
       '@testing-library/react': 11.2.5
       '@testing-library/react-hooks': 5.0.3
@@ -103,7 +105,7 @@ importers:
       core-js: ^3.8.3
       css-loader: ^5.0.2
       css-minimizer-webpack-plugin: ^1.2.0
-      cypress: ^5.5.0
+      cypress: ^6.4.0
       eslint: ^7.5.0
       eslint-config-react-app: ^6.0.0
       eslint-plugin-cypress: ^2.10.3
@@ -127,12 +129,12 @@ importers:
       redux-mock-store: ^1.5.4
       sass: ^1.32.7
       sass-loader: ^11.0.1
-      start-server-and-test: ^1.12.0
       style-loader: ^2.0.0
       ts-jest: 26.5.0
       ts-node: 9.1.1
       tsconfig-paths-webpack-plugin: ^3.3.0
       typescript: 4.1.3
+      wait-on: ^5.2.1
       webpack: 5.19.0
       webpack-cli: 4.5.0
       webpack-dev-server: 3.11.2
@@ -174,8 +176,6 @@ importers:
       react-dom: 16.14.0
       react-redux: 7.2.2
       react-router-dom: 5.2.0
-  apps/admin-e2e:
-    specifiers: {}
   apps/connect:
     dependencies:
       '@fake-company/auth': link:../../shared/auth
@@ -214,8 +214,6 @@ importers:
       react-dom: 16.14.0
       react-redux: 7.2.2
       react-router-dom: 5.2.0
-  apps/connect-e2e:
-    specifiers: {}
   mfe/contacts:
     dependencies:
       '@fake-company/common-ui': link:../../shared/common-ui
@@ -2695,12 +2693,12 @@ packages:
         optional: true
     resolution:
       integrity: sha512-c/qwwcHyafOQuVQJj0IlBjf5yYgBI7YPJ77k4fOJYesb41jio65eaJODRUmfYKhTOFBrIZ66kgvGPlNbjuoRdQ==
-  /@sideway/address/4.1.0:
+  /@sideway/address/4.1.1:
     dependencies:
       '@hapi/hoek': 9.1.1
     dev: true
     resolution:
-      integrity: sha512-wAH/JYRXeIFQRsxerIuLjgUu2Xszam+O5xKeatJ4oudShOOirfmsQ1D6LL54XOU2tizpCYku+s1wmU0SYdpoSA==
+      integrity: sha512-+I5aaQr3m0OAmMr7RQ3fR9zx55sejEYR2BFJaxL+zT3VM2611X0SHvPWIbAUBZVTn/YzYKbV8gJ2oT/QELknfQ==
   /@sideway/formula/3.0.0:
     dev: true
     resolution:
@@ -3229,6 +3227,19 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==
+  /@testing-library/cypress/7.0.3_cypress@6.4.0:
+    dependencies:
+      '@babel/runtime': 7.12.5
+      '@testing-library/dom': 7.29.4
+      cypress: 6.4.0
+    dev: true
+    engines:
+      node: '>=10'
+      npm: '>=6'
+    peerDependencies:
+      cypress: ^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
+    resolution:
+      integrity: sha512-JOYW4VSSyHxaZDUhrS5N7tZA8jhr3ISx73WnLPpNkPqDCLUIJpo8ZQihti68Q4Qv5hVuA+I2rUI2glORaEFPaA==
   /@testing-library/dom/7.29.4:
     dependencies:
       '@babel/code-frame': 7.12.11
@@ -4717,15 +4728,7 @@ packages:
       integrity: sha512-D+0U4LNPr7WroiBDvWilzTMYPYTuZlbo6BI8YHZtj7wYQS8NkARlP9KBt8IWWHTQJ0q/8oZ0ClPBtKCCkx8cQg==
   /axios/0.21.1:
     dependencies:
-      follow-redirects: 1.13.2
-    resolution:
-      integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
-  /axios/0.21.1_debug@4.3.1:
-    dependencies:
       follow-redirects: 1.13.2_debug@4.3.1
-    dev: true
-    peerDependencies:
-      debug: '*'
     resolution:
       integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   /axobject-query/2.2.0:
@@ -6652,7 +6655,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
-  /cypress/5.6.0:
+  /cypress/6.4.0:
     dependencies:
       '@cypress/listr-verbose-renderer': 0.4.1
       '@cypress/request': 2.88.5
@@ -6668,6 +6671,7 @@ packages:
       cli-table3: 0.6.0
       commander: 5.1.0
       common-tags: 1.8.0
+      dayjs: 1.10.4
       debug: 4.3.1_supports-color@7.2.0
       eventemitter2: 6.4.3
       execa: 4.1.0
@@ -6698,7 +6702,7 @@ packages:
     hasBin: true
     requiresBuild: true
     resolution:
-      integrity: sha512-cs5vG3E2JLldAc16+5yQxaVRLLqMVya5RlrfPWkC72S5xrlHFdw7ovxPb61s4wYweROKTyH01WQc2PFzwwVvyQ==
+      integrity: sha512-SrsPsZ4IBterudkoFYBvkQmXOVxclh1/+ytbzpV8AH/D2FA+s2Qy5ISsaRzOFsbQa4KZWoi3AKwREmF1HucYkg==
   /damerau-levenshtein/1.0.6:
     dev: true
     resolution:
@@ -6730,6 +6734,10 @@ packages:
       node: '>=0.11'
     resolution:
       integrity: sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
+  /dayjs/1.10.4:
+    dev: true
+    resolution:
+      integrity: sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -7825,18 +7833,6 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
-  /event-stream/3.3.4:
-    dependencies:
-      duplexer: 0.1.2
-      from: 0.1.7
-      map-stream: 0.1.0
-      pause-stream: 0.0.11
-      split: 0.3.3
-      stream-combiner: 0.0.4
-      through: 2.3.8
-    dev: true
-    resolution:
-      integrity: sha1-SrTJoPWlTbkzi0w02Gv86PSzVXE=
   /eventemitter2/6.4.3:
     dev: true
     resolution:
@@ -7884,23 +7880,6 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-adbxcyWV46qiHyvSp50TKt05tB4tK3HcmF7/nxfAdhnox83seTDbwnaqKO4sXRy7roHAIFqJP/Rw/AuEbX61LA==
-  /execa/3.4.0:
-    dependencies:
-      cross-spawn: 7.0.3
-      get-stream: 5.2.0
-      human-signals: 1.1.1
-      is-stream: 2.0.0
-      merge-stream: 2.0.0
-      npm-run-path: 4.0.1
-      onetime: 5.1.2
-      p-finally: 2.0.1
-      signal-exit: 3.0.3
-      strip-final-newline: 2.0.0
-    dev: true
-    engines:
-      node: ^8.12.0 || >=9.7.0
-    resolution:
-      integrity: sha512-r9vdGQk4bmCuK1yKQu1KTwcT2zwfWdbdaXfCtAh+5nU/4fSX+JAb7vZGvI5naJrQlvONrEB20jeruESI69530g==
   /execa/4.1.0:
     dependencies:
       cross-spawn: 7.0.3
@@ -8383,20 +8362,9 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-eNMNr5exLoavuAMhIUVsOKF79SWd/zG104ef6sxBTSw+cZc6BXdQXDvYcGvp0VbxVVSp1XDUNoz7mg1xMtSznA==
-  /follow-redirects/1.13.2:
-    engines:
-      node: '>=4.0'
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    resolution:
-      integrity: sha512-6mPTgLxYm3r6Bkkg0vNM0HTjfGrOEtsfbhagQvbxDEsEkpNhw582upBaoRZylzen6krEmxXJgt9Ju6HiI4O7BA==
   /follow-redirects/1.13.2_debug@4.3.1:
     dependencies:
       debug: 4.3.1_supports-color@6.1.0
-    dev: true
     engines:
       node: '>=4.0'
     peerDependencies:
@@ -8513,10 +8481,6 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
-  /from/0.1.7:
-    dev: true
-    resolution:
-      integrity: sha1-g8YK/Fi5xWmXAH7Rp2izqzA6RP4=
   /from2/2.3.0:
     dependencies:
       inherits: 2.0.4
@@ -9306,7 +9270,7 @@ packages:
   /http-proxy/1.18.1_debug@4.3.1:
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.13.2
+      follow-redirects: 1.13.2_debug@4.3.1
       requires-port: 1.0.0
     dev: true
     engines:
@@ -10689,16 +10653,16 @@ packages:
     dev: true
     resolution:
       integrity: sha1-o6vicYryQaKykE+EpiWXDzia4yo=
-  /joi/17.3.0:
+  /joi/17.4.0:
     dependencies:
       '@hapi/hoek': 9.1.1
       '@hapi/topo': 5.0.0
-      '@sideway/address': 4.1.0
+      '@sideway/address': 4.1.1
       '@sideway/formula': 3.0.0
       '@sideway/pinpoint': 2.0.0
     dev: true
     resolution:
-      integrity: sha512-Qh5gdU6niuYbUIUV5ejbsMiiFmBdw8Kcp8Buj2JntszCkCfxJ9Cz76OtHxOZMPXrt5810iDIXs+n1nNVoquHgg==
+      integrity: sha512-F4WiW2xaV6wc1jxete70Rw4V/VuMd6IN+a5ilZsxG4uYtUXWu2kq9W5P2dz30e7Gmw8RCbY/u/uk+dMPma9tAg==
   /js-tokens/3.0.2:
     dev: true
     resolution:
@@ -11440,10 +11404,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-beJlMXSt+12e3DPGnT6Sobdvrwg=
-  /map-stream/0.1.0:
-    dev: true
-    resolution:
-      integrity: sha1-5WqpTEyAVaFkBKBnS3jyFffI4ZQ=
   /map-visit/1.0.0:
     dependencies:
       object-visit: 1.0.1
@@ -12383,12 +12343,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-P7z7FbiZpEEjs0ttzBi3JDNqLK4=
-  /p-finally/2.0.1:
-    dev: true
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha512-vpm09aKwq6H9phqRQzecoDpD8TmVyGw70qmWlyq5onxY7tqyTTFVvxMykxQSQKILBSFlbXpypIw2T1Ml7+DDtw==
   /p-limit/1.3.0:
     dependencies:
       p-try: 1.0.0
@@ -12682,12 +12636,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
-  /pause-stream/0.0.11:
-    dependencies:
-      through: 2.3.8
-    dev: true
-    resolution:
-      integrity: sha1-/lo0sMvOErWqaitAPuLnO2AvFEU=
   /pbkdf2/3.1.1:
     dependencies:
       create-hash: 1.2.0
@@ -13442,15 +13390,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-0/wRS6BplaRexok/SEzrHXj19HY=
-  /ps-tree/1.2.0:
-    dependencies:
-      event-stream: 3.3.4
-    dev: true
-    engines:
-      node: '>= 0.10'
-    hasBin: true
-    resolution:
-      integrity: sha512-0VnamPPYHl4uaU/nSFeZZpR21QAWRz+sRv4iW9+v/GS/J5U5iZB5BNN6J0RMoOvdx2gWM2+ZFMIm58q24e4UYA==
   /psl/1.8.0:
     dev: true
     resolution:
@@ -15080,12 +15019,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-NzNVhJDYpwceVVii8/Hu6DKfD2G+NrQHlS/V/qgv763EYudVwEcMQNxd2lh+0VrUByXN/oJkl5grOhYWvQUYiw==
-  /split/0.3.3:
-    dependencies:
-      through: 2.3.8
-    dev: true
-    resolution:
-      integrity: sha1-zQ7qXmOiEd//frDwkcQTPi0N0o8=
   /sprintf-js/1.0.3:
     dev: true
     resolution:
@@ -15137,21 +15070,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-GrdeshiRmS1YLMYgzF16olf2jJ/IzxXY9lhKOskuVziubpTYcYqyOwYeJKzQkwy7uN0fYSsbsC4RQaXf9LCrYA==
-  /start-server-and-test/1.12.0:
-    dependencies:
-      bluebird: 3.7.2
-      check-more-types: 2.24.0
-      debug: 4.3.1
-      execa: 3.4.0
-      lazy-ass: 1.6.0
-      ps-tree: 1.2.0
-      wait-on: 5.2.1_debug@4.3.1
-    dev: true
-    engines:
-      node: '>=6'
-    hasBin: true
-    resolution:
-      integrity: sha512-y3M/PLUPkPBsgKoengMIMQeceT8uOnOc4bkdor/RSCK9Ih/j8z4WthSCrAboXLjgtJJWOporAiEQsnYox+THXg==
   /static-extend/0.1.2:
     dependencies:
       define-property: 0.2.5
@@ -15190,12 +15108,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg==
-  /stream-combiner/0.0.4:
-    dependencies:
-      duplexer: 0.1.2
-    dev: true
-    resolution:
-      integrity: sha1-TV5DPBhSYd3mI8o/RMWGvPXErRQ=
   /stream-each/1.2.3:
     dependencies:
       end-of-stream: 1.4.4
@@ -16411,10 +16323,10 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-4tzD0mF8iSiMiNs30BiLO3EpfGLZUT2MSX/G+o7ZywDzliWQ3OPtTZ0PTC3B3ca1UAf4cJMHB+2Bf56EriJuRA==
-  /wait-on/5.2.1_debug@4.3.1:
+  /wait-on/5.2.1:
     dependencies:
-      axios: 0.21.1_debug@4.3.1
-      joi: 17.3.0
+      axios: 0.21.1
+      joi: 17.4.0
       lodash: 4.17.20
       minimist: 1.2.5
       rxjs: 6.6.3
@@ -16422,8 +16334,6 @@ packages:
     engines:
       node: '>=8.9.0'
     hasBin: true
-    peerDependencies:
-      debug: '*'
     resolution:
       integrity: sha512-H2F986kNWMU9hKlI9l/ppO6tN8ZSJd35yBljMLa1/vjzWP++Qh6aXyt77/u7ySJFZQqBtQxnvm/xgG48AObXcw==
   /walker/1.0.7:

@@ -51,7 +51,7 @@ export function ContactForm<T extends { name: string; rating: number }>({
             </Grid>
             {type.length > 1 && (
               <Grid item xs={12}>
-                <Select variant="outlined" name="type" label="Type" required inputProps={{ 'data-testid': 'type' }}>
+                <Select variant="outlined" name="type" label="Type" required data-testid="type">
                   <MenuItem value={ContactType.Client}>{ContactType.Client.toString()}</MenuItem>
                   <MenuItem value={ContactType.Customer}>{ContactType.Customer.toString()}</MenuItem>
                 </Select>

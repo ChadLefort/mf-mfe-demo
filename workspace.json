@@ -5,16 +5,8 @@
       "root": "apps/admin",
       "type": "library"
     },
-    "admin-e2e": {
-      "root": "apps/connect-e2e",
-      "type": "library"
-    },
     "connect": {
       "root": "apps/connect",
-      "type": "library"
-    },
-    "connect-e2e": {
-      "root": "apps/connect-e2e",
       "type": "library"
     },
     "mfe_nav": {

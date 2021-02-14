@@ -20,16 +20,8 @@
     "admin": {
       "implicitDependencies": []
     },
-    "admin-e2e": {
-      "tags": [],
-      "implicitDependencies": ["admin"]
-    },
     "connect": {
       "implicitDependencies": []
-    },
-    "connect-e2e": {
-      "tags": [],
-      "implicitDependencies": ["connect"]
     },
     "mfe_nav": {
       "implicitDependencies": []

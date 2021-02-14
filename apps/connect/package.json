@@ -7,7 +7,11 @@
   "scripts": {
     "start": "webpack serve --mode=development",
     "build": "webpack --mode=production",
-    "test": "echo 'No test found'"
+    "test": "echo 'No test found'",
+    "e2e": "wait-on http-get://localhost:1337 && pnpm run cypress-open",
+    "e2e-ci": "wait-on http-get://localhost:1337 && pnpm run cypress-run",
+    "cypress-open": "cypress open",
+    "cypress-run": "cypress run"
   },
   "dependencies": {
     "@material-ui/core": "4.11.3",

@@ -15,7 +15,7 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "types": ["node", "jest"],
+    "types": ["node", "jest", "cypress", "@testing-library/cypress"],
     "baseUrl": ".",
     "paths": {
       "@fake-company/auth": ["shared/auth/src/index.ts"],

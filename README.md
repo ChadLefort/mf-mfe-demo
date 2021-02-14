@@ -44,7 +44,7 @@ Learn more about the application's structure by [reading this doc](./ARCHITECTUR
 ## Todo
 
 - Probably more optimizations to the webpack configs
-- Get e2e test working for multiple affected apps both locally and in CI pipeline
+- Get e2e test working for multiple affected apps in CI pipeline
 - Look into [redux-dynamic-modules](https://github.com/Microsoft/redux-dynamic-modules)
 - Look into [single-spa](https://single-spa.js.org/) if even needed
 - Keep an eye on [HMR](https://github.com/pmmmwh/react-refresh-webpack-plugin/issues/126)
