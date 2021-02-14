@@ -20,7 +20,7 @@ function configureTestStore(initialState: DeepPartial<RootState> = {}) {
 }
 
 type Params = {
-  initialState: DeepPartial<RootState>;
+  initialState?: DeepPartial<RootState>;
   initialEntries?: string[];
   store?: ReturnType<typeof configureTestStore>;
 } & RenderOptions;
@@ -59,6 +59,12 @@ export async function getActionResult<T = unknown>(dispatch: Dispatch, action = 
     type: string;
     payload?: T;
   };
+}
+
+export async function getQueryActionResult<T = unknown>(dispatch: Dispatch, action = 0) {
+  const mockDispatch = dispatch as jest.Mock;
+  const { data } = await mockDispatch.mock.results[action].value;
+  return data as T;
 }
 
 export const HooksWrapper: React.FC = ({ children }) => <Provider store={configureTestStore()}>{children}</Provider>;

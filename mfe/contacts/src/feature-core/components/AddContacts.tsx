@@ -1,10 +1,10 @@
 import React from 'react';
-import { addContact } from '../contacts.slice';
 import { ContactForm } from '../../common-ui/Form';
 import { ContactType, IContact } from '@fake-company/types';
-import { createStyles, Grid, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
-import { useAppDispatch } from '../../app/reducer';
+import { createStyles, Grid, makeStyles, Paper, Theme, Typography, Container, LinearProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import { useAddContactMutation } from '../contacts.api';
+import { ErrorIcon } from '@fake-company/common-ui';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,13 +23,13 @@ type Props = {
 
 export const AddContacts: React.FC<Props> = ({ type }) => {
   const classes = useStyles();
-  const dispatch = useAppDispatch();
   const history = useHistory();
+  const [addContact, { isLoading, isError }] = useAddContactMutation();
 
   const onSubmit = (values: IContact) =>
-    new Promise<void>((resolve, reject) => {
+    new Promise<void>(async (resolve, reject) => {
       try {
-        dispatch(addContact({ ...values, type: type.length === 1 ? type[0] : values.type }));
+        await addContact({ ...values, type: type.length === 1 ? type[0] : values.type }).unwrap();
         history.push('/');
         resolve();
       } catch (error) {
@@ -38,7 +38,7 @@ export const AddContacts: React.FC<Props> = ({ type }) => {
       }
     });
 
-  return (
+  return !isLoading ? (
     <Paper className={classes.paper}>
       <Grid container justify="center" spacing={4}>
         <Grid item xs={12}>
@@ -51,5 +51,11 @@ export const AddContacts: React.FC<Props> = ({ type }) => {
         </Grid>
       </Grid>
     </Paper>
+  ) : isError ? (
+    <ErrorIcon />
+  ) : (
+    <Container>
+      <LinearProgress />
+    </Container>
   );
 };

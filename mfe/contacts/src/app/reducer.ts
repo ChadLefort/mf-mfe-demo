@@ -1,15 +1,19 @@
-import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import { contactsReducer } from '../feature-core/contacts.slice';
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { createSelectorHook, useDispatch } from 'react-redux';
-
-export const injectableReducer = combineReducers({ core: contactsReducer });
+import { contactsApi } from '../feature-core/contacts.api';
+import { setupListeners } from '@rtk-incubator/rtk-query';
 
 export const contactsRootReducer = {
-  contacts: injectableReducer
+  [contactsApi.reducerPath]: contactsApi.reducer
 };
 
 // just for types and test
-export const store = configureStore({ reducer: contactsRootReducer });
+export const store = configureStore({
+  reducer: contactsRootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(contactsApi.middleware)
+});
+
+setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
