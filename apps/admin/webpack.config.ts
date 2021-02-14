@@ -4,11 +4,11 @@ import path from 'path';
 import { container, WebpackOptionsNormalized } from 'webpack';
 
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
+  const isDevelopment = argv.mode === 'development';
   const { name, dependencies } = require('./package.json');
   const entry = './src/index.ts';
   const out = path.join(__dirname, '/dist');
   const config = baseWebpackConfig(name, entry, out)(argv);
-  const isDevelopment = argv.mode === 'development';
 
   config.devServer = {
     ...config.devServer,
@@ -21,11 +21,11 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
       name: '@fake-company/admin',
       remotes: {
         mfe_nav: isDevelopment
-          ? 'mfe_nav@http://localhost:1338/mfeEntry.js'
-          : 'mfe_nav@http://localhost/nav/mfeEntry.js',
+          ? 'mfe_nav@http://localhost:1338/remoteEntry.js'
+          : 'mfe_nav@http://localhost/nav/remoteEntry.js',
         mfe_contacts: isDevelopment
-          ? 'mfe_contacts@http://localhost:1339/mfeEntry.js'
-          : 'mfe_contacts@http://localhost/contacts/mfeEntry.js'
+          ? 'mfe_contacts@http://localhost:1339/remoteEntry.js'
+          : 'mfe_contacts@http://localhost/contacts/remoteEntry.js'
       },
       shared: {
         ...dependencies,

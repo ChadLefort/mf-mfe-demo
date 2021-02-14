@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6008"
   },
   "peerDependencies": {
     "@material-ui/core": "4.11.3",

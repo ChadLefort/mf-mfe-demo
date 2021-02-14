@@ -70,3 +70,10 @@ Following [the redux style guide](https://redux.js.org/style-guide/style-guide) 
 ## Typescript
 
 This application also uses [Typescript](https://www.typescriptlang.org/). I've been using it in professional applications since the AngularJS 1.x days. You don’t need to use crazy advanced types, but leveraging just the TS compiler and having types instead of prop-types can reduce bugs and make for a better developer experience. It also allows for better refactoring and helps to establish interfaces for API payloads.
+
+## Jenkins Pipeline
+
+<div align="center" style="padding: 20px">
+    <img alt="Jenkins Pipeline" src="./assets/pipeline.png">
+    <p>An example of a pipeline job where only things that have changed are built and deployed</p>
+</div>
