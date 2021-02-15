@@ -2,7 +2,7 @@ def affectedApps = []
 
 def getAffectedApps() {
   def projects = []
-  def base = env.CHANGE_BRANCH == 'dev' || env.BRANCH_NAME == 'dev' ? 'origin/master' : 'origin/dev'
+  def base = env.CHANGE_BRANCH == 'develop' || env.BRANCH_NAME == 'develop' ? 'origin/master' : 'origin/develop'
   def raw = sh(script: "pnpx nx print-affected --base=${base}", returnStdout: true)
   def affected = readJSON(text: raw)
 
@@ -83,7 +83,7 @@ pipeline {
 
     stage('Build & Deploy Docker Containers') {
       when {
-        anyOf { branch 'master'; branch 'dev' }
+        anyOf { branch 'master'; branch 'develop' }
         expression { !affectedApps.isEmpty() }
       }
 
