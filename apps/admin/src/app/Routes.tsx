@@ -1,5 +1,5 @@
 import { ContactType } from '@fake-company/types';
-import React, { Suspense, lazy } from 'react';
+import React, { FC, Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { store } from './store';
@@ -29,7 +29,7 @@ const ContactsProvider = lazy(async () => {
   return { default: ContactsProvider };
 });
 
-export const Routes: React.FC = () => (
+export const Routes: FC = () => (
   <Suspense fallback={null}>
     <ContactsProvider store={store}>
       <Switch>

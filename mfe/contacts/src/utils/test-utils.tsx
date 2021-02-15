@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { DeepPartial, Dispatch, configureStore } from '@reduxjs/toolkit';
 import { RenderOptions, act, render as rtlRender } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
@@ -28,11 +28,11 @@ type Params = {
 } & RenderOptions;
 
 export function renderWithProviders(
-  ui: React.ReactElement,
+  ui: ReactElement,
   { initialState, initialEntries, store = configureTestStore(initialState), ...renderOptions }: Params
 ) {
   const history = createMemoryHistory({ initialEntries });
-  const Wrapper: React.FC = ({ children }) => (
+  const Wrapper: FC = ({ children }) => (
     <Provider store={store}>
       <Router history={history}>{children}</Router>
     </Provider>
@@ -69,6 +69,6 @@ export async function getQueryActionResult<T = unknown>(dispatch: Dispatch, acti
   return data as T;
 }
 
-export const HooksWrapper: React.FC = ({ children }) => <Provider store={configureTestStore()}>{children}</Provider>;
+export const HooksWrapper: FC = ({ children }) => <Provider store={configureTestStore()}>{children}</Provider>;
 
 export * from '@testing-library/react';

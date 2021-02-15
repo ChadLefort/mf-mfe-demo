@@ -12,7 +12,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import CallIcon from '@material-ui/icons/Call';
-import React from 'react';
+import React, { FC, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
@@ -46,11 +46,11 @@ type Props = {
   title: string;
 };
 
-export const Nav: React.FC<Props> = ({ title }) => {
+export const Nav: FC<Props> = ({ title }) => {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <Fragment>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
           <Box display="flex" alignItems="center">
@@ -82,6 +82,6 @@ export const Nav: React.FC<Props> = ({ title }) => {
           </List>
         </Box>
       </Drawer>
-    </React.Fragment>
+    </Fragment>
   );
 };

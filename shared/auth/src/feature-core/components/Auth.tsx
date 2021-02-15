@@ -1,12 +1,12 @@
 import { ErrorIcon } from '@fake-company/common-ui';
 import { Box, Container, LinearProgress } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useTypedSelector } from '../../app/reducer';
 import { fetchAuthToken } from '../auth.slice';
 
-export const Auth: React.FC = ({ children }) => {
+export const Auth: FC = ({ children }) => {
   const { isFetching, ssoToken, error } = useTypedSelector((state) => state.auth.core);
   const dispatch = useDispatch();
 

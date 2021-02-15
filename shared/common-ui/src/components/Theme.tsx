@@ -1,13 +1,13 @@
 import { ThemeProvider, createMuiTheme, responsiveFontSizes } from '@material-ui/core';
 import { blue, grey } from '@material-ui/core/colors';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import React from 'react';
+import React, { FC } from 'react';
 
 type Props = {
   primaryColor?: string;
 };
 
-export const Theme: React.FC<Props> = ({ children, primaryColor }) => {
+export const Theme: FC<Props> = ({ children, primaryColor }) => {
   const muiTheme = responsiveFontSizes(
     createMuiTheme({
       breakpoints: {

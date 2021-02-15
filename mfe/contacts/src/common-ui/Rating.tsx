@@ -2,7 +2,7 @@ import { Box, createStyles, makeStyles } from '@material-ui/core';
 import { yellow } from '@material-ui/core/colors';
 import StarIcon from '@material-ui/icons/Star';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
-import React from 'react';
+import React, { FC } from 'react';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -16,7 +16,7 @@ type Props = {
   rating: number;
 };
 
-export const Rating: React.FC<Props> = ({ rating }) => {
+export const Rating: FC<Props> = ({ rating }) => {
   const classes = useStyles();
   const filled = new Array(rating)
     .fill(null)

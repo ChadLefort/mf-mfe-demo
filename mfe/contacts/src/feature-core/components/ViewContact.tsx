@@ -13,7 +13,7 @@ import {
   createStyles,
   makeStyles
 } from '@material-ui/core';
-import React from 'react';
+import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Rating } from '../../common-ui/Rating';
@@ -43,7 +43,7 @@ type Props = {
   type: ContactType[];
 };
 
-export const ViewContact: React.FC<Props> = ({ type }) => {
+export const ViewContact: FC<Props> = ({ type }) => {
   const classes = useStyles();
   const { id } = useParams<{ id: string }>();
   const { isFetching, isError, data: contact } = useFetchContactQuery(id);

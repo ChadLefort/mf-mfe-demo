@@ -1,5 +1,5 @@
 import { Box, Grid, Theme as MuiTheme, Toolbar, createStyles, makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
 
 const useStyles = makeStyles((theme: MuiTheme) =>
   createStyles({
@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme: MuiTheme) =>
 );
 
 type Props = {
-  nav?: React.ReactNode;
+  nav?: ReactNode;
 };
 
-export const Layout: React.FC<Props> = ({ nav, children }) => {
+export const Layout: FC<Props> = ({ nav, children }) => {
   const classes = useStyles();
 
   return (

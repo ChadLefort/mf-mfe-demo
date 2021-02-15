@@ -1,7 +1,7 @@
 import { ErrorIcon } from '@fake-company/common-ui';
 import { ContactType, IContact } from '@fake-company/types';
 import { Container, Grid, LinearProgress, Paper, Theme, Typography, createStyles, makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { FC } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
 import { ContactForm } from '../../common-ui/Form';
@@ -22,7 +22,7 @@ type Props = {
   type: ContactType[];
 };
 
-export const EditContact: React.FC<Props> = ({ type }) => {
+export const EditContact: FC<Props> = ({ type }) => {
   const classes = useStyles();
   const history = useHistory();
   const { id } = useParams<{ id: string }>();

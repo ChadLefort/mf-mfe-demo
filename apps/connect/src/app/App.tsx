@@ -1,6 +1,6 @@
 import { Auth } from '@fake-company/auth';
 import { Layout, Theme } from '@fake-company/common-ui';
-import React, { lazy } from 'react';
+import React, { FC, lazy } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Providers } from './Providers';
@@ -11,7 +11,7 @@ const Nav = lazy(async () => {
   return { default: Nav };
 });
 
-export const App: React.FC = () => (
+export const App: FC = () => (
   <Providers>
     <Router basename="/connect">
       <Theme>

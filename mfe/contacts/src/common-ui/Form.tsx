@@ -1,7 +1,7 @@
 import { ContactType } from '@fake-company/types';
 import { Button, Grid, MenuItem, Slider, Theme, Typography, createStyles, makeStyles } from '@material-ui/core';
 import { Select, TextField, makeValidate } from 'mui-rff';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Field, Form } from 'react-final-form';
 import * as Yup from 'yup';
 
@@ -31,7 +31,7 @@ export function ContactForm<T extends { name: string; rating: number }>({
   onSubmit,
   initialValues,
   type
-}: React.PropsWithChildren<Props<T>>) {
+}: PropsWithChildren<Props<T>>) {
   const classes = useStyles();
 
   return (

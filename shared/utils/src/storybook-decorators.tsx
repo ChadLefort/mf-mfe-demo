@@ -1,7 +1,7 @@
 import { DeepPartial, Reducer, configureStore } from '@reduxjs/toolkit';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import React, { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -10,13 +10,13 @@ export function withProvider<T, R extends Reducer = any>(
   initialState?: DeepPartial<T>,
   store = configureStore({ reducer: rootReducer, preloadedState: initialState })
 ) {
-  return (story: () => React.ReactNode) => <Provider store={store}>{story()}</Provider>;
+  return (story: () => ReactNode) => <Provider store={store}>{story()}</Provider>;
 }
 
-export const withRouter = (initialEntries?: string[]) => (story: () => React.ReactNode) => (
+export const withRouter = (initialEntries?: string[]) => (story: () => ReactNode) => (
   <MemoryRouter initialEntries={initialEntries}>{story()}</MemoryRouter>
 );
-export const withMock = (mock: (adapter: MockAdapter) => void) => (story: () => React.ReactNode) => {
+export const withMock = (mock: (adapter: MockAdapter) => void) => (story: () => ReactNode) => {
   const apiMock = new MockAdapter(axios);
 
   useEffect(() => {

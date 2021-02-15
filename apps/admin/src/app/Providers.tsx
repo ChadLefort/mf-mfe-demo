@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { FC, Suspense, lazy } from 'react';
 import { Provider } from 'react-redux';
 
 import { store } from './store';
@@ -8,7 +8,7 @@ const ContactsProvider = lazy(async () => {
   return { default: ContactsProvider };
 });
 
-export const Providers: React.FC = ({ children }) => (
+export const Providers: FC = ({ children }) => (
   <Provider store={store}>
     <Suspense fallback={null}>
       <ContactsProvider store={store}>{children}</ContactsProvider>
