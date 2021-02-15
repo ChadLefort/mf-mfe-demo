@@ -1,5 +1,5 @@
-import { Box, Container, LinearProgress } from '@material-ui/core';
 import { ErrorIcon } from '@fake-company/common-ui';
+import { Box, Container, LinearProgress } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 

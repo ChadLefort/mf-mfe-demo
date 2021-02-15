@@ -1,4 +1,4 @@
-import { contactsFixture, authFixture, IContact } from '@fake-company/types';
+import { IContact, authFixture, contactsFixture } from '@fake-company/types';
 
 describe('queries', () => {
   beforeEach(() => {

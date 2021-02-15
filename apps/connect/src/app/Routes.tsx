@@ -1,6 +1,7 @@
-import React, { Suspense } from 'react';
 import { ContactType } from '@fake-company/types';
+import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import { store } from './store';
 
 const EditContact = React.lazy(() =>

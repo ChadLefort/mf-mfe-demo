@@ -1,9 +1,10 @@
-import React from 'react';
-import { AddContacts } from './AddContacts';
-import { contactsRootReducer, RootState } from '../../app/reducer';
+import { withTheme } from '@fake-company/common-ui';
 import { ContactType } from '@fake-company/types';
 import { withProvider } from '@fake-company/utils';
-import { withTheme } from '@fake-company/common-ui';
+import React from 'react';
+
+import { RootState, contactsRootReducer } from '../../app/reducer';
+import { AddContacts } from './AddContacts';
 
 const story = {
   component: AddContacts,

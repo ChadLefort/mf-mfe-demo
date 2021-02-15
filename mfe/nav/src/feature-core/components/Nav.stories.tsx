@@ -1,7 +1,8 @@
-import React from 'react';
-import { Nav } from './Nav';
-import { withRouter } from '@fake-company/utils';
 import { withTheme } from '@fake-company/common-ui';
+import { withRouter } from '@fake-company/utils';
+import React from 'react';
+
+import { Nav } from './Nav';
 
 const story = {
   component: Nav,

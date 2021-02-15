@@ -1,6 +1,7 @@
 import React from 'react';
-import { ErrorIcon } from './ErrorIcon';
+
 import { withTheme } from '../utils/storybook-decorators';
+import { ErrorIcon } from './ErrorIcon';
 
 const story = {
   component: ErrorIcon,

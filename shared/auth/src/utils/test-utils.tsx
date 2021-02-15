@@ -1,13 +1,15 @@
-import React from 'react';
-import { act, render as rtlRender, RenderOptions } from '@testing-library/react';
-import { configureStore, DeepPartial, Dispatch } from '@reduxjs/toolkit';
-import { createMemoryHistory } from 'history';
-import { authRootReducer } from '../app/reducer';
-import { Provider } from 'react-redux';
-import { RootState, store as origStore } from '../app/reducer';
-import { Router } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
+
+import { DeepPartial, Dispatch, configureStore } from '@reduxjs/toolkit';
+import { RenderOptions, act, render as rtlRender } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
+
+import { authRootReducer } from '../app/reducer';
+import { RootState, store as origStore } from '../app/reducer';
 
 function configureTestStore(initialState: DeepPartial<RootState> = {}) {
   const store = configureStore({ reducer: authRootReducer, preloadedState: initialState });

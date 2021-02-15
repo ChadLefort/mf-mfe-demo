@@ -1,12 +1,13 @@
+import { withTheme } from '@fake-company/common-ui';
+import { ContactType, contactsFixture } from '@fake-company/types';
+import { withMock, withProvider, withRouter } from '@fake-company/utils';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import { EditContact } from './EditContact';
-import { contactsFixture, ContactType } from '@fake-company/types';
+import { Route } from 'react-router-dom';
+
 import { contactsRootReducer } from '../../app/reducer';
 import { RootState } from '../../app/reducer';
-import { Route } from 'react-router-dom';
-import { withMock, withProvider, withRouter } from '@fake-company/utils';
-import { withTheme } from '@fake-company/common-ui';
+import { EditContact } from './EditContact';
 
 const mock = (axiosMock: MockAdapter) => {
   axiosMock.onGet('/api/contacts/89222b2d-8d06-41ff-82cf-c989dd90de24').reply(

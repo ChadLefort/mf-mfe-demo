@@ -1,6 +1,7 @@
-import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import { authReducer } from '../feature-core/auth.slice';
+import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createSelectorHook, useDispatch } from 'react-redux';
+
+import { authReducer } from '../feature-core/auth.slice';
 
 export const authRootReducer = {
   auth: combineReducers({ core: authReducer })

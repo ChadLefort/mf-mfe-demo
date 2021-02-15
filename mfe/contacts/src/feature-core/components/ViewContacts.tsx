@@ -1,16 +1,13 @@
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import React from 'react';
+import { ErrorIcon } from '@fake-company/common-ui';
+import { ContactType } from '@fake-company/types';
 import {
   Avatar,
   Button,
   Container,
-  createStyles,
   Grid,
   IconButton,
   LinearProgress,
   Link as MuiLink,
-  makeStyles,
   Paper,
   Table,
   TableBody,
@@ -20,13 +17,17 @@ import {
   TableRow,
   Theme,
   Tooltip,
-  Typography
+  Typography,
+  createStyles,
+  makeStyles
 } from '@material-ui/core';
-import { ContactType } from '@fake-company/types';
-import { ErrorIcon } from '@fake-company/common-ui';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { Rating } from '../../common-ui/Rating';
-import { useFetchContactsQuery, useDeleteContactMutation } from '../contacts.api';
+import { useDeleteContactMutation, useFetchContactsQuery } from '../contacts.api';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

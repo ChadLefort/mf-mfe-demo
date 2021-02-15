@@ -1,7 +1,9 @@
-import baseWebpackConfig, { moduleFederationShared } from '../../webpack.config.base';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import { container, WebpackOptionsNormalized } from 'webpack';
+
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { WebpackOptionsNormalized, container } from 'webpack';
+
+import baseWebpackConfig, { moduleFederationShared } from '../../webpack.config.base';
 
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
   const isDevelopment = argv.mode === 'development';
@@ -33,6 +35,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   if (isDevelopment) {
     config.plugins?.push(
       new HtmlWebpackPlugin({
+        favicon: '../../assets/favicon.ico',
         template: './public/index.html'
       })
     );

@@ -1,7 +1,8 @@
-import React from 'react';
 import { Auth } from '@fake-company/auth';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Layout, Theme } from '@fake-company/common-ui';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import { Providers } from './Providers';
 import { Routes } from './Routes';
 

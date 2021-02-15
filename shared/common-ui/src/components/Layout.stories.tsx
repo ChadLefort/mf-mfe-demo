@@ -1,6 +1,7 @@
 import React from 'react';
-import { Layout } from './Layout';
+
 import { withTheme } from '../utils/storybook-decorators';
+import { Layout } from './Layout';
 
 const story = {
   component: Layout,

@@ -1,7 +1,7 @@
 import { authRootReducer } from '@fake-company/auth';
 import { InjectStore } from '@fake-company/types';
+import { addMiddleware, injectedMiddleware } from '@fake-company/utils';
 import { Reducer, combineReducers, configureStore } from '@reduxjs/toolkit';
-import { injectedMiddleware, addMiddleware } from '@fake-company/utils';
 import { setupListeners } from '@rtk-incubator/rtk-query';
 
 const staticReducers = {

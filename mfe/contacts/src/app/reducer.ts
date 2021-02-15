@@ -1,7 +1,8 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import { createSelectorHook, useDispatch } from 'react-redux';
-import { contactsApi } from '../feature-core/contacts.api';
+import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@rtk-incubator/rtk-query';
+import { createSelectorHook, useDispatch } from 'react-redux';
+
+import { contactsApi } from '../feature-core/contacts.api';
 
 export const contactsRootReducer = {
   [contactsApi.reducerPath]: contactsApi.reducer

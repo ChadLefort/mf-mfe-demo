@@ -1,7 +1,8 @@
-import React from 'react';
-import { ContactForm } from './Form';
 import { withTheme } from '@fake-company/common-ui';
 import { ContactType } from '@fake-company/types';
+import React from 'react';
+
+import { ContactForm } from './Form';
 
 const story = {
   component: ContactForm,

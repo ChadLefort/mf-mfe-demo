@@ -1,4 +1,4 @@
-import { contactsFixture, authFixture, ContactType, IContact } from '@fake-company/types';
+import { ContactType, IContact, authFixture, contactsFixture } from '@fake-company/types';
 
 describe('mutations', () => {
   beforeEach(() => {

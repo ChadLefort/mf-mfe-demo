@@ -1,9 +1,10 @@
+import { ContactType, contactsFixture } from '@fake-company/types';
+import { cleanup, waitForElementToBeRemoved } from '@testing-library/react';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import { cleanup, waitForElementToBeRemoved } from '@testing-library/react';
+
 import { renderWithProviders, screen } from '../../utils/test-utils';
-import { contactsFixture, ContactType } from '@fake-company/types';
 import { ViewContacts } from './ViewContacts';
 
 const axiosMock = new MockAdapter(axios);

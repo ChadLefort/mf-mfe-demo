@@ -1,10 +1,11 @@
-import React from 'react';
-import { ContactForm } from '../../common-ui/Form';
-import { ContactType, IContact } from '@fake-company/types';
-import { createStyles, Grid, makeStyles, Paper, Theme, Typography, Container, LinearProgress } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
-import { useAddContactMutation } from '../contacts.api';
 import { ErrorIcon } from '@fake-company/common-ui';
+import { ContactType, IContact } from '@fake-company/types';
+import { Container, Grid, LinearProgress, Paper, Theme, Typography, createStyles, makeStyles } from '@material-ui/core';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { ContactForm } from '../../common-ui/Form';
+import { useAddContactMutation } from '../contacts.api';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

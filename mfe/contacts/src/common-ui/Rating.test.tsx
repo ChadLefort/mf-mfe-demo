@@ -1,6 +1,7 @@
-import React from 'react';
-import { Rating } from './Rating';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+
+import { Rating } from './Rating';
 
 describe('Rating', () => {
   it('should render successfully', () => {

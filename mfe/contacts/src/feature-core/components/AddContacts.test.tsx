@@ -1,10 +1,11 @@
+import { ContactType, IContact } from '@fake-company/types';
+import { fireEvent, screen } from '@testing-library/react';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
+
 import { actWithReturn, getQueryActionResult, renderWithProviders } from '../../utils/test-utils';
 import { AddContacts } from './AddContacts';
-import { ContactType, IContact } from '@fake-company/types';
-import { fireEvent, screen } from '@testing-library/react';
 
 const axiosMock = new MockAdapter(axios);
 

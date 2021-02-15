@@ -1,6 +1,7 @@
-import React from 'react';
-import { Rating } from './Rating';
 import { withTheme } from '@fake-company/common-ui';
+import React from 'react';
+
+import { Rating } from './Rating';
 
 const story = {
   component: Rating,

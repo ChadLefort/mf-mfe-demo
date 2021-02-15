@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import { InjectStore } from '@fake-company/types';
+import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
+
 import { contactsApi } from '../contacts.api';
 
 type Props = {

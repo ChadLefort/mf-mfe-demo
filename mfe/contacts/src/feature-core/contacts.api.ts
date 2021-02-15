@@ -1,6 +1,6 @@
 import { IContact } from '@fake-company/types';
-import { createApi, retry } from '@rtk-incubator/rtk-query';
 import { axiosBaseQuery } from '@fake-company/utils';
+import { createApi, retry } from '@rtk-incubator/rtk-query';
 
 const type = 'contacts';
 

@@ -1,5 +1,5 @@
-import axios, { AxiosRequestConfig, AxiosError } from 'axios';
 import { BaseQueryFn } from '@rtk-incubator/rtk-query';
+import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
 export const axiosBaseQuery = (
   { baseUrl }: { baseUrl: string } = { baseUrl: '' }

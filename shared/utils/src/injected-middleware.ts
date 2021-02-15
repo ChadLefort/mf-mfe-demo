@@ -1,4 +1,4 @@
-import { compose, Middleware, MiddlewareAPI } from '@reduxjs/toolkit';
+import { Middleware, MiddlewareAPI, compose } from '@reduxjs/toolkit';
 
 const createInjectedMiddleware = () => {
   const allInjectedMiddleware: ReturnType<Middleware>[] = [];

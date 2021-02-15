@@ -1,21 +1,22 @@
-import React from 'react';
+import { ErrorIcon } from '@fake-company/common-ui';
+import { ContactType } from '@fake-company/types';
 import {
   Avatar,
   Container,
-  createStyles,
   Grid,
   LinearProgress,
   List,
   ListItem,
   ListItemText,
-  makeStyles,
   Paper,
-  Theme
+  Theme,
+  createStyles,
+  makeStyles
 } from '@material-ui/core';
-import { ContactType } from '@fake-company/types';
-import { ErrorIcon } from '@fake-company/common-ui';
-import { Rating } from '../../common-ui/Rating';
+import React from 'react';
 import { useParams } from 'react-router-dom';
+
+import { Rating } from '../../common-ui/Rating';
 import { useFetchContactQuery } from '../contacts.api';
 
 const useStyles = makeStyles((theme: Theme) =>

@@ -1,12 +1,13 @@
+import { authFixture } from '@fake-company/types';
+import { waitForElementToBeRemoved } from '@testing-library/react';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import { fetchAuthToken, initialState } from '../auth.slice';
-import { getActionResult, renderWithProviders, screen } from '../../utils/test-utils';
-import { authFixture } from '@fake-company/types';
 import { Route } from 'react-router-dom';
+
+import { getActionResult, renderWithProviders, screen } from '../../utils/test-utils';
+import { fetchAuthToken, initialState } from '../auth.slice';
 import { Auth } from './Auth';
-import { waitForElementToBeRemoved } from '@testing-library/react';
 
 const axiosMock = new MockAdapter(axios);
 

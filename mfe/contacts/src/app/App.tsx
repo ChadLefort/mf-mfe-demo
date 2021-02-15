@@ -1,11 +1,12 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { ContactType } from '@fake-company/types';
-import { Provider } from 'react-redux';
-import { store } from './reducer';
-import { ViewContacts } from '../feature-core/components/ViewContacts';
 import { Theme } from '@fake-company/common-ui';
+import { ContactType } from '@fake-company/types';
 import { Box } from '@material-ui/core';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import { ViewContacts } from '../feature-core/components/ViewContacts';
+import { store } from './reducer';
 
 export const App: React.FC = () => (
   <Provider store={store}>

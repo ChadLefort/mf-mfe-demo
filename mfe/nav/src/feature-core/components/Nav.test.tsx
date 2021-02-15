@@ -1,6 +1,7 @@
 import React from 'react';
-import { Nav } from './Nav';
+
 import { renderWithRouter } from '../../utils/test-utils';
+import { Nav } from './Nav';
 
 describe('Nav', () => {
   it('should render successfully', () => {
