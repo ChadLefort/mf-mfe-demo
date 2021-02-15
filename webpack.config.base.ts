@@ -11,7 +11,7 @@ import WebpackDevServer from 'webpack-dev-server';
 
 declare module 'webpack' {
   interface Configuration {
-    devServer?: WebpackDevServer.Configuration;
+    devServer?: { static?: string } & WebpackDevServer.Configuration;
   }
 }
 
@@ -92,16 +92,20 @@ const webpackConfig = (name: string, entry: string | undefined, outputPath: stri
         }
       ]
     },
+    stats: 'errors-warnings',
     devServer: {
-      overlay: true,
+      host: 'localhost',
+      hot: false,
       compress: true,
-      stats: 'errors-warnings',
       historyApiFallback: true,
       proxy: {
         '/api': {
           target: 'http://localhost:4000',
           secure: false
         }
+      },
+      headers: {
+        'Access-Control-Allow-Origin': '*'
       }
     },
     optimization: {
@@ -131,6 +135,7 @@ const webpackConfig = (name: string, entry: string | undefined, outputPath: stri
         }
       }),
       new ForkTsCheckerWebpackPlugin({
+        async: false,
         eslint: {
           files: './src/**/*.{ts,tsx,js,jsx}'
         }

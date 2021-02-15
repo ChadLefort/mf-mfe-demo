@@ -14,7 +14,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
 
   config.devServer = {
     ...config.devServer,
-    contentBase: out,
+    static: out,
     port: 1336
   };
 
