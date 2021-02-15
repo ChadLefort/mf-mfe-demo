@@ -1,13 +1,13 @@
 import path from 'path';
 
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
-import { Compiler, DefinePlugin, Configuration, WebpackOptionsNormalized, WebpackPluginInstance } from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
-import TerserPlugin from 'terser-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+import { Compiler, Configuration, DefinePlugin, WebpackOptionsNormalized, WebpackPluginInstance } from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
 
 declare module 'webpack' {
   interface Configuration {
@@ -93,6 +93,7 @@ const webpackConfig = (name: string, entry: string | undefined, outputPath: stri
       ]
     },
     devServer: {
+      overlay: true,
       compress: true,
       stats: 'errors-warnings',
       historyApiFallback: true,

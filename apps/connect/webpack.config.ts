@@ -33,6 +33,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
       }
     }),
     new HtmlWebpackPlugin({
+      favicon: '../../assets/favicon.ico',
       template: './public/index.html'
     })
   ]);
