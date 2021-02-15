@@ -1,13 +1,12 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Provider } from 'react-redux';
 
 import { store } from './store';
 
-const ContactsProvider = React.lazy(() =>
-  import('mfe_contacts/feature-core/components/ContactsProvider').then((module) => ({
-    default: module.ContactsProvider
-  }))
-);
+const ContactsProvider = lazy(async () => {
+  const { ContactsProvider } = await import('mfe_contacts/feature-core/components/ContactsProvider');
+  return { default: ContactsProvider };
+});
 
 export const Providers: React.FC = ({ children }) => (
   <Provider store={store}>

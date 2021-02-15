@@ -1,30 +1,33 @@
 import { ContactType } from '@fake-company/types';
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { store } from './store';
 
-const EditContact = React.lazy(() =>
-  import('mfe_contacts/feature-core/components/EditContact').then((module) => ({ default: module.EditContact }))
-);
+const EditContact = lazy(async () => {
+  const { EditContact } = await import('mfe_contacts/feature-core/components/EditContact');
+  return { default: EditContact };
+});
 
-const AddContacts = React.lazy(() =>
-  import('mfe_contacts/feature-core/components/AddContacts').then((module) => ({ default: module.AddContacts }))
-);
+const AddContacts = lazy(async () => {
+  const { AddContacts } = await import('mfe_contacts/feature-core/components/AddContacts');
+  return { default: AddContacts };
+});
 
-const ViewContact = React.lazy(() =>
-  import('mfe_contacts/feature-core/components/ViewContact').then((module) => ({ default: module.ViewContact }))
-);
+const ViewContact = lazy(async () => {
+  const { ViewContact } = await import('mfe_contacts/feature-core/components/ViewContact');
+  return { default: ViewContact };
+});
 
-const ViewContacts = React.lazy(() =>
-  import('mfe_contacts/feature-core/components/ViewContacts').then((module) => ({ default: module.ViewContacts }))
-);
+const ViewContacts = lazy(async () => {
+  const { ViewContacts } = await import('mfe_contacts/feature-core/components/ViewContacts');
+  return { default: ViewContacts };
+});
 
-const ContactsProvider = React.lazy(() =>
-  import('mfe_contacts/feature-core/components/ContactsProvider').then((module) => ({
-    default: module.ContactsProvider
-  }))
-);
+const ContactsProvider = lazy(async () => {
+  const { ContactsProvider } = await import('mfe_contacts/feature-core/components/ContactsProvider');
+  return { default: ContactsProvider };
+});
 
 export const Routes: React.FC = () => (
   <Suspense fallback={null}>
