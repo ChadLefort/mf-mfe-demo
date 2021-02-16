@@ -1,7 +1,7 @@
 # Architecture
 
 <div align="center" style="padding: 20px">
-    <img alt="Architecture Diagram" src="./assets/architecture.png">
+    <img alt="Architecture Diagram" src="./architecture.png">
 </div>
 
 ## Directory/File Structure
@@ -74,6 +74,6 @@ This application also uses [Typescript](https://www.typescriptlang.org/). I've b
 ## Jenkins Pipeline
 
 <div align="center" style="padding: 20px">
-    <img alt="Jenkins Pipeline" src="./assets/pipeline.png">
+    <img alt="Jenkins Pipeline" src="./pipeline.png">
     <p>An example of a pipeline job where only things that have changed are built and deployed</p>
 </div>

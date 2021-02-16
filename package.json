@@ -8,7 +8,7 @@
     "test": "nx run-many --target=test --all --parallel",
     "e2e": " concurrently -k -s first -p \"none\" \"nx run-many --target=e2e --all --parallel\" \"pnpm run start-all\"",
     "e2e-ci": " concurrently -k -s first -p \"none\" \"nx run-many --target=e2e-ci --all --parallel\" \"pnpm run start-all\"",
-    "json-server": "json-server ./tools/json-server/index.js --watch --routes ./tools/json-server/routes.json --port 4000 --delay 1000"
+    "json-server": "json-server ./config/json-server/index.js --watch --routes ./config/json-server/routes.json --port 4000 --delay 1000"
   },
   "engines": {
     "node": ">=10",

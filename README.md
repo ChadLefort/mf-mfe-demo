@@ -31,7 +31,7 @@ cd shared/nav && pnpm run start
 
 ## Architecture
 
-Learn more about the application's structure by [reading this doc](./ARCHITECTURE.md).
+Learn more about the application's structure by [reading this doc](./docs/ARCHITECTURE.md).
 
 ## More Info
 

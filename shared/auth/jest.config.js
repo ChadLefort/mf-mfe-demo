@@ -1,5 +1,5 @@
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
-const { compilerOptions } = require('../../tsconfig.base.json');
+const { compilerOptions } = require('../../config/tsconfig.app.json');
 
 module.exports = {
   preset: 'ts-jest',
