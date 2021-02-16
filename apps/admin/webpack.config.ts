@@ -11,11 +11,23 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   const entry = './src/index.ts';
   const out = path.join(__dirname, '/dist');
   const config = baseWebpackConfig(name, entry, out)(argv);
+  const publicPath = '/admin';
+
+  config.output = {
+    ...config.output,
+    publicPath
+  };
 
   config.devServer = {
     ...config.devServer,
     static: out,
-    port: 1336
+    port: 1336,
+    historyApiFallback: {
+      index: publicPath
+    },
+    dev: {
+      publicPath
+    }
   };
 
   config.plugins = config.plugins?.concat([

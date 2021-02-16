@@ -11,11 +11,23 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   const out = path.join(__dirname, '/dist');
   const config = baseWebpackConfig(name, entry, out)(argv);
   const isDevelopment = argv.mode === 'development';
+  const publicPath = '/connect';
+
+  config.output = {
+    ...config.output,
+    publicPath
+  };
 
   config.devServer = {
     ...config.devServer,
     static: out,
-    port: 1337
+    port: 1337,
+    historyApiFallback: {
+      index: publicPath
+    },
+    dev: {
+      publicPath
+    }
   };
 
   config.plugins = config.plugins?.concat([

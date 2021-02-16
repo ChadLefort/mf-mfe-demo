@@ -11,7 +11,7 @@ import WebpackDevServer from 'webpack-dev-server';
 
 declare module 'webpack' {
   interface Configuration {
-    devServer?: { static?: string } & WebpackDevServer.Configuration;
+    devServer?: { static?: string; dev?: { publicPath?: string } } & WebpackDevServer.Configuration;
   }
 }
 

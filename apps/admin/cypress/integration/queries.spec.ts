@@ -21,12 +21,12 @@ describe('queries', () => {
 
   it('should have have a table with contacts', () => {
     cy.findByRole('table', { name: 'simple table' }).should('exist');
-    cy.findAllByRole('link').should('have.length', 5);
+    cy.findAllByRole('row').should('have.length', 6);
     cy.findAllByRole('row').first().should('contain', 'Type');
   });
 
   it('should allow you to view a single contact', () => {
-    cy.findAllByRole('link').last().click();
+    cy.findAllByRole('row').last().findByRole('link').click();
     cy.url().should('equal', 'http://localhost:1336/admin/fd546b4e-747d-448f-abaf-b0d119bae119');
     cy.findByText('Chloe Martinez').should('exist');
     cy.findByText('Customer').should('exist');
