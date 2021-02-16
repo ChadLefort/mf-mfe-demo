@@ -3,10 +3,10 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { WebpackOptionsNormalized, container } from 'webpack';
 
+import ExternalTemplateRemotesPlugin from '../../config/ExternalTemplateRemotesPlugin';
 import baseWebpackConfig, { moduleFederationShared } from '../../config/webpack.config.base';
 
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
-  const isDevelopment = argv.mode === 'development';
   const { name, dependencies } = require('./package.json');
   const entry = './src/index.ts';
   const out = path.join(__dirname, '/dist');
@@ -34,18 +34,15 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
     new container.ModuleFederationPlugin({
       name: '@fake-company/admin',
       remotes: {
-        mfe_nav: isDevelopment
-          ? 'mfe_nav@http://localhost:1338/remoteEntry.js'
-          : 'mfe_nav@http://localhost/nav/remoteEntry.js',
-        mfe_contacts: isDevelopment
-          ? 'mfe_contacts@http://localhost:1339/remoteEntry.js'
-          : 'mfe_contacts@http://localhost/contacts/remoteEntry.js'
+        mfe_nav: 'mfe_nav@[__mfe_nav__]/remoteEntry.js',
+        mfe_contacts: 'mfe_contacts@[__mfe_contacts__]/remoteEntry.js'
       },
       shared: {
         ...dependencies,
         ...moduleFederationShared
       }
     }),
+    new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
       favicon: '../../assets/favicon.ico',
       template: './public/index.html'
