@@ -1,12 +1,10 @@
-import { ErrorIcon } from '@fake-company/common-ui';
+import { ErrorIcon, LoadingBar } from '@fake-company/common-ui';
 import { ContactType } from '@fake-company/types';
 import {
   Avatar,
   Button,
-  Container,
   Grid,
   IconButton,
-  LinearProgress,
   Link as MuiLink,
   Paper,
   Table,
@@ -114,8 +112,6 @@ export const ViewContacts: FC<Props> = ({ type }) => {
   ) : isError ? (
     <ErrorIcon />
   ) : (
-    <Container>
-      <LinearProgress />
-    </Container>
+    <LoadingBar />
   );
 };

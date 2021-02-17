@@ -11,4 +11,5 @@ const story = {
 
 export default story;
 
-export const primary = () => <ErrorIcon />;
+export const noMessage = () => <ErrorIcon />;
+export const withMessage = () => <ErrorIcon message="Sorry there was an error" />;

@@ -1,6 +1,6 @@
-import { ErrorIcon } from '@fake-company/common-ui';
+import { ErrorIcon, LoadingBar } from '@fake-company/common-ui';
 import { ContactType, IContact } from '@fake-company/types';
-import { Container, Grid, LinearProgress, Paper, Theme, Typography, createStyles, makeStyles } from '@material-ui/core';
+import { Grid, Paper, Theme, Typography, createStyles, makeStyles } from '@material-ui/core';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -55,8 +55,6 @@ export const AddContacts: FC<Props> = ({ type }) => {
   ) : isError ? (
     <ErrorIcon />
   ) : (
-    <Container>
-      <LinearProgress />
-    </Container>
+    <LoadingBar />
   );
 };
