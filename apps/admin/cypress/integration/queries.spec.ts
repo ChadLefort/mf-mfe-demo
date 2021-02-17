@@ -1,13 +1,15 @@
-import { IContact, authFixture, contactsFixture } from '@fake-company/types';
+import { IContact, authFixture, contactsFixture, mfeFixture } from '@fake-company/types';
 
 describe('queries', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.intercept('GET', '/api/mfe', mfeFixture);
     cy.intercept('GET', '/api/auth', authFixture);
     cy.intercept('GET', '/api/contacts/*', (req) =>
       req.reply(contactsFixture.find(({ id }) => id === req.url.split('/').pop()) as IContact)
     );
     cy.intercept('GET', '/api/contacts', contactsFixture);
+
+    cy.visit('/');
   });
 
   it('should contain app name in toolbar', () => {
