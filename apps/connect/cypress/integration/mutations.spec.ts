@@ -1,12 +1,14 @@
-import { ContactType, IContact, authFixture, contactsFixture } from '@fake-company/types';
+import { ContactType, IContact, authFixture, contactsFixture, mfeFixture } from '@fake-company/types';
 
 describe('mutations', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.intercept('GET', '/api/mfe', mfeFixture);
     cy.intercept('GET', '/api/auth', authFixture);
     cy.intercept('GET', '/api/contacts/*', (req) =>
       req.reply(contactsFixture.find(({ id }) => id === req.url.split('/').pop()) as IContact)
     );
+
+    cy.visit('/');
   });
 
   it('should add a contact', () => {

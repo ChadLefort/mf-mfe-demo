@@ -1,0 +1,12 @@
+[
+  {
+    "name": "mfe_nav",
+    "version": "1.0.0",
+    "url": "//localhost/nav/1.0.0"
+  },
+  {
+    "name": "mfe_contacts",
+    "version": "1.0.0",
+    "url": "//localhost/contacts/1.0.0"
+  }
+]

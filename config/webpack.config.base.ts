@@ -11,7 +11,7 @@ import WebpackDevServer from 'webpack-dev-server';
 
 declare module 'webpack' {
   interface Configuration {
-    devServer?: { static?: string } & WebpackDevServer.Configuration;
+    devServer?: { static?: string; dev?: { publicPath?: string } } & WebpackDevServer.Configuration;
   }
 }
 
@@ -39,7 +39,7 @@ const webpackConfig = (name: string, entry: string | undefined, outputPath: stri
         // @ts-ignore because of defintion issue with webpack 4 types
         new TsconfigPathsPlugin()
       ],
-      modules: [path.join(__dirname, '/node_modules'), path.join(__dirname, '/node_modules/.pnpm/node_modules')],
+      modules: [path.join(__dirname, '../node_modules'), path.join(__dirname, '../node_modules/.pnpm/node_modules')],
       extensions: ['.ts', '.tsx', '.js']
     },
     output: {
@@ -61,7 +61,7 @@ const webpackConfig = (name: string, entry: string | undefined, outputPath: stri
           loader: 'babel-loader',
           exclude: /node_modules/,
           options: {
-            configFile: path.join(__dirname, '/.babelrc')
+            configFile: path.join(__dirname, '../.babelrc')
           }
         },
         {

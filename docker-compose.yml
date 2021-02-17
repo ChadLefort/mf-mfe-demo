@@ -5,13 +5,13 @@ services:
     container_name: fake-company-nginx
     restart: unless-stopped
     volumes:
-      - ./tools/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
     ports:
       - 80:80
     networks:
       - fake-company-network
   fake-company-api:
-    build: ./tools/json-server
+    build: ./config/json-server
     ports:
       - '4000:4000'
     networks:

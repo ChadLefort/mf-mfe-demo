@@ -2,7 +2,6 @@ import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import { Configuration } from 'webpack';
 
 const webpackConfig = (configFile: string) => ({ config }: { config: Configuration }) => {
-  // @ts-ignore
   const tsPaths = new TsconfigPathsPlugin({
     configFile
   });

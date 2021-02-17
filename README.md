@@ -31,7 +31,7 @@ cd shared/nav && pnpm run start
 
 ## Architecture
 
-Learn more about the application's structure by [reading this doc](./ARCHITECTURE.md).
+Learn more about the application's structure by [reading this doc](./docs/ARCHITECTURE.md).
 
 ## More Info
 
@@ -43,19 +43,14 @@ Learn more about the application's structure by [reading this doc](./ARCHITECTUR
 
 ## Todo
 
-- Probably more optimizations to the webpack configs
+- Probably more optimizations to the webpack configs to be production ready
 - Get e2e test working for multiple affected apps in CI pipeline
-- Look into [redux-dynamic-modules](https://github.com/Microsoft/redux-dynamic-modules)
-- Look into [single-spa](https://single-spa.js.org/) if even needed
+- Clean up versioning of federated modules
 - Keep an eye on [HMR](https://github.com/pmmmwh/react-refresh-webpack-plugin/issues/126)
 - Probably something else I'm forgetting...
 
 ## Questions
 
-- Think about how versioning should work with federated modules
-  - Maybe with route based versions like `https://fakecompany.com/1.0.0/remoteEntry.js` and managing the versions for the host application through environment variables?
-  - https://github.com/module-federation/module-federation-examples/issues/566
-  - https://www.youtube.com/watch?v=96_TMYue6Dk (Possible whenever more info around this comes out)
 - Should everyting be a federated module or should there be a mix of federated modules/shared libraries?
 - How can we reduce risks?
   - e2e test
