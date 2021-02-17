@@ -3,8 +3,8 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { WebpackOptionsNormalized, container } from 'webpack';
 
-import ExternalTemplateRemotesPlugin from '../../config/ExternalTemplateRemotesPlugin';
-import baseWebpackConfig, { moduleFederationShared } from '../../config/webpack.config.base';
+import { ExternalTemplateRemotesPlugin } from '../../config/webpack/ExternalTemplateRemotesPlugin';
+import baseWebpackConfig, { moduleFederationShared } from '../../config/webpack/webpack.config.base';
 
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
   const { name, dependencies } = require('./package.json');

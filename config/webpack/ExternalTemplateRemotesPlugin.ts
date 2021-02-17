@@ -1,35 +1,42 @@
-const extractUrlAndGlobal = require('webpack/lib/util/extractUrlAndGlobal');
-const { RawSource } = require('webpack-sources');
+import webpack from 'webpack';
+import { RawSource } from 'webpack-sources';
 
+const extractUrlAndGlobal = require('webpack/lib/util/extractUrlAndGlobal');
 const PLUGIN_NAME = 'ExternalTemplateRemotesPlugin';
 
-class ExternalTemplateRemotesPlugin {
-  apply(compiler) {
+type Module = { externalType: string; request: string } & webpack.Module;
+
+export class ExternalTemplateRemotesPlugin implements webpack.WebpackPluginInstance {
+  apply(compiler: webpack.Compiler) {
     compiler.hooks.make.tap(PLUGIN_NAME, (compilation) => {
-      const scriptExternalModules = [];
+      const scriptExternalModules: webpack.Module[] = [];
 
       compilation.hooks.buildModule.tap(PLUGIN_NAME, (module) => {
-        if (module.constructor.name === 'ExternalModule' && module.externalType === 'script') {
+        if (module.constructor.name === 'ExternalModule' && (module as Module).externalType === 'script') {
           scriptExternalModules.push(module);
         }
       });
 
       compilation.hooks.afterCodeGeneration.tap(PLUGIN_NAME, function () {
-        scriptExternalModules.map((module) => {
-          const urlTemplate = extractUrlAndGlobal(module.request)[0];
+        scriptExternalModules.forEach((module) => {
+          const urlTemplate = (extractUrlAndGlobal((module as Module).request) as string[])[0];
           const urlExpression = toExpression(urlTemplate);
-          const sourceMap = compilation.codeGenerationResults.get(module).sources;
+          // @ts-ignore
+          const sourceMap = compilation.codeGenerationResults.get(module).sources as Map<string, RawSource>;
           const rawSource = sourceMap.get('javascript');
-          sourceMap.set('javascript', new RawSource(rawSource.source().replace(`"${urlTemplate}"`, urlExpression)));
+          sourceMap.set(
+            'javascript',
+            new RawSource((rawSource?.source() as string).replace(`"${urlTemplate}"`, urlExpression))
+          );
         });
       });
     });
   }
 }
 
-function toExpression(templateUrl) {
-  const result = [];
-  const current = [];
+const toExpression = (templateUrl: string) => {
+  const result: string[] = [];
+  const current: string[] = [];
   let isExpression = false;
   let invalid = false;
 
@@ -74,6 +81,4 @@ function toExpression(templateUrl) {
   }
 
   return result.join(' + ');
-}
-
-module.exports = ExternalTemplateRemotesPlugin;
+};
