@@ -12,8 +12,10 @@ export const ContactsProvider: FC<Props> = ({ store, children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    store.injectMiddleware(contactsApi.middleware);
-    store.injectReducer(contactsApi.reducerPath, contactsApi.reducer);
+    console.log(store.getState());
+
+    store.middlewareManager.add(contactsApi.middleware);
+    store.reducerManager.add(contactsApi.reducerPath, contactsApi.reducer);
     setIsLoaded(Object.keys(store.getState()).some((k) => k === contactsApi.reducerPath));
   }, [store]);
 

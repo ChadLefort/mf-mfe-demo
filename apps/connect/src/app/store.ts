@@ -1,7 +1,7 @@
 import { authRootReducer } from '@fake-company/auth';
 import { InjectStore } from '@fake-company/types';
-import { addMiddleware, injectedMiddleware } from '@fake-company/utils';
-import { Reducer, combineReducers, configureStore } from '@reduxjs/toolkit';
+import { createReducerManager, injectedMiddleware, middlewareManager } from '@fake-company/utils';
+import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@rtk-incubator/rtk-query';
 
 const staticReducers = {
@@ -10,26 +10,18 @@ const staticReducers = {
 
 const createStore = (initialState?: any) => {
   const store = configureStore({
-    reducer: createReducer(),
+    reducer: staticReducers,
     preloadedState: initialState,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(injectedMiddleware)
   }) as InjectStore;
 
-  store.asyncReducers = {};
+  const reducerManager = createReducerManager(store, staticReducers);
 
-  store.injectReducer = (key, asyncReducer) => {
-    store.asyncReducers[key] = asyncReducer;
-    store.replaceReducer(createReducer(store.asyncReducers));
-  };
-
-  store.injectMiddleware = (asyncMiddleware) => {
-    addMiddleware(asyncMiddleware);
-  };
+  store.reducerManager = reducerManager;
+  store.middlewareManager = middlewareManager;
 
   return store;
 };
-
-const createReducer = (asyncReducers?: Reducer) => combineReducers({ ...staticReducers, ...asyncReducers });
 
 export const store = createStore();
 
