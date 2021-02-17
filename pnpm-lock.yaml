@@ -339,8 +339,10 @@ importers:
       react-router-dom: 5.2.0
   shared/types:
     devDependencies:
+      '@fake-company/utils': link:../utils
       '@reduxjs/toolkit': 1.5.0
     specifiers:
+      '@fake-company/utils': 1.0.0
       '@reduxjs/toolkit': 1.5.0
   shared/utils:
     dependencies:

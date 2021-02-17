@@ -1,5 +1,5 @@
-import { ErrorIcon } from '@fake-company/common-ui';
-import { Box, Container, LinearProgress } from '@material-ui/core';
+import { ErrorIcon, LoadingBar } from '@fake-company/common-ui';
+import { Box } from '@material-ui/core';
 import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -19,10 +19,8 @@ export const Auth: FC = ({ children }) => {
   ) : error ? (
     <ErrorIcon />
   ) : (
-    <Container>
-      <Box margin={2}>
-        <LinearProgress />
-      </Box>
-    </Container>
+    <Box margin={2}>
+      <LoadingBar />
+    </Box>
   );
 };

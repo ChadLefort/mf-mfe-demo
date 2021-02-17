@@ -1,27 +1,32 @@
 import { Auth } from '@fake-company/auth';
-import { Layout, Theme } from '@fake-company/common-ui';
+import { ErrorBoundary, Layout, Theme, withFederatedModule } from '@fake-company/common-ui';
 import { red } from '@material-ui/core/colors';
 import React, { FC, lazy } from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { Providers } from './Providers';
 import { Routes } from './Routes';
+import { store } from './store';
 
-const Nav = lazy(async () => {
-  const { Nav } = await import('mfe_nav/feature-core/components/Nav');
-  return { default: Nav };
-});
+const Nav = withFederatedModule(
+  lazy(async () => {
+    const { Nav } = await import('mfe_nav/feature-core/components/Nav');
+    return { default: Nav };
+  })
+);
 
 export const App: FC = () => (
-  <Providers>
-    <Router basename="/admin">
-      <Theme primaryColor={red[900]}>
-        <Auth>
-          <Layout nav={<Nav title="Admin" />}>
-            <Routes />
-          </Layout>
-        </Auth>
-      </Theme>
-    </Router>
-  </Providers>
+  <Theme primaryColor={red[900]}>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <Router basename="/admin">
+          <Auth>
+            <Layout nav={<Nav title="Admin" />}>
+              <Routes />
+            </Layout>
+          </Auth>
+        </Router>
+      </Provider>
+    </ErrorBoundary>
+  </Theme>
 );

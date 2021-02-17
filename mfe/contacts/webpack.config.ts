@@ -3,7 +3,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { WebpackOptionsNormalized, container } from 'webpack';
 
-import baseWebpackConfig, { moduleFederationShared } from '../../config/webpack.config.base';
+import baseWebpackConfig, { moduleFederationShared } from '../../config/webpack/webpack.config.base';
 
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
   const isDevelopment = argv.mode === 'development';

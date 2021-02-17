@@ -12,7 +12,6 @@
  ┃ ┣ 📂 src
  ┃ ┃ ┣ 📂 app
  ┃ ┃ ┃ ┣ 📜 App.tsx
- ┃ ┃ ┃ ┣ 📜 Providers.tsx
  ┃ ┃ ┃ ┣ 📜 Routes.tsx
  ┃ ┃ ┃ ┗ 📜 store.ts
  ┗ ...other apps
