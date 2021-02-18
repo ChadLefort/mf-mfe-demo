@@ -3,8 +3,6 @@ import { ContactType } from '@fake-company/types';
 import React, { FC, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { store } from './store';
-
 const EditContact = withFederatedModule(
   lazy(async () => {
     const { EditContact } = await import('mfe_contacts/feature-core/components/EditContact');
@@ -33,20 +31,11 @@ const ViewContacts = withFederatedModule(
   })
 );
 
-const ContactsProvider = withFederatedModule(
-  lazy(async () => {
-    const { ContactsProvider } = await import('mfe_contacts/feature-core/components/ContactsProvider');
-    return { default: ContactsProvider };
-  })
-);
-
 export const Routes: FC = () => (
-  <ContactsProvider store={store}>
-    <Switch>
-      <Route path="/edit/:id" render={() => <EditContact type={[ContactType.Customer, ContactType.Client]} />} />
-      <Route path="/add" render={() => <AddContacts type={[ContactType.Customer, ContactType.Client]} />} />
-      <Route path="/:id" render={() => <ViewContact type={[ContactType.Customer, ContactType.Client]} />} />
-      <Route path="/" render={() => <ViewContacts type={[ContactType.Customer, ContactType.Client]} />} />
-    </Switch>
-  </ContactsProvider>
+  <Switch>
+    <Route path="/edit/:id" render={() => <EditContact type={[ContactType.Customer, ContactType.Client]} />} />
+    <Route path="/add" render={() => <AddContacts type={[ContactType.Customer, ContactType.Client]} />} />
+    <Route path="/:id" render={() => <ViewContact type={[ContactType.Customer, ContactType.Client]} />} />
+    <Route path="/" render={() => <ViewContacts type={[ContactType.Customer, ContactType.Client]} />} />
+  </Switch>
 );

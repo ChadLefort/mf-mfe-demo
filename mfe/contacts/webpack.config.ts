@@ -27,7 +27,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
         './feature-core/components/EditContact': './src/feature-core/components/EditContact.tsx',
         './feature-core/components/ViewContact': './src/feature-core/components/ViewContact.tsx',
         './feature-core/components/ViewContacts': './src/feature-core/components/ViewContacts.tsx',
-        './feature-core/components/ContactsProvider': './src/feature-core/components/ContactsProvider.tsx'
+        './feature-core/contacts.provider': './src/feature-core/contacts.provider.ts'
       },
       shared: {
         ...dependencies,
