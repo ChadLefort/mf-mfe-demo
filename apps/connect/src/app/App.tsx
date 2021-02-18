@@ -4,6 +4,7 @@ import React, { FC, lazy } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import { useRemoteProviders } from '../hooks/useRemoteProviders';
 import { Routes } from './Routes';
 import { store } from './store';
 
@@ -14,18 +15,22 @@ const Nav = withFederatedModule(
   })
 );
 
-export const App: FC = () => (
-  <Theme>
-    <ErrorBoundary>
-      <Provider store={store}>
-        <Router basename="/connect">
-          <Auth>
-            <Layout nav={<Nav title="Connect" />}>
-              <Routes />
-            </Layout>
-          </Auth>
-        </Router>
-      </Provider>
-    </ErrorBoundary>
-  </Theme>
-);
+export const App: FC = () => {
+  useRemoteProviders();
+
+  return (
+    <Theme>
+      <ErrorBoundary>
+        <Provider store={store}>
+          <Router basename="/connect">
+            <Auth>
+              <Layout nav={<Nav title="Connect" />}>
+                <Routes />
+              </Layout>
+            </Auth>
+          </Router>
+        </Provider>
+      </ErrorBoundary>
+    </Theme>
+  );
+};
