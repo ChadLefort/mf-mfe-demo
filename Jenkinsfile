@@ -3,7 +3,7 @@ def affectedApps = []
 def getAffectedApps() {
   def projects = []
   def base = env.CHANGE_BRANCH == 'develop' || env.BRANCH_NAME == 'develop' ? 'origin/master' : 'origin/develop'
-  def raw = sh(script: "pnpx nx print-affected --base=develop", returnStdout: true)
+  def raw = sh(script: "pnpx nx print-affected --base=${base}", returnStdout: true)
   def affected = readJSON(text: raw)
 
   if (affected.projects) {
