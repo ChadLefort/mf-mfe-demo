@@ -59,7 +59,8 @@ def generateBuildStage(String projects, String target) {
     stage("${target}") {
       if (target == 'e2e') {
         // wait-on isn't working for some reason in jenkins workspace even though i can curl the url just fine. i'll just use sleep for now (╯°□°)╯︵ ┻━┻
-        sh "concurrently -k -s first -p \"none\" '\"sleep 20 && pnpx nx run-many --target=cypress-run --projects=${projects} --parallel\"' '\"pnpm run start-all\"'"
+        // maybe a race condition here also that needs to get fixed? need to test for it more.
+        sh "concurrently -k -s first -p \"none\" \"sleep 20 && pnpx nx run-many --target=cypress-run --projects=${projects} --parallel\" \"pnpm run start-all\""
       } else {
         sh "pnpx nx run-many --target=${target} --projects=${projects}"
       }
