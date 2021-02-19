@@ -5,6 +5,7 @@ import { WebpackOptionsNormalized, container } from 'webpack';
 
 import { ExternalTemplateRemotesPlugin } from '../../config/webpack/ExternalTemplateRemotesPlugin';
 import baseWebpackConfig, { moduleFederationShared } from '../../config/webpack/webpack.config.base';
+import remotes from './remotes.json';
 
 const webpackConfig = (_env: { production: string; development: string }, argv: WebpackOptionsNormalized) => {
   const { name, dependencies } = require('./package.json');
@@ -33,10 +34,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
       name: '@fake-company/admin',
-      remotes: {
-        mfe_nav: 'mfe_nav@[__mfe_nav__]/remoteEntry.js',
-        mfe_contacts: 'mfe_contacts@[__mfe_contacts__]/remoteEntry.js'
-      },
+      remotes,
       shared: {
         ...dependencies,
         ...moduleFederationShared

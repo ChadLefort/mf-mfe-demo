@@ -19,63 +19,125 @@ def getAffectedApps() {
   return projects
 }
 
-def generateBuildStage(String project, String target) {
+def getAffectedForE2E() {
+  def e2eTestToRun = []
+  def apps = []
+  def affectedAppsNames = affectedApps.collect { it.name }
+
+  dir("${env.WORKSPACE}/apps") {
+    def files = findFiles()
+
+    files.each { f ->
+      if (f.directory) {
+        try {
+          def remotes = readJSON(file: "${env.WORKSPACE}/apps/${f.name}/remotes.json")
+          apps.add([name: f.name, remotes: remotes.collect { it.key }])
+        } catch (Exception e) {
+          println("Exception occurred: ${e.toString()}")
+        }
+      }
+    }
+  }
+
+  apps.each { app ->
+    app.remotes.each { remote ->
+      if (affectedAppsNames.contains(remote)) {
+        e2eTestToRun.add(app.name)
+      }
+    }
+
+    if (affectedAppsNames.contains(app.name)) {
+      e2eTestToRun.add(app.name)
+    }
+  }
+
+  return e2eTestToRun.unique()
+}
+
+def generateBuildStage(String projects, String target) {
   return {
-    stage("${project}:${target}") {
-      sh "pnpx nx run-many --target=${target} --projects=${project}"
+    stage("${target}") {
+      if (target == 'e2e') {
+        // wait-on isn't working for some reason in jenkins workspace even though i can curl the url just fine. i'll just use sleep for now (╯°□°)╯︵ ┻━┻
+        // maybe a race condition here also that needs to get fixed? need to test for it more.
+        sh "concurrently -k -s first -p \"none\" \"sleep 20 && pnpx nx run-many --target=cypress-run --projects=${projects} --parallel\" \"pnpm run start-all\""
+      } else {
+        sh "pnpx nx run-many --target=${target} --projects=${projects}"
+      }
     }
   }
 }
 
 def generateDeployStage(String project, String directory) {
   return {
-    stage("${project}") {
-      def app = docker.build("chadlefort/${project}:${env.BUILD_TAG}", directory)
-      app.push()
+    if (!directory.contains('shared')) {
+      stage("${project}") {
+        def app = docker.build("chadlefort/${project}:${env.BUILD_TAG}", directory)
+        app.push()
+      }
     }
   }
 }
 
 pipeline {
-  agent any
+  agent none
 
   stages {
-    stage('Install Dependencies') {   
-      steps {
-        nodejs(nodeJSInstallationName: 'Node 14.x') {
-          sh 'pnpm i'
+    stage('Install Dependencies') {
+      agent {
+        docker {
+          image 'chadlefort/node-cypress-pnpm:latest'
+          args '-u root --ipc=host'
+          reuseNode true
         }
+      }
+      steps {
+        sh 'CYPRESS_INSTALL_BINARY=0 pnpm i'
       }
     }
 
     stage('Get Affected') {
+      agent {
+        docker {
+          image 'chadlefort/node-cypress-pnpm:latest'
+          args '-u root --ipc=host'
+          reuseNode true
+        }
+      }
       steps {
-        nodejs(nodeJSInstallationName: 'Node 14.x') {
-          script {
-            affectedApps = getAffectedApps()
-          }
+        script {
+          affectedApps = getAffectedApps()
         }
       }
     }
 
     stage('Build & Test Affected') {
+      agent {
+        docker {
+          image 'chadlefort/node-cypress-pnpm:latest'
+          args '-u root --ipc=host'
+          reuseNode true
+        }
+      }
       when {
         expression { !affectedApps.isEmpty() }
       }
+      environment {
+        CYPRESS_RUN_BINARY = '/var/jenkins_home/Cypress/Cypress'
+      }
 
-      steps {  
-        nodejs(nodeJSInstallationName: 'Node 14.x') {
-          script {
-            def projects = []
+      steps {
+        script {
+          def tasks = []
+          def e2e = getAffectedForE2E()
+          def projects = affectedApps.collect { it.name }
 
-            affectedApps.each {
-              projects.add([name: it.name, target: 'test'])
-              projects.add([name: it.name, target: 'build'])
-            }
+          tasks.add([projects: projects.join(','), target: 'test'])
+          tasks.add([projects: projects.join(','), target: 'build'])
+          tasks.add([projects: e2e.join(','), target: 'e2e'])
 
-            parallel projects.collectEntries {
-              ["${it.name}:${it.target}", generateBuildStage(it.name, it.target)]
-            }
+          parallel tasks.collectEntries {
+            [it.target, generateBuildStage(it.projects, it.target)]
           }
         }
       }
@@ -92,7 +154,7 @@ pipeline {
           docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             parallel affectedApps.collectEntries {
               [it.name, generateDeployStage(it.name, it.directory)]
-            }  
+            }
           }
         }
       }
