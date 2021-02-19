@@ -44,7 +44,7 @@ Learn more about the application's structure by [reading this doc](./docs/ARCHIT
 ## Todo
 
 - Probably more optimizations to the webpack configs to be production ready
-- Get e2e test working for multiple affected apps in CI pipeline
+- Probably improvements to Jenkins pipeline
 - Clean up versioning of federated modules
 - Keep an eye on [HMR](https://github.com/pmmmwh/react-refresh-webpack-plugin/issues/126)
 - Probably something else I'm forgetting...
