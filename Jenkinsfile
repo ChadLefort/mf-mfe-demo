@@ -136,7 +136,7 @@ pipeline {
           tasks.add([projects: e2e.join(','), target: 'e2e'])
 
           parallel tasks.collectEntries {
-            ["${it.projects}:${it.target}", generateBuildStage(it.projects, it.target)]
+            [it.target, generateBuildStage(it.projects, it.target)]
           }
         }
       }

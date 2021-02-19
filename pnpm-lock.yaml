@@ -13,7 +13,7 @@ importers:
       '@nrwl/workspace': 11.2.8_prettier@2.2.1
       '@storybook/react': 6.1.16_76fa3d00d733d4ea0cb902cfda4a8265
       '@svgr/webpack': 5.5.0
-      '@testing-library/cypress': 7.0.3_cypress@6.4.0
+      '@testing-library/cypress': 7.0.3_cypress@6.5.0
       '@testing-library/jest-dom': 5.11.9
       '@testing-library/react': 11.2.5_react-dom@16.14.0+react@16.14.0
       '@testing-library/react-hooks': 5.0.3_react-dom@16.14.0+react@16.14.0
@@ -37,7 +37,7 @@ importers:
       core-js: 3.8.3
       css-loader: 5.0.2_webpack@5.19.0
       css-minimizer-webpack-plugin: 1.2.0_webpack@5.19.0
-      cypress: 6.4.0
+      cypress: 6.5.0
       eslint: 7.19.0
       eslint-config-react-app: 6.0.0_894fa810dc7a6308c605f5903fd5bdc1
       eslint-plugin-cypress: 2.11.2_eslint@7.19.0
@@ -109,7 +109,7 @@ importers:
       core-js: ^3.8.3
       css-loader: ^5.0.2
       css-minimizer-webpack-plugin: ^1.2.0
-      cypress: ^6.4.0
+      cypress: ^6.5.0
       eslint: ^7.5.0
       eslint-config-react-app: ^6.0.0
       eslint-plugin-cypress: ^2.10.3
@@ -3164,11 +3164,11 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==
-  /@testing-library/cypress/7.0.3_cypress@6.4.0:
+  /@testing-library/cypress/7.0.3_cypress@6.5.0:
     dependencies:
       '@babel/runtime': 7.12.5
       '@testing-library/dom': 7.29.4
-      cypress: 6.4.0
+      cypress: 6.5.0
     dev: true
     engines:
       node: '>=10'
@@ -3475,6 +3475,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-fbjI6ja0N5ZA8TV53RUqzsKNkl9fv8Oj3T7zxW7FGv1GSH7gwJaNF8dzCjrqKaxKeUpTz4yT1DaJFq/omNpGfw==
+  /@types/node/12.12.50:
+    dev: true
+    resolution:
+      integrity: sha512-5ImO01Fb8YsEOYpV+aeyGYztcYcjGsBvN4D7G5r1ef2cuQOpymjWNQi5V0rKHE6PC2ru3HkoUr/Br2/8GUA84w==
   /@types/node/13.13.40:
     dev: true
     resolution:
@@ -6602,11 +6606,12 @@ packages:
     dev: true
     resolution:
       integrity: sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
-  /cypress/6.4.0:
+  /cypress/6.5.0:
     dependencies:
       '@cypress/listr-verbose-renderer': 0.4.1
       '@cypress/request': 2.88.5
       '@cypress/xvfb': 1.2.4
+      '@types/node': 12.12.50
       '@types/sinonjs__fake-timers': 6.0.2
       '@types/sizzle': 2.3.2
       arch: 2.2.0
@@ -6619,7 +6624,7 @@ packages:
       commander: 5.1.0
       common-tags: 1.8.0
       dayjs: 1.10.4
-      debug: 4.3.1_supports-color@7.2.0
+      debug: 4.3.2_supports-color@7.2.0
       eventemitter2: 6.4.3
       execa: 4.1.0
       executable: 4.1.1
@@ -6649,7 +6654,7 @@ packages:
     hasBin: true
     requiresBuild: true
     resolution:
-      integrity: sha512-SrsPsZ4IBterudkoFYBvkQmXOVxclh1/+ytbzpV8AH/D2FA+s2Qy5ISsaRzOFsbQa4KZWoi3AKwREmF1HucYkg==
+      integrity: sha512-ol/yTAqHrQQpYBjxLlRSvZf4DOb9AhaQNVlwdOZgJcBHZOOa52/p/6/p3PPcvzjWGOMG6Yq0z4G+jrbWyk/9Dg==
   /damerau-levenshtein/1.0.6:
     dev: true
     resolution:
@@ -6716,7 +6721,7 @@ packages:
         optional: true
     resolution:
       integrity: sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
-  /debug/4.3.1_supports-color@7.2.0:
+  /debug/4.3.2_supports-color@7.2.0:
     dependencies:
       ms: 2.1.2
       supports-color: 7.2.0
@@ -6729,7 +6734,7 @@ packages:
       supports-color:
         optional: true
     resolution:
-      integrity: sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
+      integrity: sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
   /decamelize/1.2.0:
     dev: true
     engines:
