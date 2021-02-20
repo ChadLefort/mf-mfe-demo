@@ -348,6 +348,7 @@ importers:
     dependencies:
       axios-mock-adapter: 1.19.0_axios@0.21.1
     devDependencies:
+      '@fake-company/types': link:../types
       '@reduxjs/toolkit': 1.5.0
       '@rtk-incubator/rtk-query': 0.2.0_2485ae860f5c0af9226c78114e535df2
       '@types/react': 16.14.3
@@ -356,6 +357,7 @@ importers:
       react: 16.14.0
       react-router-dom: 5.2.0_react@16.14.0
     specifiers:
+      '@fake-company/types': 1.0.0
       '@reduxjs/toolkit': 1.5.0
       '@rtk-incubator/rtk-query': ^0.2.0
       '@types/react': 16.14.3

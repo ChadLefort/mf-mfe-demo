@@ -9,7 +9,7 @@ describe('queries', () => {
     );
     cy.intercept(
       'GET',
-      '/api/contacts',
+      '/api/contacts?*',
       contactsFixture.filter((contact) => contact.type === ContactType.Customer)
     );
 
