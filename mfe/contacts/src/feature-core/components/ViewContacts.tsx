@@ -21,6 +21,7 @@ import {
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import { stringify } from 'qs';
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -50,7 +51,7 @@ export const ViewContacts: FC<Props> = ({ type }) => {
   const classes = useStyles();
   const [removeContact] = useDeleteContactMutation();
   const remove = (id: string) => () => removeContact(id);
-  const { isFetching, isError, data: contacts } = useFetchContactsQuery();
+  const { isFetching, isError, data: contacts } = useFetchContactsQuery(stringify({ type }, { arrayFormat: 'repeat' }));
 
   return contacts?.length && !isFetching && !isError ? (
     <TableContainer component={Paper}>

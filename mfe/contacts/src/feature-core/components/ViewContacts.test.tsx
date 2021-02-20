@@ -17,7 +17,7 @@ describe('view contacts', () => {
   afterEach(cleanup);
 
   it('can show a loading bar and then contacts', async () => {
-    axiosMock.onGet('/api/contacts').reply(200, contactsFixture);
+    axiosMock.onGet('/api/contacts?type=Customer').reply(200, contactsFixture);
 
     renderWithProviders(<ViewContacts type={[ContactType.Customer]} />, {});
 

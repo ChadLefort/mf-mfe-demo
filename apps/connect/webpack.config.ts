@@ -33,7 +33,7 @@ const webpackConfig = (_env: { production: string; development: string }, argv: 
 
   config.plugins = config.plugins?.concat([
     new container.ModuleFederationPlugin({
-      name: '@fake-company/connect',
+      name: 'connect',
       remotes,
       shared: {
         ...dependencies,

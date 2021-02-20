@@ -1,4 +1,4 @@
-import { IContact, authFixture, contactsFixture, mfeFixture } from '@fake-company/types';
+import { ContactType, IContact, authFixture, contactsFixture, mfeFixture } from '@fake-company/types';
 
 describe('queries', () => {
   beforeEach(() => {
@@ -7,7 +7,11 @@ describe('queries', () => {
     cy.intercept('GET', '/api/contacts/*', (req) =>
       req.reply(contactsFixture.find(({ id }) => id === req.url.split('/').pop()) as IContact)
     );
-    cy.intercept('GET', '/api/contacts', contactsFixture);
+    cy.intercept(
+      'GET',
+      '/api/contacts?*',
+      contactsFixture.filter((contact) => contact.type === ContactType.Customer)
+    );
 
     cy.visit('/');
   });
@@ -23,7 +27,7 @@ describe('queries', () => {
 
   it('should have have a table with contacts', () => {
     cy.findByRole('table', { name: 'simple table' }).should('exist');
-    cy.findAllByRole('row').should('have.length', 6);
+    cy.findAllByRole('row').should('have.length', 3);
     cy.findAllByRole('row').first().should('not.contain', 'Type');
   });
 

@@ -7,7 +7,7 @@ describe('queries', () => {
     cy.intercept('GET', '/api/contacts/*', (req) =>
       req.reply(contactsFixture.find(({ id }) => id === req.url.split('/').pop()) as IContact)
     );
-    cy.intercept('GET', '/api/contacts', contactsFixture);
+    cy.intercept('GET', '/api/contacts?*', contactsFixture);
 
     cy.visit('/');
   });

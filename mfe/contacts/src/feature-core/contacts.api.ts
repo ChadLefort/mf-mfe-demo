@@ -9,8 +9,8 @@ export const contactsApi = createApi({
   baseQuery: retry(axiosBaseQuery({ baseUrl: '/api' })),
   entityTypes: [type],
   endpoints: (builder) => ({
-    fetchContacts: builder.query<IContact[], void>({
-      query: () => ({ url: '/contacts', method: 'get' }),
+    fetchContacts: builder.query<IContact[], string>({
+      query: (type) => ({ url: `/contacts?${type}`, method: 'get' }),
       provides: (result) => [...result.map(({ id }) => ({ type, id } as const)), { type, id: 'LIST' }]
     }),
     fetchContact: builder.query<IContact, string>({

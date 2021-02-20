@@ -12,7 +12,7 @@ describe('mutations', () => {
   });
 
   it('should add a contact', () => {
-    cy.intercept('GET', '/api/contacts', contactsFixture);
+    cy.intercept('GET', '/api/contacts?*', contactsFixture);
     cy.intercept('POST', '/api/contacts', {
       id: '9478e897-5731-4fa2-a2dc-7c1adccc53a2',
       name: 'Foo Bar Baz',
@@ -37,7 +37,7 @@ describe('mutations', () => {
   });
 
   it('should edit a contact', () => {
-    cy.intercept('GET', '/api/contacts', contactsFixture);
+    cy.intercept('GET', '/api/contacts?*', contactsFixture);
     cy.intercept('PUT', '/api/contacts', { ...contactsFixture[0], name: 'Foo Bar' });
 
     cy.findAllByRole('button', { name: 'Edit' }).first().click();

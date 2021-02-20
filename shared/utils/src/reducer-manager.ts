@@ -5,16 +5,12 @@ export const createReducerManager = (store: Store, initialReducers: { [key: stri
   let keysToRemove: string[] = [];
 
   const add = (key: string, reducer: Reducer) => {
-    if (!key || reducers[key]) {
-      return;
-    }
-
     reducers[key] = reducer;
     store.replaceReducer(combineReducers(reducers));
   };
 
   const remove = (key: string) => {
-    if (!key || !reducers[key]) {
+    if (!reducers[key]) {
       return;
     }
 
