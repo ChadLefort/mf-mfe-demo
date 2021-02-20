@@ -1,6 +1,7 @@
 import { Middleware, MiddlewareAPI, compose } from '@reduxjs/toolkit';
 
 export const createInjectedMiddleware = () => {
+  let allMiddleware: Middleware[] = [];
   let allInjectedMiddleware: ReturnType<Middleware>[] = [];
   let middlewareAPI: MiddlewareAPI;
 
@@ -11,15 +12,17 @@ export const createInjectedMiddleware = () => {
 
   const add = (...asyncMiddleware: Middleware[]) => {
     allInjectedMiddleware.push(...asyncMiddleware.map((middleware) => middleware(middlewareAPI)));
+    allMiddleware.push(...asyncMiddleware);
   };
 
-  const remove = (middleware: ReturnType<Middleware>) => {
-    const index = allInjectedMiddleware.findIndex((d) => d === middleware);
+  const remove = (middleware: Middleware) => {
+    const index = allMiddleware.findIndex((m) => m === middleware);
 
     if (index === -1) {
       return;
     }
 
+    allMiddleware = allMiddleware.filter((_, i) => i !== index);
     allInjectedMiddleware = allInjectedMiddleware.filter((_, i) => i !== index);
   };
 
