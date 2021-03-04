@@ -22,10 +22,11 @@ pnpm i && pnpm run start
 
 Then navigate to:
 
-- `http://localhost:1336` (Admin Application)
-- `http://localhost:1337` (Connect Application)
-- `http://localhost:1338` (Navigation Playground)
-- `http://localhost:1339` (Contacts CRUD Playground)
+- http://localhost:1336 (Admin Application)
+- http://localhost:1337 (Connect Application)
+- http://localhost:1338 (Navigation Playground)
+- http://localhost:1339 (Contacts CRUD Playground)
+- http://localhost:4000 (JSON-server)
 
 If you want to just run a shared module (although most depend on json-server to work correctly) you can do either of these if you have NX installed globally. From the root directory run the following and just replace `mfe_nav` or the directory with the module you want to run:
 
