@@ -1,6 +1,6 @@
 # Micro Frontend with Webpack 5 Module Federation
 
-This is the a demo application that demonstrates [Webpack 5 Module Federation](https://webpack.js.org/concepts/module-federation/). Both `mfe/nav` and `mfe/contacts` are federated modules. The idea being that the federated modules are features that build up app functionality and require frequent updates. While everything in `shared` directory are libraries that can help build up a federated module (utilities and shared components). The host application that serves these modules is in `apps/connect`. The application also features the concept of injectable redux reducers.
+This is the a demo application that demonstrates [Webpack 5 Module Federation](https://webpack.js.org/concepts/module-federation/). Both `mfe/nav` and `mfe/contacts` are federated modules. The idea being that the federated modules are features that build up app functionality and require frequent updates. While everything in `shared` directory are libraries that can help build up a federated module (utilities and shared components). The host applications that serves these modules is in `apps/admin` and `apps/connect`. The applications also features the concept of injectable redux reducers.
 
 I put this all together in a monorepo using NX. I find this to be a better workflow than splitting modules into separate repos. Having both applications and modules living together in the same repo while using some monorepo tooling (Lerna/NX/Rush) to manage it all is a great developer experience in my opinion. Instead of fighting with `npm link`, managing multiple repos, and running multiple commands, just running one command to get started with development is very nice.
 
@@ -20,13 +20,18 @@ Then in the root directory just run the following commands to start the app and 
 pnpm i && pnpm run start
 ```
 
-Then navigate to `http://localhost:1337`
+Then navigate to:
 
-If you want to just run a shared module you can do either of these if you have NX installed globally. From the root directory run the following and just replace `mfe_nav` or the directory with the module you want to run:
+- `http://localhost:1336` (Admin Application)
+- `http://localhost:1337` (Connect Application)
+- `http://localhost:1338` (Navigation Playground)
+- `http://localhost:1339` (Contacts CRUD Playground)
+
+If you want to just run a shared module (although most depend on json-server to work correctly) you can do either of these if you have NX installed globally. From the root directory run the following and just replace `mfe_nav` or the directory with the module you want to run:
 
 ```
 nx run mfe_nav:start
-cd shared/nav && pnpm run start
+cd mfe/nav && pnpm run start
 ```
 
 ## Architecture

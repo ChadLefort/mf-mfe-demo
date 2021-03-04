@@ -62,7 +62,7 @@ It should be very easy to locate everything related to a component (story, test 
 
 ## Redux
 
-This application uses [redux toolkit](https://redux-toolkit.js.org/) which is the official optionated toolkit created by the maintainers of redux. It is a great approach to writing redux code because it reduces boilerplate and has a great API to reduce complexity. The application also features the concept of [injectable redux reducers](https://redux.js.org/recipes/code-splitting/#defining-an-injectreducer-function).
+This application uses [RTK Query](https://rtk-query-docs.netlify.app/) and [redux toolkit](https://redux-toolkit.js.org/) which is the official optionated toolkit created by the maintainers of redux. It is a great approach to writing redux code because it reduces boilerplate and has a great API to reduce complexity. The application also features the concept of [injectable redux reducers](https://redux.js.org/recipes/code-splitting/#defining-an-injectreducer-function) and injectable middleware.
 
 Following [the redux style guide](https://redux.js.org/style-guide/style-guide) is also very important.
 
